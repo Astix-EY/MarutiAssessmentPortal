@@ -1,0 +1,2 @@
+13-06-2024 17:16:56 
+Operator '==' cannot be applied to operands of type 'int' and 'string'

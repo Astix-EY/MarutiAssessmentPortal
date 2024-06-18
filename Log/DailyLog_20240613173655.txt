@@ -1,0 +1,2 @@
+13-06-2024 17:36:55 
+There are not enough fields in the Structured type.  Structured types must have at least one field.

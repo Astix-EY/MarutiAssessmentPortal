@@ -1,0 +1,2 @@
+14-06-2024 17:54:56 
+Column 'Score' does not belong to table Table1.

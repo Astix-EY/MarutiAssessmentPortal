@@ -1,0 +1,2 @@
+13-06-2024 17:16:16 
+{"Data":{"UserDetails":[{"CandidateID":"1380","CandidateCode":"8156020","CandidateName":"Participant User1","CandidateEmail":"Participant1@astix.in"}]},"objStatusCode":1,"Message":"Success"}

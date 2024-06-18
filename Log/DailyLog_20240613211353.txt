@@ -1,0 +1,3 @@
+13-06-2024 21:13:53 
+Cannot insert the value NULL into column 'CandidateName', table 'db_EY_VAC_EYDemo.dbo.tblParticipantMappingwithEK'; column does not allow nulls. INSERT fails.
+The statement has been terminated.

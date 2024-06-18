@@ -1,0 +1,2 @@
+13-06-2024 20:51:34 
+Type 'System.Data.DataTable' is not supported for deserialization of an array.

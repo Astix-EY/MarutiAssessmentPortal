@@ -1,0 +1,10 @@
+13-06-2024 17:27:11 
+{"Data":{"Token":"eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJTdXBlckFkbWluIiwiVXNlcklEIjoiMTcyOTU0IiwiSW5zdGl0dXRlSUQiOiIxMDk4NjIiLCJTdWJzY3JpcHRpb25FbmREYXRlIjoiMTIvMzEvMjAyNSAyMzo1OTowNyIsIkluc3RpdHV0ZVVzZXJJRCI6IjE3Mjk1NCIsIm5iZiI6MTcxODI3OTgzMSwiZXhwIjoxNzE4MzAxNDMxLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0MjAwLyJ9.TIjkMxy1eQIW6e_o4m80-_OUMLeuVlClIZ4Ii0l1XB0","InstituteID":109862},"objStatusCode":1,"Message":"Login Successful!"}
+13-06-2024 17:27:11 
+
+13-06-2024 17:27:11 
+{"Data":{"UserDetails":[{"CandidateID":"1380","CandidateCode":"8156020","CandidateName":"Participant User1","CandidateEmail":"Participant1@astix.in"}]},"objStatusCode":1,"Message":"Success"}
+13-06-2024 17:27:11 
+OK
+13-06-2024 17:27:11 
+The best overloaded method match for 'System.Collections.Generic.Dictionary<string,object>.this[string]' has some invalid arguments

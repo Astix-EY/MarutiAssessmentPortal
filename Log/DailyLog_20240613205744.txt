@@ -1,0 +1,4 @@
+13-06-2024 20:57:44 
+String or binary data would be truncated.
+The data for table-valued parameter "@UserMappingDT" doesn't conform to the table type of the parameter. SQL Server error is: 8152, state: 30
+The statement has been terminated.
