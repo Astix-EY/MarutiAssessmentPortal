@@ -15,8 +15,8 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using LogMeIn.GoToMeeting.Api.Model;
 using System.Net.Mime;
+using AjaxControlToolkit.HTMLEditor.ToolbarButton;
 
 public partial class frmParticipantEmailInvite : System.Web.UI.Page
 {
@@ -27,7 +27,8 @@ public partial class frmParticipantEmailInvite : System.Web.UI.Page
         {
             Response.Redirect("~/Login.aspx");
         }
-        else {
+        else
+        {
             if (!IsPostBack)
             {
                 hdnLoginId.Value = Session["LoginID"].ToString();
@@ -64,13 +65,13 @@ public partial class frmParticipantEmailInvite : System.Web.UI.Page
             itm.Value = dr["CycleId"].ToString() + "^" + dr["flgStatus"];
             itm.Attributes.Add("cycledate", Convert.ToDateTime(dr["CycleStartDate"]).ToString("yyyy-MM-dd"));
             ddlCycle.Items.Add(itm);
-            
+
         }
     }
-    
+
     //Get Scheme And Product Detail Bases on Store
     [System.Web.Services.WebMethod()]
-    public static string fngetdata(int CycleId,string cycledate)
+    public static string fngetdata(int CycleId, string cycledate)
     {
         SqlConnection con = null;
         con = new SqlConnection(ConfigurationManager.AppSettings["strConn"]);
@@ -85,19 +86,21 @@ public partial class frmParticipantEmailInvite : System.Web.UI.Page
                 };
             Ds = clsDbCommand.ExecuteQueryReturnDataSet(storedProcName, con, sp);
 
-            
+
             StringBuilder str = new StringBuilder();
             StringBuilder str1 = new StringBuilder();
 
             if (Ds.Tables[0].Rows.Count > 0)
             {
-                string[] SkipColumn = new string[6];
+                string[] SkipColumn = new string[8];
                 SkipColumn[0] = "EmpNodeID";
                 SkipColumn[1] = "FirstName";
                 SkipColumn[2] = "SurName";
                 SkipColumn[3] = "flgNewMail";
                 SkipColumn[4] = "flgRescheduleMail";
                 SkipColumn[5] = "BandID";
+                SkipColumn[6] = "UserName";
+                SkipColumn[7] = "Pwd";
 
 
                 int isSubmitted = 0;// int.Parse(Ds.Tables[1].Rows[0]["isSubmitted"].ToString());
@@ -113,23 +116,23 @@ public partial class frmParticipantEmailInvite : System.Web.UI.Page
                         continue;
                     }
                     string sColumnName = Ds.Tables[0].Columns[j].ColumnName; ;
-                    
-                    str.Append("<th "+ ss + ">" + sColumnName + "</th>");
+
+                    str.Append("<th " + ss + ">" + sColumnName + "</th>");
                 }
                 //str.Append("<th>Include</th>");
                 str.Append("<th><input type='checkbox' value='0' id='checkAll' onclick='check_uncheck_checkbox(this.checked)' > ALL</th>");
                 str.Append("</tr></thead><tbody>");
-                 
+
                 //ss = "";
                 string OldParticipantId = "0";
                 for (int i = 0; i < Ds.Tables[0].Rows.Count; i++)
                 {
                     string Fname = Ds.Tables[0].Rows[i]["FirstName"].ToString();
-                    string starttime =  Ds.Tables[0].Rows[i]["AssessmentStartDate"].ToString();
-                    string endtime =  Ds.Tables[0].Rows[i]["AssessmentEndTime"].ToString();
+                    string starttime = Ds.Tables[0].Rows[i]["AssessmentStartDate"].ToString();
+                    string endtime = Ds.Tables[0].Rows[i]["AssessmentEndTime"].ToString();
                     string subjectline = "";
                     string EmpNodeID = Ds.Tables[0].Rows[i]["EmpNodeID"].ToString();
-                    string flgNewMail = Ds.Tables[0].Rows[i]["flgNewMail"].ToString();                    
+                    string flgNewMail = Ds.Tables[0].Rows[i]["flgNewMail"].ToString();
                     string flgRescheduleMail = Ds.Tables[0].Rows[i]["flgRescheduleMail"].ToString();
                     string EmailID = Ds.Tables[0].Rows[i]["EMailID"].ToString();
                     string FullName = Ds.Tables[0].Rows[i]["FullName"].ToString();
@@ -149,33 +152,26 @@ public partial class frmParticipantEmailInvite : System.Web.UI.Page
 
                     flgDisplayRow = "1";
 
-                    if (flgNewMail != "0")
-                    {                  
-                         str.Append("<tr FullName= '" + FullName + "'  EmailID = '" + EmailID +"' flgDisplayRow ='" + flgDisplayRow + "' flgRescheduleMail = '" + flgRescheduleMail + "'  flgNewMail = '" + flgNewMail + "' EmpNodeID = '" + EmpNodeID +"' Fname ='" + Fname + "' cycledate ='" + cycledate + "' starttime='" + starttime + "' endtime='" + endtime + "'  subjectline='" + subjectline + "' >");
-                        str.Append("<td style='text-align:center'>" + (i + 1) + "</td>");
-                        for (int j = 0; j < Ds.Tables[0].Columns.Count; j++)
+
+                    str.Append("<tr username= '" + Ds.Tables[0].Rows[i]["username"].ToString() + "'  pwd = '" + Ds.Tables[0].Rows[i]["pwd"].ToString() + "'  FullName= '" + FullName + "'  EmailID = '" + EmailID + "' flgDisplayRow ='" + flgDisplayRow + "' flgRescheduleMail = '" + flgRescheduleMail + "'  flgNewMail = '" + flgNewMail + "' EmpNodeID = '" + EmpNodeID + "' Fname ='" + Fname + "' cycledate ='" + cycledate + "' starttime='" + starttime + "' endtime='" + endtime + "'  subjectline='" + subjectline + "' >");
+                    str.Append("<td style='text-align:center'>" + (i + 1) + "</td>");
+                    for (int j = 0; j < Ds.Tables[0].Columns.Count; j++)
+                    {
+                        string sColumnName = Ds.Tables[0].Columns[j].ColumnName;
+                        if (SkipColumn.Contains(sColumnName))
                         {
-                            string sColumnName = Ds.Tables[0].Columns[j].ColumnName;
-                            if (SkipColumn.Contains(sColumnName))
-                            {
-                                continue;
-                            }
-                            var sData = Ds.Tables[0].Rows[i][j];
-
-                                str.Append("<td>" + sData + "</td>");
-
+                            continue;
                         }
-                        if (flgNewMail != "0")
-                        {
-                        str.Append("<td><input type='checkbox' flg='1' value='1'></td>");
-                         }
-                        else
-                        {
-                        str.Append("<td>&nbsp;</td>");
+                        var sData = Ds.Tables[0].Rows[i][j];
+
+                        str.Append("<td>" + sData + "</td>");
+
                     }
-                   
-                      str.Append("</tr>");
-                    }
+                    str.Append("<td><input type='checkbox' flg='1' value='1'></td>");
+
+
+                    str.Append("</tr>");
+
                 }
                 str.Append("</tbody></table></div>");
             }
@@ -204,11 +200,6 @@ public partial class frmParticipantEmailInvite : System.Web.UI.Page
         string strResponse = "";
         try
         {
-            string MailServer = ConfigurationManager.AppSettings["MailServer"].ToString();
-            string MailUserName = ConfigurationManager.AppSettings["MailUser"].ToString();
-            string MailPwd = ConfigurationManager.AppSettings["MailPassword"].ToString();
-            string flgActualUser = ConfigurationManager.AppSettings["flgActualUser"].ToString();
-            string fromMail = ConfigurationManager.AppSettings["FromAddress"].ToString();
 
             string strDataSaving = JsonConvert.SerializeObject(udt_DataSaving, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
             DataTable dtDataSaving = JsonConvert.DeserializeObject<DataTable>(strDataSaving);
@@ -224,22 +215,20 @@ public partial class frmParticipantEmailInvite : System.Web.UI.Page
                 try
                 {
 
-                    DateTime dt1 = Convert.ToDateTime(drow["StartTime"].ToString());   //Convert.ToDateTime("2020-05-21 16:30");
-                    string StartDate = dt1.ToString("yyyy-MM-dd hh:mm:ss tt");
-                    DateTime dt2 = Convert.ToDateTime(drow["EndTime"].ToString()); //Convert.ToDateTime("2020-05-21 18:30");
-                    string EndDate = dt2.ToString("yyyy-MM-dd hh:mm:ss tt");
-                    string SubjectName = "Axiata FastForward Enterprise Academy | Scheduled CDI slot";// drow["Subject"].ToString();
+                    string SubjectName = "EY | Login Credentials";// drow["Subject"].ToString();
                     string MailTo = drow["EmailId"].ToString();
                     string DisplayName = drow["Name"].ToString();
                     string FName = drow["Fname"].ToString();
+                    string username = drow["username"].ToString();
+                    string pwd = drow["pwd"].ToString();
                     string EmpNodeID = drow["EmpNodeID"].ToString();
                     string SchedulerFlagValue = drow["SchedulerFlagValue"].ToString();
-                    string strStatus = fnSendICSFIleToParticipant(EmpNodeID,FName, SubjectName, MailTo, DisplayName, StartDate, EndDate, MailServer, MailUserName, MailPwd, fromMail, flgActualUser, SchedulerFlagValue);
+                    string strStatus = fnSendICSFIleToParticipant(EmpNodeID, FName, SubjectName, MailTo, DisplayName, username, pwd, SchedulerFlagValue);
                     drow["MailStatus"] = strStatus == "1" ? "Mail Sent" : strStatus;
 
-                    if(strStatus=="1")
+                    if (strStatus == "1")
                     {
-                       // SqlConnection Scon1 = new SqlConnection(ConfigurationManager.ConnectionStrings["strConn"].ConnectionString);
+                        // SqlConnection Scon1 = new SqlConnection(ConfigurationManager.ConnectionStrings["strConn"].ConnectionString);
                         SqlCommand Scmd = new SqlCommand();
                         Scmd.Connection = Scon;
                         Scmd.CommandText = "spMailUpdateFlagP";
@@ -249,7 +238,7 @@ public partial class frmParticipantEmailInvite : System.Web.UI.Page
 
                         Scmd.CommandType = CommandType.StoredProcedure;
                         Scmd.CommandTimeout = 0;
-                                           
+
                         Scmd.ExecuteNonQuery();
                     }
 
@@ -271,154 +260,79 @@ public partial class frmParticipantEmailInvite : System.Web.UI.Page
     }
 
 
-    public static string fnSendICSFIleToParticipant(string EmpNodeID,string FName,string SubjectName, string MailTo, string DisplayName, string StartDate, string EndDate,string MailServer,string MailUserName,string MailPwd,string fromMail,string flgActualUser,string SchedulerFlagValue)
+    public static string fnSendICSFIleToParticipant(string EmpNodeID, string FName, string SubjectName, string MailTo, string DisplayName, string UserName, string UserPwd, string SchedulerFlagValue)
     {
         string strRespoonse = "1";
         try
         {
+            string MailServer = ConfigurationManager.AppSettings["MailServer"].ToString();
+            string MailUserName = ConfigurationManager.AppSettings["MailUser"].ToString();
+            string MailPwd = ConfigurationManager.AppSettings["MailPassword"].ToString();
+            string flgActualUser = ConfigurationManager.AppSettings["flgActualUser"].ToString();
+            string fromMail = ConfigurationManager.AppSettings["FromAddress"].ToString();
+            string ParticipantInviteMailBodyText_ReachoutValue = ConfigurationManager.AppSettings["ParticipantInviteMailBodyText_ReachoutValue"].ToString();
+
             MailMessage msg = new MailMessage();
-            msg.From = new MailAddress("AxiataFastforward<" + fromMail + ">");
-            string CCMailID = "Melissa.Lim@my.ey.com,Zarina.Husin@my.ey.com,Harkamal.Khanna@in.ey.com";
+            msg.From = new MailAddress("VACAdmin<" + fromMail + ">");
+            string CCMailID = "";
+            string BCCMailID = "";
             // Now Contruct the ICS file using string builder
+            string TestURL = ConfigurationManager.AppSettings["TestURL"].ToString();
+            string PortNo = ConfigurationManager.AppSettings["PortNo"].ToString();
             if (flgActualUser == "2")
             {
                 MailTo = ConfigurationManager.AppSettings["MailTo"].ToString();
                 CCMailID = ConfigurationManager.AppSettings["MailCc"].ToString();
             }
-          
+
             msg.To.Add(MailTo);
-            msg.CC.Add(CCMailID);
-            msg.Bcc.Add("jyoti@astixsolutions.com");
-            
+            if (CCMailID != "")
+            {
+                msg.CC.Add(CCMailID);
+            }
+            BCCMailID = ConfigurationManager.AppSettings["MailBcc"].ToString();
+            msg.Bcc.Add(BCCMailID);
 
             msg.Subject = SubjectName;
 
-            string path1 =HttpContext.Current.Server.MapPath("~/Images/AxiataLogo.png");
             StringBuilder strBody = new StringBuilder();
-            if (SchedulerFlagValue=="1")
-            {
-             
-                strBody.Append("<p><img src=cid:picture1 /></p>");
-                strBody.Append("<font  style='COLOR: #000080; FONT-FAMILY: Arial'  size=2>");
-                strBody.Append("<p>Dear " + DisplayName + ",</p>");
-                strBody.Append("<p>We are blocking your time for the scheduled <b>Enterprise Academy – Capability Development Inventory (CDI)</b>.</p>");
-                strBody.Append("<p>Please accept the invite immediately, no rescheduling will be allowed..</p>");
-                strBody.Append("<p><b>3 days (72 hours) before the date of your CDI</b></p>");
-                strBody.Append("<ul>");
-                strBody.Append("<li>Check that you have received your login credentials email from Fuse and Spotmentor</li>");
-                strBody.Append("<li>Go through the CDI background information – <u>available on Fuse > Spotmentor</u> (no softcopy materials will be emailed)</li>");
-                strBody.Append("</ul>");
+            strBody.Append("<font  style='COLOR: #000080; FONT-FAMILY: Arial'  size=2>");
+            strBody.Append("<p>Dear " + FName + ",</p>");
+            strBody.Append("<p>Greetings from Ernst & Young (EY)!</p>");
+            strBody.Append("<p>Congratulations on being invited to participate in the Virtual Development Centre.</p>");
 
-                strBody.Append("<p><b>Day of CDI session:</b></p>");
-                strBody.Append("<ul>");
-                strBody.Append("<li>Be present on the specific date and time</li>");
-                strBody.Append("<li>On the date of your CDI, please <b>DO NOT</b> login into CDI before your scheduled time. If you login earlier, the timer will start ticking and this will impact your CDI process</li>");
-                strBody.Append("<li>The entire CDI needs to be completed in one sitting. A 10 minute break will be allocated in between task 2 and task 3</li>");
-                strBody.Append("</ul>");
-                strBody.Append("<p>Please contact <a href='mailto:techsupport@axiatafastforward.com'>techsupport@axiatafastforward.com</a> should you run into any difficulties.</p>");
+            // strBody.Append("<p>To ensure that the talent is future ready and aligned with the organisation’s vision and mission, TVS Talent Development Team has undertaken many initiatives. One of them is to conduct a “Virtual Development Centre” in association with EY (Ernst and Young). </p>");
 
-                strBody.Append("<p><b><i>Let’s FastForward to a sustainable future, together!</i></b></p>");
+            strBody.Append("<p>Please find below the link and your login credentials to complete the necessary tasks.</p>");
+            strBody.Append("<p><b>URL: </b><a href=" + TestURL + ">" + TestURL + "</a></p>");
+            strBody.Append("<p><b>Login ID: " + UserName + "</b></p>");
+            strBody.Append("<p><b>Password: " + UserPwd + "</b></p>");
 
-                strBody.Append("</font>");
-            }
-            else
-            {
-               
-                strBody.Append("<p><img src=cid:picture1 /></p>");
-                strBody.Append("<font  style='COLOR: #000080; FONT-FAMILY: Arial'  size=2>");
+            strBody.Append("<p>In case of further questions, please reach out to " + ParticipantInviteMailBodyText_ReachoutValue + "</p>");
+            strBody.Append("<p>All the best for the process!</p>");
+            strBody.Append("<p><b>Thanks & Regards, </b></p>");
+            strBody.Append("<p><b>Team EY</b></p>");
 
-                strBody.Append("<p> Rescheduled Mail Format</p>");
-                strBody.Append("<p>Dear " + DisplayName + ",</p>");
-                strBody.Append("<p>We are blocking your time for the Rescheduled <b>Enterprise Academy – Capability Development Inventory (CDI)</b>.</p>");
-                strBody.Append("<p>Please accept the invite immediately, no rescheduling will be allowed..</p>");
-                strBody.Append("<p><b>3 days (72 hours) before the date of your CDI</b></p>");
-                strBody.Append("<ul>");
-                strBody.Append("<li>Check that you have received your login credentials email from Fuse and Spotmentor</li>");
-                strBody.Append("<li>Go through the CDI background information – <u>available on Fuse > Spotmentor</u> (no softcopy materials will be emailed)</li>");
-                strBody.Append("</ul>");
-
-                strBody.Append("<p><b>Day of CDI session:</b></p>");
-                strBody.Append("<ul>");
-                strBody.Append("<li>Be present on the specific date and time</li>");
-                strBody.Append("<li>On the date of your CDI, please <b>DO NOT</b> login into CDI before your scheduled time. If you login earlier, the timer will start ticking and this will impact your CDI process</li>");
-                strBody.Append("<li>The entire CDI needs to be completed in one sitting. A 10 minute break will be allocated in between task 2 and task 3</li>");
-                strBody.Append("</ul>");
-                strBody.Append("<p>Please contact <a href='mailto:techsupport@axiatafastforward.com'>techsupport@axiatafastforward.com</a> should you run into any difficulties.</p>");
-
-                strBody.Append("<p><b><i>Let’s FastForward to a sustainable future, together!</i></b></p>");
-
-                strBody.Append("</font>");
-            }
-          
-
-
-
+            strBody.Append("</font>");
+            msg.Body = strBody.ToString();
             msg.IsBodyHtml = true;
-
-            System.Net.Mime.ContentType HTMLType = new System.Net.Mime.ContentType("text/html");
-            AlternateView avCal = AlternateView.CreateAlternateViewFromString(strBody.ToString(), HTMLType);
-
-            LinkedResource Pic1 = new LinkedResource(path1, MediaTypeNames.Image.Jpeg);
-            Pic1.ContentId = "picture1";
-            avCal.LinkedResources.Add(Pic1);
-
-            msg.AlternateViews.Add(avCal);
-
-            StringBuilder str = new StringBuilder();
-            str.AppendLine("BEGIN:VCALENDAR");
-            str.AppendLine("PRODID:Meeting1");
-            str.AppendLine("VERSION:2.0");
-            str.AppendLine("METHOD:REQUEST");
-            str.AppendLine("BEGIN:VEVENT");
-            DateTime dtStartTime = Convert.ToDateTime(StartDate);
-            DateTime dtEndTime = Convert.ToDateTime(EndDate);
-            str.AppendLine(string.Format("DTSTART:{0:yyyyMMddTHHmmss}", dtStartTime.ToUniversalTime().ToString("yyyyMMdd\\THHmmss\\Z")));
-            str.AppendLine(string.Format("DTSTAMP:{0:yyyyMMddTHHmmss}", DateTime.Now));
-            str.AppendLine(string.Format("DTEND:{0:yyyyMMddHHmmss}", dtEndTime.ToUniversalTime().ToString("yyyyMMdd\\THHmmss\\Z")));
-            str.AppendLine("LOCATION: " + msg.From.Address);
-            str.AppendLine(string.Format("UID:{0}", Guid.NewGuid()));
-            str.AppendLine(string.Format("DESCRIPTION:{0}", strBody.ToString()));
-            str.AppendLine(string.Format("X-ALT-DESC;FMTTYPE=text/html:{0}", strBody.ToString()));
-            str.AppendLine(string.Format("SUMMARY:{0}", msg.Subject));
-            str.AppendLine(string.Format("ORGANIZER:MAILTO:{0}", msg.From.Address));
-            str.AppendLine(string.Format("ATTENDEE;CN=\"{0}\";RSVP=TRUE:mailto:{1}", msg.To[0].DisplayName, msg.To[0].Address));
-
-            str.AppendLine("BEGIN:VALARM");
-            str.AppendLine("TRIGGER:-PT15M");
-            str.AppendLine("ACTION:DISPLAY");
-            str.AppendLine("DESCRIPTION:Reminder");
-            str.AppendLine("END:VALARM");
-            str.AppendLine("END:VEVENT");
-            str.AppendLine("END:VCALENDAR");
-
-            System.Net.Mime.ContentType contype = new System.Net.Mime.ContentType("text/calendar");
-            contype.Parameters.Add("method", "REQUEST");
-            contype.Parameters.Add("name", "Meeting.ics");
-            AlternateView avCal1 = AlternateView.CreateAlternateViewFromString(str.ToString(), contype);
-            msg.AlternateViews.Add(avCal1);
             SmtpClient SmtpMail = new SmtpClient();
             SmtpMail.Host = MailServer;
-            SmtpMail.Port = 25;
-            string UserName = MailUserName;
-            string Pwd = MailPwd;
-            NetworkCredential loginInfo = new NetworkCredential(UserName, Pwd);
+            SmtpMail.Port = Convert.ToInt32(PortNo);
+            NetworkCredential loginInfo = new NetworkCredential(MailUserName, MailPwd);
             SmtpMail.Credentials = loginInfo;
-            SmtpMail.EnableSsl = true;
+            SmtpMail.EnableSsl = false;
             SmtpMail.Timeout = int.MaxValue;
-          
-          SmtpMail.Send(msg);
-
-           
-
-
+            SmtpMail.Send(msg);
         }
-        catch (Exception ex) {
+        catch (Exception ex)
+        {
             strRespoonse = ex.Message;
         }
         return strRespoonse;
     }
 
-   
 
-   
+
+
 }

@@ -93,11 +93,11 @@ public partial class frmParticipantMappingWithTechnicalTest : System.Web.UI.Page
         // sb.Append("<th><label style='margin:0'><input type='checkbox'> ALL</label></th>");
        
         sb.Append("<th>Participant</th>");
-        if (TypeId == "1")
-        {
+        //if (TypeId == "1")
+        //{
             sb.Append("<th style='width:200px'>Test</th>");
-            sb.Append("<th></th>");
-        }
+            //sb.Append("<th>Action</th>");
+       // }
         sb.Append("</tr>");
         sb.Append("</thead>");
         sb.Append("<tbody>");

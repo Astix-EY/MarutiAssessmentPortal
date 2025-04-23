@@ -62,11 +62,7 @@
         //    }
         //}
 
-        $(function () {
-            fnChangeDataBasedOnLanguage(1)
-
-        });
-
+      
     </script>
     <script type="text/javascript">
         //----- English -------------------------
@@ -99,210 +95,9 @@
             });
         }
 
-        //----- Indonesia -----------------------
-        function fnIndonesia(flg) {
-            var ids = "";
-            if (flg == 1) {
-                ids = "AugngM-idn-cont";
-            }
-            else if (flg == 2) {
-                ids = "KhalisT-idn-cont";
-            }
-            else if (flg == 3) {
-                ids = "AmarM-idn-cont";
-            }
-            else if (flg == 4) {
-                ids = "AishahR-idn-cont";
-            }
-            else if (flg == 5) {
-                ids = "AmitSharma-idn-cont";
-            }
-            else if (flg == 6) {
-                ids = "ZahilHasan-idn-cont";
-            }
-            $("#" + ids).dialog({
-                title: "",
-                width: "45%",
-                modal: true,
-                draggable: false,
-                resizable: false,
-            });
-        }
-
-        //----- Sinhala -------------------------
-        function fnSinhala(flg) {
-            var ids = "";
-            if (flg == 1) {
-                ids = "AugngM-sin-cont";
-            }
-            else if (flg == 2) {
-                ids = "KhalisT-sin-cont";
-            }
-            else if (flg == 3) {
-                ids = "AmarM-sin-cont";
-            }
-            else if (flg == 4) {
-                ids = "AishahR-sin-cont";
-            }
-            else if (flg == 5) {
-                ids = "AmitSharma-sin-cont";
-            }
-            else if (flg == 6) {
-                ids = "ZahilHasan-sin-cont";
-            }
-            $("#" + ids).dialog({
-                title: "",
-                width: "45%",
-                modal: true,
-                draggable: false,
-                resizable: false,
-            });
-        }
-
-        //----- Tamin ---------------------------
-        function fnTamil(flg) {
-            var ids = "";
-            if (flg == 1) {
-                ids = "AugngM-Tamil-cont";
-            }
-            else if (flg == 2) {
-                ids = "KhalisT-Tamil-cont";
-            }
-            else if (flg == 3) {
-                ids = "AmarM-Tamil-cont";
-            }
-            else if (flg == 4) {
-                ids = "AishahR-Tamil-cont";
-            }
-            else if (flg == 5) {
-                ids = "AmitSharma-Tamil-cont";
-            }
-            else if (flg == 6) {
-                ids = "ZahilHasan-Tamil-cont";
-            }
-            $("#" + ids).dialog({
-                title: "",
-                width: "45%",
-                modal: true,
-                draggable: false,
-                resizable: false,
-            });
-        }
     </script>
 
-    <script type="text/javascript">
-        function fnChangeDataBasedOnLanguage(X) {
-            var LngID = $("#hdnLngID").val();
-            //alert(LngID)
-            if (X == 2) {
-                var LngID = $("#ddlLanguage").val();
-                $("#hdnLngID").val(LngID);
-            }
-
-            fnChangeDataOnPanelPage()
-            //   alert(LngID)
-            if (LngID == "2") {
-
-                $("#dvIndonesia").show();
-                $("#IndonesiaSalesOrg").show();
-
-                $("#dvEnglish").hide();
-                $("#EngSalesOrg").hide();
-
-
-                $("#dvSinhala").hide();
-                $("#SinhalaSalesOrg").hide();
-
-                $("#dvTamil").hide();
-                $("#TamilSalesOrg").hide();
-
-                $("#HdngBrief").html("DESKRIPSI PERAN");
-                $("#HdngSales").html("STRUKTUR ORGANISASI PERUSAHAAN");
-                $("#AnchorBack").html("Kembali");
-                $("#AnchorNext1").html("Selanjutnya");
-                $("#AnchorNext2").html("Selanjutnya");
-                $("#paraClickText").html("*Klik pada ikon untuk mengetahui lebih jauh tentang mereka");
-            }
-            else if (LngID == "3") {
-
-                $("#dvSinhala").show();
-                $("#SinhalaSalesOrg").show();
-
-                $("#dvIndonesia").hide();
-                $("#IndonesiaSalesOrg").hide();
-
-                $("#dvEnglish").hide();
-                $("#EngSalesOrg").hide();
-
-                $("#dvTamil").hide();
-                $("#TamilSalesOrg").hide();
-
-                $("#HdngBrief").html("ඔබගේ භුමිකාව පිළිබඳ කෙටි සටහන");
-                $("#HdngSales").html("GTC හි ආයතනික සංවිධාන ව්‍යුහය");
-                $("#AnchorBack").html("ආපසු");
-                $("#AnchorNext1").html("ඊළඟ");
-                $("#AnchorNext2").html("ඊළඟ");
-                $("#paraClickText").html("*පුද්ගලයා පිළිබඳ වැඩි විස්තර දැන ගැනීමට අයිකනය (icon) මත ක්ලික් (click) කරන්න");
-            }
-
-            else if (LngID == "1") {
-
-                $("#dvTamil").show();
-                $("#TamilSalesOrg").show();
-
-                $("#dvEnglish").hide();
-                $("#EngSalesOrg").hide();
-
-                $("#dvIndonesia").hide();
-                $("#IndonesiaSalesOrg").hide();
-
-                $("#dvSinhala").hide();
-                $("#SinhalaSalesOrg").hide();
-
-
-                $("#HdngBrief").html("உங்கள் பங்களிப்பின் சுருக்கம்");
-                $("#HdngSales").html("ஜிடிசியின் நிறுவன கட்டமைப்பு");
-                $("#AnchorBack").html("பின்னுக்கு");
-                $("#AnchorNext1").html("அடுத்து");
-                $("#AnchorNext2").html("அடுத்து");
-                $("#paraClickText").html("*தனி நபரைப் பற்றி மேலும் அறிய ஐகானைக் (icon) கிளிக் செய்க");
-            }
-
-            else {
-                $("#dvEnglish").show();
-                $("#EngSalesOrg").show();
-
-                $("#dvIndonesia").hide();
-                $("#IndonesiaSalesOrg").hide();
-
-
-                $("#dvSinhala").hide();
-                $("#SinhalaSalesOrg").hide();
-
-                $("#dvTamil").hide();
-                $("#TamilSalesOrg").hide();
-
-                $("#HdngBrief").html("Technological Disruptions in Sector");
-                $("#HdngSales").html("SALES ORG STRUCTURE");
-                $("#AnchorBack").html("Back");
-                $("#AnchorNext1").html("Next");
-                $("#AnchorNext2").html("Next");
-                $("#paraClickText").html("*Click over the icon to know more about the individual");
-            }
-
-            if (X == 2) {
-                $('#dvLanguage').dialog('close');
-            }
-            PageMethods.fnSetSession(LngID, fnUpdateSessionSuccess, fnUpdateSessionFailed);
-
-        }
-        function fnUpdateSessionSuccess(result) {
-
-        }
-        function fnUpdateSessionFailed(result) {
-            //    alert(result._message);
-        }
-    </script>
+  
 
     <script type="text/javascript">
         var SecondCounter = 0; var MinuteCounter = 0; var hours = 0; var IsUpdateTimer = 1; var flgChances = 1; var counter = 0; var counterAutoSaveTxt = 0;
@@ -408,68 +203,31 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ConatntMatterRight" runat="Server">
     <div class="coll-body" id="role">
         <div class="section-title">
-            <h3 class="text-center" id="HdngBrief">Technological Disruptions in Sector</h3>
+            <h3 class="text-center" id="HdngBrief">Strategic Landscape and Future Growth</h3>
             <div class="title-line-center"></div>
         </div>
         <!-------   English  ------>
-        <div id="dvEnglish" style="display: none">
+        <div id="dvEnglish">
 
-             <%--   <div class="gtc-logo">
-                <img src="../../Images/GTC-logo.png" />
-            </div>--%>
-
-             <img src="../../Images/Market.jpg" class="img-thumb pull-right" />
-                    <p>Turnover 2023-24 : INR 110,500 Crores</p>
-                    <p>Technology disruptions in the infrastructure industry are reshaping the way projects are planned, designed, constructed, and maintained.</p>
-                    <p><strong>Smart Infrastructure</strong>: Smart infrastructure integrates sensors, data analytics, and Internet of Things (IoT) technologies to monitor, analyze, and optimize the performance of infrastructure assets in real-time. Smart sensors embedded in bridges, roads, and utility networks provide valuable insights into asset condition, usage patterns, and maintenance needs, enabling proactive maintenance and improving asset reliability and lifespan</p>
-                    <p><strong>Renewable Energy Integration</strong>: The integration of renewable energy sources, such as solar, wind, and hydroelectric power, into infrastructure projects is becoming increasingly common. Renewable energy technologies not only reduce greenhouse gas emissions and environmental impact but also offer opportunities for decentralized energy generation and improved energy resilience in infrastructure systems.</p>
-                    <p><strong>Advanced Materials</strong>: The development of advanced materials, such as carbon fiber composites, self-healing concrete, and lightweight metals, is revolutionizing construction techniques and infrastructure durability. These materials offer superior strength, longevity, and sustainability compared to traditional materials, allowing for the construction of more resilient and efficient infrastructure.</p>
-                    <p><strong>Prefabrication and Modular Construction</strong>: Prefabrication involves manufacturing building components off-site and assembling them on-site, while modular construction involves building entire sections of a structure off-site and assembling them on-site like building blocks. These methods increase construction speed, reduce waste, and improve quality control</p>
-                    <p><strong>Energy Storage Solutions</strong>: Advances in energy storage technologies, such as battery storage systems and pumped hydro storage, are enabling the integration of intermittent renewable energy sources into infrastructure grids. Energy storage solutions improve grid stability, support demand response initiatives, and enhance the reliability and resilience of infrastructure networks.</p>
-                    <p><strong>Drones and UAVs</strong>: Drones and unmanned aerial vehicles (UAVs) are used for surveying, mapping, inspection, and monitoring of infrastructure assets. Drones can collect high-resolution aerial imagery, LiDAR data, and thermal imagery, enabling faster and more cost-effective data collection compared to traditional methods</p>
-                    <p><strong>Artificial Intelligence (AI) and Machine Learning (ML):</strong> AI and ML technologies are used in infrastructure for various purposes such as predictive analytics, risk assessment, and optimization of construction processes. AI-powered algorithms can analyze large datasets to identify patterns, optimize project schedules, and improve decision-making.</p>
-                    <p><strong>Augmented Reality (AR) and Virtual Reality (VR)</strong>: AR and VR technologies enable stakeholders to visualize and interact with digital models of infrastructure projects in immersive ways. These technologies are used for design visualization, simulation, training, and stakeholder engagement, improving communication and understanding among project teams and stakeholders.</p>
-             </div>
+            <p><strong>Sales &amp; Operations</strong></p>
+            <p>AutoNext operates through a national network across North, South, East, and West regions, with over 3,000 touchpoints. While the company has strong rural and semi-urban penetration, its urban reach is comparatively weaker. AutoNext also faces challenges in its aftermarket services, with customers frequently opting for lower-quality spare parts alternatives. Strengthening aftermarket services and building customer trust in the quality of spare parts remains a key priority for maintaining competitiveness.</p>
+            <p><strong>Customer Connect</strong></p>
+            <p>Despite efforts by sales and marketing teams to engage with dealers and customers, AutoNext lacks a unified system for managing customer feedback and product complaints. Competitors such as Zenith Automobiles have introduced integrated customer portals that consolidate feedback, setting a new industry standard. AutoNext is now planning to launch a customer portal to manage lifecycle interactions, complaints, and feedback, while also feeding this data back to its R&amp;D teams to inform product development.</p>
+            <p><strong>Production &amp; Supply Chain</strong></p>
+            <p>AutoNext operates a decentralized procurement system, working with over 200 suppliers. However, as demand for passenger cars has recovered post FY 21-22, the company faces capacity constraints, reduced liquidity and high inventory holding costs especially during peak seasons. Similar to the industry, AutoNext could benefit from vendor consolidation and centralized procurement to optimize costs and improve supply chain efficiency. In addition, transitioning to BS-VII emission norms by 2025 presents significant challenges, particularly for smaller domestic suppliers.</p>
+            <p><strong>New Technology Infrastructure</strong></p>
+            <p>India&rsquo;s EV infrastructure remains a significant challenge, with limited availability of charging stations and power supply in remote areas. While AutoNext leads industry with its total market share, its presence in the EV segment remains minimal at 10%. In terms of expanding its EV portfolio, AutoNext has been relatively slow to react to market demands. AutoNext, like other players, is seeking partnerships to address these gaps, but the investment required is considerable and subject to fluctuating government regulations. The company is exploring collaboration with technology providers to co-develop EV charging infrastructure, which will be essential for expanding its EV portfolio. AutoNext&rsquo;s leadership has gradually been indicating a shift in focus towards electric vehicles and has announced plans to launch its first mass-market EV by 2025.</p>
+            <p><strong>Research and Development</strong></p>
+            <p>While AutoNext&rsquo;s R&amp;D budget is INR 3,000 crore (3% of revenue), it is considerably lower than competitors (Vega ~5% and Zenith ~5.8%). Increase in R&amp;D expenditure has been earmarked for developing electric powertrains and building proprietary technology in-house to incorporate modern features and appeal to tech-savvy customers. Future growth will likely hinge on how well AutoNext manages to balance its legacy ICE operations with the burgeoning demand for electric and technologically advanced vehicles.</p>
+            <p><strong>Technology</strong></p>
+            <p>AutoNext, known for its innovation in affordability and efficiency, is now focusing on integrating advanced technologies such as riding assist systems and AI-driven safety features. However, these innovations have led to higher operating costs, making it difficult to maintain competitive margins in India&rsquo;s price-sensitive market. Balancing technological advancements with operational efficiency will be critical to sustaining profitability in this evolving industry.</p>
+            <p><strong>Key Partnerships</strong></p>
+            <p>AutoNext has the potential opportunity to act as an original equipment manufacturer (OEM) for a Japanese automotive firm, which would allow it to expand into markets like Japan and Costa Rica. However, this opportunity comes with significant hurdles, including meeting rigorous safety standards, emission regulations, and enhancing electrification capabilities to enter these markets successfully.</p>
+            <p>At the same time, AutoNext&rsquo;s management has emphasized the need for cost-saving measures, including localizing supply chains and reducing reliance on imported raw materials to achieve operational efficiencies.</p>
+        </div>
         <!------- End  English  ------>
 
-        <!-------   Indonesia  ------>
-        <div id="dvIndonesia" style="display: none">
-            <img src="../../Images/brief.jpg" class="img-thumb" align="right" />
-            <p>
-                Nama: Agas Ahad<br />
-                Pengalaman kerja: 5 tahun<br />
-                Peran: Manajer Akun
-            </p>
-            <p>Agas bergabung dengan GTC sebagai sales executive pada tahun 2016 untuk penjualan B2B dan sejak saat itu karirnya telah berkembang hingga ia mengelola klien Medium Enterprise Business selama bertahun-tahun.Agas memiliki keahlian dalam mengembangkan strategi bisnis yang unggul untuk mencapai tujuan jangka pendek & jangka panjang, membangun hubungan dengan para stakeholders, dan memberikan solusi untuk memastikan pertumbuhan pendapatan dan laba yang berkelanjutan.</p>
-            <p>Agas telah dipercayakan dengan sebuah tugas menantang, yaitu membuat proposal yang baik untuk bekerja sama dengan Institusi Sunrise Grup di Kuala Lumpur dan mengikuti persyaratan mereka untuk bermitra dengan Penyedia Layanan Pengelolaan Lengkap TIK dalam rangka mendukung kurikulum online untuk sejumlah sekolah mereka sebagai proyek pilot.</p>
-        </div>
-        <!------- ENd  Indonesia  ------>
-
-        <!-------   Sinhala  ------>
-        <div id="dvSinhala" style="display: none">
-            <img src="../../Images/brief.jpg" class="img-thumb" align="right" />
-            <p>
-                නම: අගාස් අහද්<br />
-                පළපුරුද්ද: අවුරුදු 5 යි<br />
-                කාර්යභාරය: ගිණුම් කළමනාකරු
-            </p>
-            <p>අගාස් 2016 දී බී 2 බී අලෙවිය සඳහා විකුණුම් විධායකයෙකු ලෙස GTC ආයතනය සමඟ සම්බන්ධ වූ අතර එතැන් සිට වසර ගණනාවක් තිස්සේ මධ්‍යම ව්‍යවසාය ව්‍යාපාර සේවාදායකයින් කළමනාකරණය කිරීම සඳහා වර්ධනය වී තිබේ. කෙටිකාලීන හා දිගු කාලීන අරමුණු සාක්ෂාත් කර ගැනීම සඳහා ජයග්‍රාහී ව්‍යාපාරික උපාය මාර්ග සංවර්ධනය කිරීම, පාර්ශවකරුවන් සමඟ සබඳතා ගොඩනඟා ගැනීම සහ තිරසාර ආදායම සහ ලාභ වර්ධනය සහතික කිරීම සඳහා විසඳුම් ලබා දීමට ආගාස් විශිෂ්ටයි.</p>
-            <p>ක්වාලාලම්පූර්හි සන්රයිස් ආයතන සමූහය ඔවුන්ගේ පාසල් කිහිපයක මාර්ගගත (Online) විෂය මාලාවට සහාය වීම සඳහා තොරතුරු සන්නිවේදන තාක්ෂණ (ICT) සැපයුම්කරුවෙකු සමඟ හවුල් වීමේ ඔවුන්ගේ අවශ්‍යතාවය මත ඔවුන් සමඟ වැඩ කිරීමේ යෝජනාවක් ධනාත්මකව හැසිරවීමේ අභියෝගාත්මක කාර්යය අගාස්ට භාර දී ඇත.</p>
-        </div>
-        <!------- ENd  Sinhala  ------>
-
-        <!-------   Tamil  ------>
-        <div id="dvTamil" style="display: none">
-            <img src="../../Images/brief.jpg" class="img-thumb pull-right" />
-            <p>
-                Name: Agas Ahad<br>
-                Experience: 5 ஆண்டுகள்<br>
-                Role: கணக்கு மேலாளர் (Regional Manager)
-            </p>
-            <p>அகாஸ் ஜிடிசியில் B2B விற்பனைக்காக 2016 ஆம் ஆண்டில் விற்பனை நிர்வாகியாக சேர்ந்தார், அதன் பின்னர் பல ஆண்டுகளாக நடுத்தர நிறுவன வணிக வாடிக்கையாளர்களை நிர்வகிக்கும் அளவுக்கு வளர்ந்துள்ளார். குறுகிய மற்றும் நீண்ட கால நோக்கங்களை அடைய வெற்றிகரமான வணிக உத்திகளை வளர்ப்பதில் அகாஸ் சிறந்து விளங்குகிறார், பங்குதாரர்களுடன் உறவை வளர்த்துக் கொள்ளுங்கள், மற்றும் நிலையான வருவாய் மற்றும் இலாப வளர்ச்சியை உறுதி செய்வதற்கான தீர்வுகளை வழங்குகிறார்.</p>
-            <p>கோலாலம்பூரில் உள்ள சன்ரைஸ் குழும நிறுவனங்களுடன் இணைந்து பணியாற்றுவதற்கான முன்மொழிவை சாதகமாக திருப்புவதற்கான சவாலான பணியை அகாஸ் ஒப்படைத்துள்ளார், ஒரு பைலட்டாக தங்கள் பள்ளிகளில் சிலருக்கு ஆன்லைன் பாடத்திட்டத்தை ஆதரிக்க ஐ.சி.டி வழங்குநருடன் கூட்டாளராக இருக்க வேண்டும்.</p>
-        </div>
-        <!------- End Tamil ------>
+   
 
         <div class="text-center mt-3 mb-3">
             <%--<a href="#" onclick="fnRole()" class="btns btn-submit" id="AnchorNext1"></a>--%>

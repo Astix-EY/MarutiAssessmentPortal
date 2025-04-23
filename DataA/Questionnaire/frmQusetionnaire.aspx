@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
     <script src="../../Scripts/jquery-ui.js"></script>
-
+    <script src="../../Scripts/webcamV9Main.js"></script>
 
 
     <style type="text/css">
@@ -583,9 +583,9 @@
                     selValues += "," + ($(this).val());
                 }
             });
-            //alert(qstId);
-            //alert("Test");
-            //alert($("#txtAdditional_1").val());
+          //  alert(qstId);
+           // alert("Test");
+           // alert($("#txtAdditional_1").val());
             //alert("2222")
             //alert($("#txtAdditional_" + qstId).val());
             //alert("1112")
@@ -595,7 +595,7 @@
                 selValues += "~" + $("#txtAdditional_" + qstId).val().replace('~', " ");
             }
             selValues = "-1^" + selValues;
-            // alert(selValues)
+             //alert(selValues)
             return selValues;
         }
         //$("input[type='radio']").on("change", function () {
@@ -1029,6 +1029,7 @@
         $(document).ready(function () {
             if ($("#ConatntMatterRight_hdnExerciseStatus").val() != 2) {
                 f1();
+                eventStartMeetingTimer = setInterval("fnStartMeetingTimer()", 5000);
             }
         });
         //hdnCounterRunTime
@@ -1131,41 +1132,47 @@
         }
 
 
-        var eventStartMeetingTimer; var flgOpenGotoMeeting = 0;
+        var eventStartMeetingTimer; var flgOpenGotoMeeting = 0; var flgFirst = 0;
         function fnStartMeetingTimer() {
 
             //$("#loader").show();
-            if (flgOpenGotoMeeting == 0) {
-                var RspExerciseID = $("#ConatntMatterRight_hdnRSPExerciseID").val();
-                var MeetingDefaultTime = $("#ConatntMatterRight_hdnMeetingDefaultTime").val();
-                PageMethods.fnStartMeetingTimer(RspExerciseID, MeetingDefaultTime, function (result) {
-                    $("#loader").hide();
-                    if (result.split("|")[0] == "1") {
-                        alert("Error-" + result.split("|")[1]);
-                    } else {
-                        var IsMeetingStartTimer = result.split("|")[1];
-                        var MeetingRemainingTime = result.split("|")[2];
-                        window.clearInterval(sClearTime);
-                        clearTimeout(sClearTime);
-                        if (IsMeetingStartTimer == 1) {
-                            flgOpenGotoMeeting = 1;
-                            window.clearInterval(eventStartMeetingTimer);
-                            clearTimeout(eventStartMeetingTimer);
-                            document.getElementById("ConatntMatterRight_hdnCounter").value = MeetingRemainingTime;
-                            if (MeetingRemainingTime > 0) {
-                                IsUpdateTimer = 1;
+            //if (flgOpenGotoMeeting == 0) {
+            var RspExerciseID = $("#ConatntMatterRight_hdnRSPExerciseID").val();
+            var MeetingDefaultTime = $("#ConatntMatterRight_hdnMeetingDefaultTime").val();
+            PageMethods.fnStartMeetingTimer(RspExerciseID, MeetingDefaultTime, function (result) {
+                $("#loader").hide();
+                if (result.split("|")[0] == "1") {
+                    //alert("Error-" + result.split("|")[1]);
+                } else {
+                    var IsMeetingStartTimer = result.split("|")[1];
+                    var MeetingRemainingTime = result.split("|")[2];
+                    var PrepRemainingTime = result.split("|")[3];
+                    //window.clearInterval(sClearTime);
+                    //clearTimeout(sClearTime);
+                    if (IsMeetingStartTimer == 1) {
+                        flgOpenGotoMeeting = 1;
+                        // window.clearInterval(eventStartMeetingTimer);
+                        //clearTimeout(eventStartMeetingTimer);
+                        document.getElementById("ConatntMatterRight_hdnCounter").value = MeetingRemainingTime;
+                        if (MeetingRemainingTime > 0) {
+                            IsUpdateTimer = 1;
+                            if (flgFirst == 0) {
+                                flgFirst = 1;
                                 f1();
                             }
                         }
+                    } else {
+                        document.getElementById("ConatntMatterRight_hdnCounter").value = PrepRemainingTime;
                     }
-                }, function (result) {
-                    $("#loader").hide();
-                    alert("Error-" + result._message);
-                });
-            } else {
-                window.clearInterval(eventStartMeetingTimer);
-                clearTimeout(eventStartMeetingTimer);
-            }
+                }
+            }, function (result) {
+                $("#loader").hide();
+                //alert("Error-" + result._message);
+            });
+            //} else {
+            //    window.clearInterval(eventStartMeetingTimer);
+            //    clearTimeout(eventStartMeetingTimer);
+            //}
         }
         // document.onload = fnPageLoad();
     </script>

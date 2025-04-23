@@ -150,16 +150,16 @@
 
                 $("#btnBack").html("Back");
                 $("#hdngMYTask").html("My Tasks");
-                $("#dvTutorial").html("Tutorial");
+                $("#dvTutorial").html("Site Navigation");
                 $("#tdTutorialTask").html("Task");
-                $("#tdTutorial").html("Tutorial");
+                $("#tdTutorial").html("Site Navigation");
                 $("#tdTutorialTime").html("Time");
                 $("#dvInventory").html("Capability Inventory");
                 $("#tdInventoryTask").html("Task");
                 $("#tdInventoryTime").html("Time");
 
                     if (statusval == "0") {
-                        $("#btntutorial").html("Start Tutorial");
+                        $("#btntutorial").html("Start");
                         $("#btnassessment").html("Start CDI");
 
                     }
@@ -320,14 +320,14 @@
                     <div class="panel-box panel-box-default">
                         <div class="panel-box-title">
                             <img src ="../../Images/task-1.png">
-                            <div class="panel-box-title-text" id="dvTutorial">Tutorial</div>
+                            <div class="panel-box-title-text" id="dvTutorial">Site Navigation</div>
                         </div>
                         <div class="panel-body">
                             <table class="table">
                                 <tbody>
                                     <tr>
                                         <td style="width: 45%" id="tdTutorialTask">Task</td>
-                                        <td id="tdTutorial">Tutorial</td>
+                                        <td id="tdTutorial">Start</td>
                                     </tr>
                                     <tr>
                                         <td id="tdTutorialTime">Time</td>
@@ -337,7 +337,7 @@
                             </table>
                            <%-- <a href="#" class="btn" onclick="fndisplayVideo();" id="btntutorial">Start Tutorial</a>--%>
                              <%--<li><a href="##" rel="tooltip" data-placement="bottom" onClick="window.open('../../Common/SiteNavigation/SiteNavigation.pdf');" title="Site Navigation" id="liSiteNavigation">Site Navigation</a></li>--%>
-                             <a href="#" class="btn"  onClick="window.open('../../Common/SiteNavigation/SiteNavigation.pdf');"  id="btntutorial">Start Tutorial</a>
+                             <a href="#" class="btn"  onClick="window.open('../../Common/SiteNavigation/SiteNavigation.pdf');"  id="btntutorial">Start</a>
                         </div>
                     </div>
                 </div>
@@ -356,7 +356,7 @@
                                     </tr>
                                     <tr>
                                         <td id="tdInventoryTime">Time</td>
-                                        <td>03:00:00</td>
+                                        <td>06:00:00</td>
                                     </tr>
                                 </tbody>
                             </table>

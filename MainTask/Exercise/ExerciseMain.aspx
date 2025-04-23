@@ -20,7 +20,8 @@
     <script type="text/javascript">
         function fnShowFinalSubmitAlert(ctrl) {
             //alert("1");
-            $("#dvDialog").html("Are you sure you have completed all the exercises ?<br />Click OK if you have completed.<br />Click Cancel if you have NOT completed and need to go back to complete.");
+            //$("#dvDialog").html("Are you sure you have completed all the exercises ?<br />Click OK if you have completed.<br />Click Cancel if you have NOT completed and need to go back to complete.");
+            $("#dvDialog").html("Congratulations! <br />This marks the completion of the tasks assigned to you.<br />Once you click on OK, your tasks will be submitted for Report Generation.<br />Your Feedback in the Feedback Form will help us to improve your experience further in the future.");
             //alert("1");
             $("#dvDialog").dialog({
                 modal: true,
@@ -102,7 +103,7 @@
         });
         function fnOpenTest(sender, ExerciseID, IsExternal, LoginID, ToolId, CandidateCode) {
             if (IsExternal == 1) {
-                var redirectionURL = "https://ey-virtualsolutions.com/assessment1/frmTeststatus.aspx";
+                var redirectionURL = $("#ConatntMatter_hdnTestURL").val()+ "/frmTeststatus.aspx";
                 //alert("Will be coming soon");
 
                 var bandid = 1;// $("#ConatntMatterRight_hdnBandId").val();
@@ -122,17 +123,9 @@
                        // alert(result.split("|")[1]);
                        $("#dvloader").hide();
                        //window.location.href = "https://assessment1.ey-virtualsolutions.com?email=" + student_email + "&tokenid=" + secrettoken + "&rspexerciseid=" + rspexerciseid
-                       if (ToolId == "9") {
+                      
                            window.location.href = $(sender).attr("url") + "&CandidateCode=" + CandidateCode + "&ExerciseCode=" + ExerciseID + "&redirectionurl=" + redirectionURL;
-                           //window.open($(sender).attr("url"), "_blank");
-                           //window.location.href = "https://assessment1.ey-virtualsolutions.com/Exam/StartExam?StudentID=8108889&ExamAssignmentID=30982307";
-                       }
-                       else {
-                           //window.open($(sender).attr("url"), "_blank");
-                           window.location.href = $(sender).attr("url") + "&CandidateCode=" + CandidateCode + "&ExerciseCode=" + ExerciseID + "&redirectionurl=" + redirectionURL;
-                           // window.location.href = "https://assessment1.ey-virtualsolutions.com/Exam/StartExam?StudentID=8108889&ExamAssignmentID=30982206";
-                       }
-
+                          
                    } else {
                        $("#dvloader").hide();
                        alert("Error:" + result.split("|")[1]);
@@ -209,7 +202,54 @@
 
 
 
-           }
+            }
+            else if (IsExternal == 3) {
+                var redirectionURL = $("#ConatntMatter_hdnTestURL").val() + "/frmTeststatus.aspx";
+                //alert("Will be coming soon");
+
+                var bandid = 1;// $("#ConatntMatterRight_hdnBandId").val();
+                var student_email = $("#ConatntMatter_hdnEmailId").val();
+                if (student_email == "") {
+                    alert("Email Id is not available,kindy check this with support admin");
+                    return false;
+                }
+                <%--var apikey = '<%=ConfigurationManager.AppSettings("iamneo:apikey")%>';
+                var schoolCode = '<%=ConfigurationManager.AppSettings("iamneo:schoolCode")%>';--%>
+                $("#dvloader").show();
+                PageMethods.CallSPRspManage(ExerciseID, bandid, LoginID, student_email, function (result) {
+
+                    if (result.split("|")[0] == "1") {
+                        var secrettoken = "";// result.split("|")[1];
+                        var rspexerciseid = result.split("|")[1];
+                        // alert(result.split("|")[1]);
+                        $("#dvloader").hide();
+                        //window.location.href = "https://assessment1.ey-virtualsolutions.com?email=" + student_email + "&tokenid=" + secrettoken + "&rspexerciseid=" + rspexerciseid
+                        //if (ToolId == "9") {
+                        //    window.location.href = $(sender).attr("url") + "&CandidateCode=" + CandidateCode + "&ExerciseCode=" + ExerciseID + "&redirectionurl=" + redirectionURL;
+                        //    //window.open($(sender).attr("url"), "_blank");
+                        //    //window.location.href = "https://assessment1.ey-virtualsolutions.com/Exam/StartExam?StudentID=8108889&ExamAssignmentID=30982307";
+                        //}
+                        //else {
+                        //    //window.open($(sender).attr("url"), "_blank");
+                        //    window.location.href = $(sender).attr("url") + "&CandidateCode=" + CandidateCode + "&ExerciseCode=" + ExerciseID + "&redirectionurl=" + redirectionURL;
+                        //    // window.location.href = "https://assessment1.ey-virtualsolutions.com/Exam/StartExam?StudentID=8108889&ExamAssignmentID=30982206";
+                        //}
+
+                        window.location.href = "https://leaderdna.mtdtraining.com/";
+                        
+
+                    } else {
+                        $("#dvloader").hide();
+                        alert("Error:" + result.split("|")[1]);
+                    }
+                }, function (result) {
+                    alert("Error:" + result._message)
+                    $("#dvloader").hide();
+                });
+
+            }
+
+
            else {
                window.location.href = "../../Task/Exercise/ExerciseMain.aspx";
            }
@@ -316,6 +356,7 @@
     <asp:HiddenField ID="hdnFlagFeedbackession" runat="server" Value="0" />
     <asp:HiddenField ID="hdnFlagIDPSession" runat="server" Value="0" />
     <asp:HiddenField ID="hdnFeedbackGoToMeetingURL" runat="server" Value="" />
+    <asp:HiddenField ID="hdnTestURL" runat="server" Value="" />
     <div id="dvDialog" style="display: none"></div>
 </asp:Content>
 

@@ -31,6 +31,7 @@ Partial Class Data_Information_Welcome
         'Dim strConsentInfo As String
         ' strConsentInfo = 1 ' fnGetConsentInfo()
         Response.Redirect("Instructions.aspx?intLoginID=" & intLoginID & "&AssessmentType=" & AssessmentType)
+
         'If strConsentInfo.Split("^")(1) = 1 Then
         '    Response.Redirect("frmIntroduction.aspx?intLoginID=" & intLoginID)
         'Else

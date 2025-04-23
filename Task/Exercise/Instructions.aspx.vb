@@ -31,7 +31,22 @@ Partial Class Data_Information_Instructions
         'Objcon2.Dispose()
         'Dim strConsentInfo As String
         'strConsentInfo = 1 ' fnGetConsentInfo()
-        Response.Redirect("../../MainTask/Exercise/MyTask.aspx?intLoginID=" & intLoginID & "&AssessmentType=" & AssessmentType)
+        'Response.Redirect("../../MainTask/Exercise/MyTask.aspx?intLoginID=" & intLoginID & "&AssessmentType=" & AssessmentType)
+
+
+        If (Convert.ToString(Session("IsSelfieTaken")) = "0") Then
+            '    Response.Redirect("../../Admin/Setting/frmSelfie.aspx")
+            Response.Redirect("../../MainTask/Information/frmSelfie.aspx?intLoginID=" & intLoginID & "&AssessmentType=" & AssessmentType)
+        Else
+            If (Convert.ToString(Session("IsLifeReflectionFormDone")) = "0") Then
+                Response.Redirect("../../MainTask/Questionnaire/frmLifeRefQuestionnaire.aspx?RspID=" & Session("RspID") & "&intLoginID=" & intLoginID)
+            Else
+                Response.Redirect("../../MainTask/Exercise/MyTask.aspx?intLoginID=" & intLoginID & "&AssessmentType=" & AssessmentType)
+            End If
+
+
+        End If
+
     End Sub
 
     <System.Web.Services.WebMethod(EnableSession:=True)>

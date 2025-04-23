@@ -832,4 +832,36 @@ public partial class CommonData_Questionnaire_frmQusetionnaire : System.Web.UI.P
         ObjclassUsedForExerciseSave.SpUpdateElaspedTime(RspExerciseID);
         return "0";
     }
+
+    [System.Web.Services.WebMethod]
+    public static string fnStartMeetingTimer(int RSPExerciseID, int MeetingDefaultTIME)
+    {
+        string strReturn = "1";
+
+        int LoginId = (int)HttpContext.Current.Session["LoginId"];
+        using (SqlConnection Objcon2 = new SqlConnection(System.Configuration.ConfigurationManager.AppSettings["strConn"]))
+        {
+            using (SqlCommand objCom2 = new SqlCommand("[spAssesmentCheckDiscussionStarted]", Objcon2))
+            {
+                objCom2.Parameters.Add("@RspExerciseID", SqlDbType.Int).Value = RSPExerciseID;
+                objCom2.Parameters.Add("@MeetingDefaultTIME", SqlDbType.Int).Value = MeetingDefaultTIME;
+                objCom2.CommandType = CommandType.StoredProcedure;
+                objCom2.CommandTimeout = 0;
+
+                SqlDataAdapter da = new SqlDataAdapter(objCom2);
+                DataTable dt = new DataTable();
+                try
+                {
+                    da.Fill(dt);
+                    strReturn = "0|" + dt.Rows[0]["flgReturnVal"] + "|" + dt.Rows[0]["RemainingTimeMeeting"] + "|" + dt.Rows[0]["PrepRemainingTime"];
+                }
+                catch (Exception ex)
+                {
+                    strReturn = "1|" + ex.Message;
+                }
+            }
+        }
+        return strReturn;
+    }
+
 }

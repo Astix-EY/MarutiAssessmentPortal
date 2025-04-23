@@ -101,19 +101,19 @@
                 window.location.href = "../../DataB/Information/CompanyOverview.aspx?ToolID=" + ToolID + "&intLoginID=" + LoginID
             }
             else if (ToolID == 3) {
-                alert("Comming Soon");
+                window.location.href = "../../DataC/Information/CompanyOverview.aspx?ToolID=" + ToolID + "&intLoginID=" + LoginID
             }
             else if (ToolID == 4) {
-                alert("Comming Soon");
+                window.location.href = "../../DataD/Information/CompanyOverview.aspx?ToolID=" + ToolID + "&intLoginID=" + LoginID
             }
             else if (ToolID == 5) {
-                alert("Comming Soon");
+                window.location.href = "../../DataE/Information/CompanyOverview.aspx?ToolID=" + ToolID + "&intLoginID=" + LoginID
             }
             else if (ToolID == 6) {
-                alert("Comming Soon");
+                window.location.href = "../../DataF/Information/CompanyOverview.aspx?ToolID=" + ToolID + "&intLoginID=" + LoginID
             }
             else if (ToolID == 7) {
-                alert("Comming Soon");
+                window.location.href = "../../DataG/Information/CompanyOverview.aspx?ToolID=" + ToolID + "&intLoginID=" + LoginID
             }
 
         }

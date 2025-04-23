@@ -456,7 +456,7 @@
                         <li>You will go through a set of scenarios that you will need to respond to. The background information tab (if present) will provide you with relevant information that will help you navigate the scenarios effectively</li>
                         <li>The individual scenarios may have a separate preparation time and separate response time which will reflect in the relevant sections.</li>
                         <li>You will need to complete all assessments within the indicated timelines.</li>
-                        <li>If you get logged out of the system at any point during the assessment, you can log back in and start from the point where you had left off.</li>
+                        <li>We request you to be mindful of the timer as it will continue to run down once a task has been initiated.</li>
                         <li>If you need any support during the assessment, you can reach out to the email ID mentioned in the tech support icon visible in the top right corner of the screen.</li>
                     </ul>
                     <div class="mb-3 text-center">

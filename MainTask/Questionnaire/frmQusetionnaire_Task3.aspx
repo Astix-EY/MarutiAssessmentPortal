@@ -1,7 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainTask/MasterPage/SiteQuestionPage.master" AutoEventWireup="true" CodeFile="frmQusetionnaire_Task3.aspx.cs" Inherits="CommonData_Questionnaire_frmQusetionnaire" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainTask/MasterPage/Panel_Task3.master" AutoEventWireup="true" CodeFile="frmQusetionnaire_Task3.aspx.cs" Inherits="CommonData_Questionnaire_frmQusetionnaire" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
     <script src="../../Scripts/jquery-ui.js"></script>
+        <script src="../../Scripts/webcamV9Main.js"></script>
 
 
 
@@ -565,9 +566,11 @@
         function fnMakeStringForSave() {
             var selValues = "";
             var RspDetID = "";
+var qstId = 0;
             $('input[type=radio]:checked').each(function () {
                 // myArray[i] = $(this).val();
                 selValues += ($(this).val());
+qstId = $(this).attr("qstId");
             });
 
             $('input[type=checkbox]:checked').each(function () {
@@ -577,16 +580,23 @@
                 } else {
                     selValues += "," + ($(this).val());
                 }
+qstId = $(this).attr("qstId");
             });
-
-            $('textarea').each(function () {
-                // myArray[i] = $(this).val();
-                if (selValues == "") {
-                    selValues += $(this).val().replace('^', '');
-                } else {
-                    selValues += "," + $(this).val().replace('^', '');
-                }
-            });
+            if ($("#txtAdditional_" + qstId).length == 0) {
+                $('textarea').each(function () {
+                    // myArray[i] = $(this).val();
+                    if (selValues == "") {
+                        selValues += $(this).val().replace('^', '');
+                    } else {
+                        selValues += "," + $(this).val().replace('^', '');
+                    }
+                    qstId = $(this).attr("qstId");
+                });
+            }
+ if ($("#txtAdditional_" + qstId).length > 0) {
+                selValues += "~" + $("#txtAdditional_" + qstId).val().replace('~', " ");
+            }
+           
 
             selValues = "-1^" + selValues;
             // alert(selValues)
@@ -1025,6 +1035,7 @@
         $(document).ready(function () {
             if ($("#ConatntMatterRight_hdnExerciseStatus").val() != 2) {
                 f1();
+                eventStartMeetingTimer = setInterval("fnStartMeetingTimer()", 5000);
             }
         });
         //hdnCounterRunTime
@@ -1128,41 +1139,47 @@
         }
 
 
-        var eventStartMeetingTimer; var flgOpenGotoMeeting = 0;
+        var eventStartMeetingTimer; var flgOpenGotoMeeting = 0; var flgFirst = 0;
         function fnStartMeetingTimer() {
 
             //$("#loader").show();
-            if (flgOpenGotoMeeting == 0) {
-                var RspExerciseID = $("#ConatntMatterRight_hdnRSPExerciseID").val();
-                var MeetingDefaultTime = $("#ConatntMatterRight_hdnMeetingDefaultTime").val();
-                PageMethods.fnStartMeetingTimer(RspExerciseID, MeetingDefaultTime, function (result) {
-                    $("#loader").hide();
-                    if (result.split("|")[0] == "1") {
-                        alert("Error-" + result.split("|")[1]);
-                    } else {
-                        var IsMeetingStartTimer = result.split("|")[1];
-                        var MeetingRemainingTime = result.split("|")[2];
-                        window.clearInterval(sClearTime);
-                        clearTimeout(sClearTime);
-                        if (IsMeetingStartTimer == 1) {
-                            flgOpenGotoMeeting = 1;
-                            window.clearInterval(eventStartMeetingTimer);
-                            clearTimeout(eventStartMeetingTimer);
-                            document.getElementById("ConatntMatterRight_hdnCounter").value = MeetingRemainingTime;
-                            if (MeetingRemainingTime > 0) {
-                                IsUpdateTimer = 1;
+            //if (flgOpenGotoMeeting == 0) {
+            var RspExerciseID = $("#ConatntMatterRight_hdnRSPExerciseID").val();
+            var MeetingDefaultTime = $("#ConatntMatterRight_hdnMeetingDefaultTime").val();
+            PageMethods.fnStartMeetingTimer(RspExerciseID, MeetingDefaultTime, function (result) {
+                $("#loader").hide();
+                if (result.split("|")[0] == "1") {
+                    //alert("Error-" + result.split("|")[1]);
+                } else {
+                    var IsMeetingStartTimer = result.split("|")[1];
+                    var MeetingRemainingTime = result.split("|")[2];
+                    var PrepRemainingTime = result.split("|")[3];
+                    //window.clearInterval(sClearTime);
+                    //clearTimeout(sClearTime);
+                    if (IsMeetingStartTimer == 1) {
+                        flgOpenGotoMeeting = 1;
+                        // window.clearInterval(eventStartMeetingTimer);
+                        //clearTimeout(eventStartMeetingTimer);
+                        document.getElementById("ConatntMatterRight_hdnCounter").value = MeetingRemainingTime;
+                        if (MeetingRemainingTime > 0) {
+                            IsUpdateTimer = 1;
+                            if (flgFirst == 0) {
+                                flgFirst = 1;
                                 f1();
                             }
                         }
+                    } else {
+                        document.getElementById("ConatntMatterRight_hdnCounter").value = PrepRemainingTime;
                     }
-                }, function (result) {
-                    $("#loader").hide();
-                    alert("Error-" + result._message);
-                });
-            } else {
-                window.clearInterval(eventStartMeetingTimer);
-                clearTimeout(eventStartMeetingTimer);
-            }
+                }
+            }, function (result) {
+                $("#loader").hide();
+                //alert("Error-" + result._message);
+            });
+            //} else {
+            //    window.clearInterval(eventStartMeetingTimer);
+            //    clearTimeout(eventStartMeetingTimer);
+            //}
         }
         // document.onload = fnPageLoad();
     </script>
@@ -1173,7 +1190,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ConatntMatterRight" runat="Server">
     <div class="section-title ">
         <h3 class="text-center" id="ExerciseName" runat="server">TASK</h3>
-        <div class="title-line-center"></div>
+         <div class="title-line-center"></div>
     </div>
   
     <asp:HiddenField ID="hdnCounter" runat="server" Value="0" />

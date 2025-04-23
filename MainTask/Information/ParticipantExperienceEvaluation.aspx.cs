@@ -72,7 +72,9 @@ if (Session["LoginId"] == null)
                 //}
                 DataTable dt = Ds.Tables[0].Select("MainQtn='" + dr["MainQtn"].ToString()+"'").CopyToDataTable();
                 sb.Append(getslider(dt));
+              
                 sb.Append("</div >"); // end of form-group
+     
 
                 //sb.Append("<table style='width:100%;padding-bottom: 5px;'><tr style='font-size:16px;background-color: #23AED8;color: white;font-weight:bold;text-align: left;padding: 2px 0px 2px 4px; display: block; cursor:pointer;' onclick='fnShowHide(this);' flg='1'><td style='width:20px;'><img src='../NewImages/icoAdd.gif'/></td><td colspan='9'>" + dr["ChannelName"].ToString() + "</td></tr></table>");
 
@@ -81,6 +83,9 @@ if (Session["LoginId"] == null)
                 //sb.Append(createStoretbl(dt, 1, true, "tblCatalogue"));
                 //sb.Append("</div>");
             }
+sb.Append("<div>");
+                    sb.Append("<b><span style='color:red'> *</span> indicates a mandatory field. Please ensure all mandatory fields are completed before submitting.</b>");
+                    sb.Append("</div>");  
 
             return sb.ToString();// + "|" + Ds.Tables[1].Rows[0][0].ToString();
         }
@@ -130,9 +135,9 @@ if (Session["LoginId"] == null)
             {
                 if (dr["TypeId"].ToString() == "6")
                 {
-                    sb.Append("<div class='row mb-2'>");
-                    sb.Append("<div class='col-sm-3'>");
-                    sb.Append("" + dr["LeftDescr"].ToString().Split('|')[0] + "");
+                    sb.Append("<div class='row mb-3'>");
+                    sb.Append("<div class='col-sm-12'>");
+                    sb.Append("" + dr["LeftDescr"].ToString().Split('|')[0] + "<span style='color:red'> *</span>");
                     sb.Append("</div>");
                     //sb.Append("<div class='col-sm-2'>");
                     //sb.Append("" + dr["LeftDescr"].ToString().Split('|')[1] + "");
@@ -145,6 +150,7 @@ if (Session["LoginId"] == null)
                     sb.Append("</td>");
                     sb.Append("<td>");
                     sb.Append("<input type='text' id='amount1' readonly style='border:0; color:#f6931f; font-weight:bold;' RspExerciseSubQtsnId='" + dr["RspExcerciseSubQstnID"].ToString()+ "' Responses='" + dr["Responses"].ToString() + "' Value='" + dr["Responses"].ToString() + "' CssClass='form-control'>");
+                 
                     sb.Append("<div class='max-slider'></div>");
                     sb.Append("</td>");
                     sb.Append("<td style='text-align:lest;padding-left:10px'>");
@@ -157,28 +163,24 @@ if (Session["LoginId"] == null)
                     //sb.Append("" + dr["RightSideDescr"].ToString() + "");
                     //sb.Append("</div>");
                     sb.Append("</div>"); // end of row mb-1
+
                 }
                 if (dr["TypeId"].ToString() == "4")
                 {
                     sb.Append("<div class='row mb-1'>");
                     sb.Append("<div class='col-sm-3'>");
-                    sb.Append("" + dr["LeftDescr"].ToString() + "");
+                    sb.Append("" + dr["LeftDescr"].ToString() + "<span style='color:red'> *</span>");
                     sb.Append("</div> ");
                     sb.Append("<div class='col-sm-9'>");
                     sb.Append("<input type='text' id='amount1'  RspExerciseSubQtsnId='" + dr["RspExcerciseSubQstnID"].ToString() + "' Responses='" + dr["Responses"].ToString() + "' Value='" + dr["Responses"].ToString() + "' class='form-control form-control-sm'>");
                     sb.Append("</div>");
+                 
                     sb.Append("</div>");
                 }
             }
 
-            //if (typeid == "4")
-            //{
-            //    foreach (DataRow dr in dt.Rows)
-            //    {
-                    
-            //    }
-
-            //}
+              
+ 
             return sb.ToString();
 
         }

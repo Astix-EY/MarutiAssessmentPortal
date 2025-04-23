@@ -1,0 +1,603 @@
+{
+  "studentName": "Band3Test129Oct Band3Test129Oct",
+  "studentCode": "2950",
+  "studentEmail": "Band3Test129Oct@gmail.com",
+  "isInstantResultProcess": true,
+  "clientName": "maruti",
+  "cycleName": "Band Test Cycle:29-Oct-2024",
+  "assessmentDetails": [
+    {
+      "assessmentId": "131",
+      "assessmentName": "BEI",
+      "scheduleID": "81",
+      "assessmentType": "Interview",
+      "competency": [],
+      "Questions": []
+    },
+    {
+      "assessmentId": "43",
+      "assessmentName": "Situation Judgement Exercise\r\n",
+      "scheduleID": "0",
+      "assessmentType": "SJT",
+      "competency": [
+        {
+          "competencyName": "Change Agility",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "Openness to Change",
+              "description": "",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Resilience",
+              "description": "",
+              "proficiencyLevel": []
+            }
+          ]
+        },
+        {
+          "competencyName": "Collaboration",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "Communicates with Purpose",
+              "description": "",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Internal Networking & Strategic External Collaboration ",
+              "description": "",
+              "proficiencyLevel": []
+            }
+          ]
+        },
+        {
+          "competencyName": "Learning Agility",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "Learning Eagerness",
+              "description": "",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Openness To Feedback",
+              "description": "",
+              "proficiencyLevel": []
+            }
+          ]
+        },
+        {
+          "competencyName": "Inspirational Leadership",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "Leading Effectively & People Management",
+              "description": "",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Coaching & Team Developm",
+              "description": "",
+              "proficiencyLevel": []
+            }
+          ]
+        },
+        {
+          "competencyName": "Innovation & New Ways of Working ",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "New/Digital Ways of Working",
+              "description": "",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Innovation & Problem Solving",
+              "description": "",
+              "proficiencyLevel": []
+            }
+          ]
+        },
+        {
+          "competencyName": "Financial Acumen",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "Financial Literacy",
+              "description": "",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Cost & Budget Management",
+              "description": "",
+              "proficiencyLevel": []
+            }
+          ]
+        },
+        {
+          "competencyName": "Data Driven Decision Making",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "Data Comprehension / Analytical Ability",
+              "description": "",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Insight Application",
+              "description": "",
+              "proficiencyLevel": []
+            }
+          ]
+        }
+      ],
+      "Questions": [
+        {
+          "Competency": "Change Agility",
+          "SubCompetency": "Openness to Change",
+          "QstName": "You are tasked with leading a team to improve the manufacturing process aimed at reducing waste and increasing efficiency. During the project, you discover that the proposed changes could potentially disrupt the workflow for several months, affecting production targets. However, the long-term benefits include significant cost savings and environmental improvements. The team is concerned about the short-term impact on their performance metrics, while senior management is focused on sustainability goals and cost reduction. How do you manage the implementation of the new manufacturing process while addressing the concerns of your team and meeting the expectations of senior management?",
+          "Options": [
+            {
+              "OptionDescr": "Implement the new process immediately, focusing on the long-term benefits and accepting the short-term disruption as a necessary investment.",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Suggest a pilot program for the new process in a controlled environment to minimize disruption and gather data before a full-scale rollout. ",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Coordinate with the team to identify periods of lower production demand where initiating the new process would have a reduced impact on performance metrics. Use these periods to test and refine the process changes.",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": "Work with the team to develop a modified plan that incrementally introduces changes, balancing efficiency improvements with manageable workflow disruptions. ",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Advocate for additional resources to support the team during the transition, ensuring that production targets can be met while implementing the new process.",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "dddddddddddddddddddddddddddddddddd"
+        },
+        {
+          "Competency": "Change Agility",
+          "SubCompetency": "Openness to Change",
+          "QstName": "You are the Production Line Manager. Three months ago, the company implemented the flexible 5.5-day work week system you proposed from 6 day working: employees work 8 hours Monday-Friday and 8 hours on alternating Saturdays, with annual leave reduced from 25 to 17 days. A \"time bank\" system was also introduced, allowing additional hours worked to be exchanged for time off. Initially, there was cautious optimism about the change. However, as implementation has progressed, you're facing significant challenges and resistance:<br>\r\n1.The labor union is threatening action, claiming that the reduction in annual leave days is unfair despite the new \"time bank\" system<br>\r\n2.Your most experienced workers (30% of your team) are consistently choosing to work every Saturday for the extra \"time bank\" hours, leading to long term burnout concerns.<br>\r\n3.The quality control team reports that error rates have increased by 5% on the Saturdays when only half the workforce is present.<br>\r\n4.Productivity has dropped by 10% as people adjust to the new system, putting pressure on meeting the increased production targets<br>\r\n5.A vocal minority (about 20% of your team) is actively pushing to return to the old 6-day work week, claiming the new system is too complicated.\r\nSenior management is concerned about these issues but is committed to making the new system work, given the potential long-term benefits. They've tasked you with addressing the resistance and improving the implementation of the new work arrangement. As the Production Line Manager responsible for this change, which combination of actions would help in overcoming challenges, adapting the system, and fostering a culture of continuous improvement? ",
+          "Options": [
+            {
+              "OptionDescr": "Organize regular \"Improvement Circles\" where teams collaboratively identify challenges, propose solutions, and share success stories, fostering a positive mindset and continuous learning.",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Implement a flexible rotation system for Saturday work, allowing teams to self-organize their schedules while ensuring fair distribution of weekend work and preventing burnout.",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Develop and implement a \"Change Champions\" program, where employees are trained to support their peers in adapting to the new system, promoting a culture of mutual encouragement and problem-solving.",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": "Form a cross-functional \"Agile Implementation Team\" with representatives from different worker groups, union, and management to rapidly evaluate feedback, implement improvements, and communicate successes. ",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Introduce a \"Quick Wins\" initiative that encourages and rewards teams for identifying and implementing small, impactful improvements to the new work arrangement within their areas of responsibility. ",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "dddsdsdsdlwjflkremvlremv"
+        },
+        {
+          "Competency": "Change Agility",
+          "SubCompetency": "Resilience",
+          "QstName": "You are a manager, overseeing a critical project to improve production efficiency. Midway through the project, you encounter a significant setback: a key piece of equipment malfunctions, causing delays and potential cost overruns. Your team is feeling discouraged, and upper management is concerned about the project's viability. How would you approach this situation? Please rank the below actions based on priority (most important actions taken first followed by others)<br>\n1.Organize a team meeting to openly discuss the challenges & brainstorm solutions<br>\n2.Develop a detailed contingency plan to address the equipment issue and present it to upper management<br>\n3.Reach out to other departments or external experts for advice or alternative resources<br>\n4.Schedule one-on-one check-ins with team members to provide encouragement and address individual concerns<br>\n5.Conduct a thorough analysis of the situation to identify any lessons learned and prevent similar issues in the future<br>\r\n",
+          "Options": [
+            {
+              "OptionDescr": "1, 2, 3, 4, 5",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "1, 4, 3, 2, 5",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": "1, 3, 2, 5, 4",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "1, 4, 2, 3, 5",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "1, 5, 2, 3, 4",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "jwke;nvkjcn;aev"
+        },
+        {
+          "Competency": "Collaboration",
+          "SubCompetency": "Communicates with Purpose",
+          "QstName": "Your company has launched an advertisement campaign that was intended to be innovative and edgy, but it has been widely misinterpreted and has sparked a significant public relations crisis. The ad is being criticized on social media for being insensitive to a particular demographic, leading to a trending hashtag calling for a boycott of your products. Key influencers and industry thought leaders are amplifying the negative message, causing the crisis to escalate rapidly. Your legal team has raised concerns about potential lawsuits based on the interpretation of the ad. Internally, the marketing team is divided; some members want to defend the creative intent of the ad, while others are pushing for an immediate public apology. The CEO is demanding a quick resolution to protect the company's reputation and market value but is unsure of the best approach. Additionally, your largest retailer has threatened to pull your products from their shelves if the situation is not addressed to their satisfaction. What do you do?",
+          "Options": [
+            {
+              "OptionDescr": "Engage directly with the affected demographic and influencers to understand their perspective, issue a public apology and then educate the public on your company's values and the ad's intended message.",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Defend the creative intent of the ad while also highlighting your company's track record of inclusivity, turning the situation into a broader discussion on creativity and interpretation.",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Issue an immediate public apology, retract the advertisement, and commit to a review of internal processes to prevent similar issues in the future.",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": "Release a statement expressing concern for the misinterpretation, explaining the ad's intended message, and announcing a suspension of the campaign pending further review.",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Launch a bold new campaign that addresses the controversy head-on, using the attention to reinforce your brand's edgy image and commitment to sparking important conversations.",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "fretdfyvghbnjkdxfcghjbkm"
+        },
+        {
+          "Competency": "Collaboration",
+          "SubCompetency": "Communicates with Purpose",
+          "QstName": "As a Manager, you are leading a team that is developing a new, cost-effective fuel system that could significantly reduce manufacturing costs. However, the initial tests show that while the system is indeed less expensive, it marginally reduces the vehicle's fuel efficiency. The marketing team is concerned that this could negatively impact the brand's reputation for producing fuel-efficient vehicles. There is pressure from senior management to keep costs down, but also to maintain the high standards the brand is known for. As a Manager, how do you reconcile the conflicting goals of cost reduction and maintaining fuel efficiency standards, while addressing the concerns of both the marketing team and senior management?",
+          "Options": [
+            {
+              "OptionDescr": "Proceed with implementing the new fuel system, prioritizing cost reduction and addressing any negative marketing impacts with a strong communication strategy. ",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Advocate for additional research and development to improve the fuel system's efficiency before implementation, even if it means higher costs in the short term. ",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Recommend a compromise by partially implementing the new system in select vehicle models to test market response and gather data.",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": "Delay the implementation of the new fuel system until the market conditions are more favorable for a cost-focused strategy.",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Launch a marketing campaign that highlights the cost savings of the new fuel system, positioning it as an innovative solution for budget-conscious consumers. ",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "zxcvbnmdfgjkertyuio"
+        },
+        {
+          "Competency": "Collaboration",
+          "SubCompetency": "Internal Networking & Strategic External Collaboration ",
+          "QstName": "You're a middle manager overseeing two teams within your department. Your company has announced an exciting new project, and upper management has decided to create an internal competition to determine which team will lead the initiative. The winning team will receive additional resources and recognition.\r\nAs the competition progresses, you notice the following:<br>\r\n1.Team A is performing well but working in isolation, reluctant to share information or collaborate with Team B.<br>\r\n2.Team B is struggling with some aspects of the project but has innovative ideas that could benefit both teams.<br>\r\n3.The competition is creating tension and reducing overall department morale.<br>\r\n4.Some team members from both teams have approached you privately, expressing concerns about the competitive atmosphere.<br>\r\nYou have three weeks left before the final presentation to upper management, where they will decide which team wins the project. How would you approach this situation to ensure the best outcome for your department, the project, and your team members' growth? Consider the following actions and explain the sequence in which you would implement them:<br><br>\r\n\r\n1.Organize a department-wide workshop on collaborative competition, emphasizing the importance of knowledge sharing and collective growth.<br>\r\n2.Schedule individual meetings with key team members from both teams to gather more detailed insights and address personal concerns.<br>\r\n3.Implement a cross-team peer review system, where members from Team A and Team B provide constructive feedback on each other's work.<br>\r\n4.Present a proposal to upper management to modify the competition structure, suggesting a collaborative approach with shared rewards.<br>\r\n5.Create a joint task force with members from both teams to tackle the most challenging aspects of the project, leveraging diverse skills.",
+          "Options": [
+            {
+              "OptionDescr": "2, 1, 5, 3, 4",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "2, 5, 3, 1, 4 ",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": "2, 3, 4, 5, 1",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "2, 4, 1, 3, 5",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "2, 1, 4, 5, 3",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "xcvbnm,dfgjklrtyuiop"
+        },
+        {
+          "Competency": "Learning Agility",
+          "SubCompetency": "Learning Eagerness",
+          "QstName": "You are a middle manager in the marketing department of an automotive company. One of your team leads, Jordan, has demonstrated exceptional performance and leadership skills. However, you've noticed that Jordan has difficulty communicating effectively with team members of the opposite gender, leading to a lack of inclusivity and some team members feeling undervalued and demotivated. With a critical product launch approaching, you must address this sensitive issue without demoralizing Jordan or disrupting team performance, ensuring his development.<br>\r\nWhat actions would you take to address the communication issues Jordan is experiencing, ensuring all team members feel included and valued, and support Jordan's continued development?<br>\r\n1.Arrange for Jordan to attend a workshop on effective communication and inclusivity, focusing on gender dynamics in the workplace.<br>\r\n2.Facilitate a team-building activity designed to improve understanding and collaboration among all team members.<br>\r\n3.Have a private, supportive conversation with Jordan to discuss the observed communication challenges and explore solutions together.<br>\r\n4.Implement a feedback system where team members can provide anonymous feedback on communication dynamics within the team. <br>\r\n5.Encourage Jordan to lead a team meeting where the importance of diversity and inclusion is discussed, and team members can share their perspectives.",
+          "Options": [
+            {
+              "OptionDescr": "1, 3, 2, 4, 5",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": " 1, 5, 3, 2, 4 ",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": " 1, 2, 4, 5, 3",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "1, 4, 2, 3, 5",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "1, 2, 3, 5, 4",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "ccvcvcvcvcvcvcvcvccvcv"
+        },
+        {
+          "Competency": "Learning Agility",
+          "SubCompetency": "Openness To Feedback",
+          "QstName": "You are Amit Sharma, a Senior Manager (SMGR) in Customer Service department. You recently implemented a new customer feedback system to improve service quality across dealerships. After three months, the data shows mixed results: customer satisfaction has improved in some areas but declined in others.<br>\r\nYour immediate supervisor has requested a presentation on the system's performance. A day before the presentation, you receive an email from Ravi, a Manager (MGR) in your team, pointing out some flaws in the implementation process and suggesting that these issues might be causing the inconsistent results.<br>\r\nYou have limited time to prepare for the presentation and decide how to address Ravi's feedback.<br>\r\nHow do you approach this situation?",
+          "Options": [
+            {
+              "OptionDescr": "Present the positive outcomes and acknowledge the existence of some areas needing improvement, indicating that a detailed analysis will follow to address these concerns. ",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Incorporate Ravi's feedback into the presentation as preliminary findings, indicating that further investigation is needed and proposing a plan for addressing the identified issues. ",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Include Ravi in the presentation preparation process to gain a deeper understanding of his concerns and present a balanced view of the system's performance, including both successes and areas for improvement. ",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Request a brief postponement of the presentation to allow for a quick but comprehensive review of Ravi's feedback, ensuring that the presentation provides a more accurate picture of the system's performance. ",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": "Deliver a transparent presentation that outlines the system's performance, including both the positive impacts and the challenges identified by Ravi, and propose a strategy for continuous improvement. ",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "hghghghghghghghghghghghg"
+        },
+        {
+          "Competency": "Learning Agility",
+          "SubCompetency": "Openness To Feedback",
+          "QstName": "You are a middle manager in the quality assurance department of an automotive manufacturing company. Your department is critical in ensuring that the vehicles meet safety and performance standards before they reach the market. Recently, there have been a few instances where issues were not caught during the quality assurance process, leading to a need for costly recalls.<br>\r\nScenario: In light of these events, you recognize the need to improve the processes and methodologies within your department. You understand that receiving and incorporating feedback is essential to your professional growth and the improvement of your team's performance. As a result, you decide to take proactive steps to seek feedback from your superiors and to use this feedback to make necessary changes in your area of work.<br>\r\nHow do you take ownership of your personal and professional growth by proactively seeking feedback from superiors, and how do you take the initiative to incorporate this feedback into your own area of work? Choose the most effective action from the options below:",
+          "Options": [
+            {
+              "OptionDescr": "Schedule a meeting with your direct superior to discuss the recent quality assurance oversights. Ask for specific feedback on how you and your team can improve, and develop an action plan to address the feedback points",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Send an email to all senior managers in the company asking for their general thoughts on the quality assurance process and how it can be enhanced, without addressing the recent issues directly.",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": "Create a feedback form that superiors can fill out anonymously to provide their thoughts on the quality assurance department's performance. Review the feedback with your team and decide on the changes to implement",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Organize a department-wide review with input from various superiors and stakeholders. Document the feedback received and work with your team to prioritize and implement the most critical suggestions. ",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Proactively engage with superiors during regular departmental meetings to solicit targeted feedback on quality assurance processes, especially concerning recent oversights",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "ghghghghghghghghghgh"
+        },
+        {
+          "Competency": "Inspirational Leadership",
+          "SubCompetency": "Leading Effectively & People Management",
+          "QstName": "You are a department head, and one of your team members, who has historically been a high performer and possesses critical skills for the company, has recently been underperforming. Their decline in performance is starting to affect the team's ability to meet strategic goals during a crucial period for the company, which is facing intense competition and market pressure. The employee's underperformance has been noticed by upper management, and there is a push from some executives to make an example of the situation to reinforce a high-performance culture. However, you are aware that the employee has been facing personal challenges outside of work, which may be contributing to their decline in performance.<br>\r\nWhat would you do?",
+          "Options": [
+            {
+              "OptionDescr": "Offer resources such as mentoring or professional development workshops to help the employee address performance gaps, while also integrating team-building activities that celebrate collective achievements",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Implement a performance improvement plan (PIP) that includes regular check-ins for progress assessment, constructive feedback, and acknowledgment of improvements, reinforcing the company's commitment to team member growth and high performance. ",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Arrange a one-on-one meeting to understand the employee's challenges and collaboratively develop a personalized development plan, ensuring they feel supported and valued as they work towards regaining their performance levels. ",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Redefine the employee's short-term objectives to align with their current capacity, offering guidance and support to achieve these goals while maintaining visibility on their contributions to the team's strategic goals",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": "Conduct a supportive performance review with the employee to set clear, achievable milestones for improvement, recognizing and celebrating each small win to boost morale and provide positive reinforcement",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "vcvcvcvcvcvcvcvcvcv"
+        },
+        {
+          "Competency": "Inspirational Leadership",
+          "SubCompetency": "Leading Effectively & People Management",
+          "QstName": "You are a middle manager in the sales department of an automobile manufacturing company. Your team is composed of experienced sales representatives and a few new hires. The company has just launched a new model, and the sales targets are ambitious. You need to ensure that your team is motivated, knowledgeable about the new model, and ready to meet these targets.<br>\r\nScenario: The sales team has varying levels of enthusiasm and expertise regarding the new model. Some team members are proactively seeking out potential customers and learning about the vehicle's features, while others are less engaged and hesitant to adopt new sales strategies. <br>\r\nChoose the most effective action from the options below:",
+          "Options": [
+            {
+              "OptionDescr": "Hold a team meeting to set clear sales goals for the new model, encourage team members to share their sales strategies, and offer support for their initiatives. Set up a system to track sales progress and schedule regular one-on-one meetings to provide feedback",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Organize a training session for the entire team on the new model's features and benefits, followed by a brainstorming session to develop innovative sales strategies. Create a mentorship program pairing experienced sales reps with new hires",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Implement a sales leaderboard to create friendly competition among team members. Offer incentives for top performers and provide constructive feedback to those who are struggling, with suggestions for improvement",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": "Assign specific sales tasks related to the new model to each team member based on their strengths and past performance. Monitor their progress through weekly reports and offer feedback in team meetings, highlighting both successes and areas for growth",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Develop a team charter that outlines the expectations for sales performance, the importance of supporting each other, and the commitment to continuous learning. Facilitate regular knowledge-sharing sessions where team members can discuss challenges and successes",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "ghghghghghghghghghghgh"
+        },
+        {
+          "Competency": "Inspirational Leadership",
+          "SubCompetency": "Coaching & Team Developm",
+          "QstName": "You're a recently promoted middle manager in the electric vehicle (EV) division of a major automotive company. Your team is responsible for integrating a new battery management system into the upcoming EV model. You've noticed that your peers in middle management, including yourself, often avoid asking fundamental questions about EV technology during meetings with both senior executives and junior engineers. This reluctance stems from a fear of appearing incompetent. As a result, critical details are often misunderstood or overlooked, leading to costly mistakes and delays. The latest project is already behind schedule, and there's a growing sense of frustration among team members at all levels.<br>\r\nHow would you address this culture of silence and improve knowledge sharing without undermining the authority of middle management or exposing individual vulnerabilities?<br><br>\r\n\r\n1.Implement an anonymous digital Q&A platform where all employees can post questions about ongoing projects. Encourage participation by highlighting the most insightful questions in team meetings, regardless of their complexity.<br>\r\n2.Organize regular \"back-to-basics\" workshops led by junior team members, where they explain fundamental concepts to the entire team, including senior management. Frame these sessions as \"refreshers\" rather than tutorials.<br>\r\n3.Introduce a \"deliberate mistake\" policy in project presentations, where you intentionally include a minor error and challenge all attendees, regardless of seniority, to identify it. Use this to normalize error-spotting and question-asking.<br>\r\n4.Establish a mentorship program that pairs middle managers with both senior executives and junior employees, rotating roles monthly. Each person must learn something new from their partners and share it with the wider team.<br>\r\n5.Create a \"jargon jar\" where team members must contribute money for using unexplained technical terms or acronyms during meetings. Use the collected funds for team-building activities.",
+          "Options": [
+            {
+              "OptionDescr": "2, 4, 1, 3, 5 ",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "1, 2, 4, 5, 3 ",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": "4, 2, 1, 5, 3 ",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "3, 1, 5, 2, 4 ",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "5, 3, 1, 4, 2 ",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "jjhjhjhjhjhjhjhjhjhjhjhj"
+        }
+      ]
+    }
+  ]
+}

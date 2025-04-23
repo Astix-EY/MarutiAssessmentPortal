@@ -19,7 +19,7 @@
     <link href="../../CSS/style.css" rel="stylesheet" type="text/css" />
     <link href="../../CSS/jquery-ui.css" rel="stylesheet" />
     <!-- Latest compiled and minified JavaScript -->
-    <script src="../../Scripts/jquery-1.12.4.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery-3.7.1.js" type="text/javascript"></script>
     <script src="../../Scripts/popper.min.js" type="text/javascript"></script>
     <script src="../../Scripts/bootstrap.min.js" type="text/javascript"></script>
     <script src="../../Scripts/validation.js" type="text/javascript"></script>
@@ -30,99 +30,7 @@
     </asp:ContentPlaceHolder>
 
     <script type="text/javascript">
-        function fnLanguage() {
-
-            if ($('#dvHelp').is(':visible')) {
-                $('#dvHelp').dialog('close')
-            }
-
-            if ($('#dvInstruction').is(':visible')) {
-                $('#dvInstruction').dialog('close')
-            }
-
-            $('#dvLanguage').dialog({
-                title: "Choose Language",
-                width: "35%",
-                minHeight: "150",
-                modal: true,
-                draggable: false,
-                resizable: false
-            });
-        }
-
-        function fnInstructions() {
-            if ($('#dvHelp').is(':visible')) {
-                $('#dvHelp').dialog('close')
-            }
-
-            if ($('#dvLanguage').is(':visible')) {
-                $('#dvLanguage').dialog('close')
-            }
-
-
-            $("#dvInstruction").dialog({
-                title: "Instructions",
-                width: "65%",
-                modal: true,
-                draggable: false,
-                resizable: false
-            });
-        }
-
-        function fnTutorial() {
-
-            if ($('#dvHelp').is(':visible')) {
-                $('#dvHelp').dialog('close')
-            }
-
-            if ($('#dvLanguage').is(':visible')) {
-                $('#dvLanguage').dialog('close')
-            }
-
-            if ($('#dvInstruction').is(':visible')) {
-                $('#dvInstruction').dialog('close')
-            }
-
-
-            $('#dvTutorial').fadeIn(200);
-            fnplayPause($("#myvideo")[0]);
-            $("#btnpause").html("<span class='fa fa-pause'></span>");
-        }
-        function fnPause() {
-            fnplayPause($("#myvideo")[0]);
-        }
-
-        function fnReplay() {
-            var myVideo = $("#myvideo")[0];
-            myVideo.pause();
-            myVideo.currentTime = '0';
-            myVideo.play();
-            $("#btnpause").html("<span class='fa fa-pause'></span>");
-        }
-
-        function fnplayPause(myVideo) {
-            if (myVideo.paused) {
-                myVideo.play();
-                $("#btnpause").html("<span class='fa fa-pause'></span>");
-            }
-            else {
-                myVideo.pause();
-                $("#btnpause").html("<span class='fa fa-play'></span>");
-            }
-        }
-
-        function openPopup(dvName) {
-            $(".modal-lg").css({ maxWidth: '66%' });
-            $(".modal-content").css({ height: '460' });
-            $('#' + dvName).fadeIn(200);
-        }
-        function closePopup() {
-            $('.modal').fadeOut(300);
-            $("#myvideo")[0].pause();
-        }
-
-
-
+    
         function fnHelp() {
 
             if ($('#dvLanguage').is(':visible')) {
@@ -229,26 +137,19 @@
                         window.location.href = "../Information/AboutSunriseGroup.aspx?MenuId=" + MaxInd + "&ToolID=" + ToolID + "&RspID=" + RspID + "&ExerciseID=" + ExerciseID + "&intLoginID=" + LoginID;
                         break;
                     case 7:
+                        window.location.href = "../Information/Channelpartership.aspx?MenuId=" + MaxInd + "&ToolID=" + ToolID + "&RspID=" + RspID + "&ExerciseID=" + ExerciseID + "&intLoginID=" + LoginID;
+                        break;
+                    case 8:
                         //  alert("Hi");
                         //alert(ToolID);
                         //alert(LoginID);
                         //alert(RspID);
                         //alert(ExerciseID);
                         // window.location.href = "../Information/TaskExample.aspx?MenuId=" + MaxInd;
-                        window.location.href = "../Questionnaire/CaseProbing.aspx?MenuId=7" + "&RspID=" + RspID + "&ExerciseID=" + ExerciseID + "&ExerciseType=0&TotalTime=0&intLoginID=" + LoginID + "&ToolID=" + ToolID
+                        window.location.href = "../Questionnaire/CaseProbing.aspx?MenuId=8" + "&RspID=" + RspID + "&ExerciseID=" + ExerciseID + "&ExerciseType=0&TotalTime=0&intLoginID=" + LoginID + "&ToolID=" + ToolID
                         // window.location.href = "../Exercise/ExerciseMain.aspx?MenuId=" + MaxInd + "&ToolID=" + ToolID;
                         break;
-                    //case 8:
-                    //   // alert("Please complete the second tab then after go to next page.");
-                    //    if (AssmntType == "1") {
-                    //        //window.location.href = "../Exercise/ExerciseMain_L4.aspx?MenuId=" + MaxInd;
-                    //        window.location.href = "../Information/AssessmentDescription.aspx?MenuId=" + MaxInd;
-                    //    }
-                    //    else {
-                    //        //window.location.href = "../Exercise/ExerciseMain_L3.aspx?MenuId=" + MaxInd;
-                    //        window.location.href = "../Information/AssessmentDescription.aspx?MenuId=" + MaxInd;
-                    //    }
-                    //    break;
+                    
                 }
             }
         }
@@ -261,140 +162,30 @@
                 $("#li_6").remove();
             }
 
-            // var LngID = $.session.get('SelectedLngID');
+            /*     $("#rolehead").html("A day in the life of a Sales Executive");*/
+            $("#rolehead").html("");
 
+            $("#liHelp").html("Tech Support");
+            $("#liLanguage").attr("title", "Language");
+            $("#liTutorial").attr("title", "Tutorial");
+            $("#liExit").attr("title", "Exit");
 
-            fnChangeDataOnPanelPage();
+            $("#li_0").html("Company Background");
+            $("#li_1").html("Introduction and Overview");
+            $("#li_2").html("Industry Background");
+            $("#li_3").html("Company Overview");
+            $("#li_4").html("Competitive Landscape");
+            $("#li_5").html("Strategic Landscape....");
+            //$("#li_5").html("BRIEF ON YOUR ROLE");
+            //$("#li_6").html("SUNRISE GROUP OF INSTITUTIONS");
+            $("#li_6").html("Conclusion");
+            $("#li_7").html("Annexures");
+            $("#li_8").html("Your task");
 
 
         })
 
-        function fnChangeDataOnPanelPage() {
-            //  debugger;
-            var LngID = $("#hdnLngID").val();
-            //    $.session.set('SelectedLngID', LngID);
-
-            if (LngID == "2") {   //// Indinasia
-
-                $("#rolehead").html("Suatu hari dalam kehidupan seorang Sales Executive");
-                $("#liHelp").html("Bantuan");
-                $("#liLanguage").attr("title", "Bahasa");
-                $("#liTutorial").attr("title", "Tutorial");
-                $("#liExit").attr("title", "Keluar");
-
-                //$("#li_0").html("COMPANY BACKGROUND");
-                //$("#li_1").html("GAMBARAN UMUM PERUSAHAAN");
-                //$("#li_2").html("MARKET OVERVIEW");
-                //$("#li_3").html("GTC PRESENCE IN THE EDU IND");
-                //$("#li_4").html("PERFORMANCE SNAPSHOT");
-                //$("#li_5").html("GTC STRATEGIC PARTNERSHIPS");
-                //$("#li_6").html("YOUR ROLE");
-                //$("#li_7").html("SUNRISE GROUP OF INSTITUTIONS");
-                //$("#li_8").html("MY TASKS");
-
-
-
-
-                $("#li_0").html("LATAR BELAKANG PERUSAHAAN");
-                $("#li_1").html("GAMBARAN UMUM PERUSAHAAN");
-                $("#li_2").html("GAMBARAN UMUM PASAR");
-                $("#li_3").html("KEHADIRAN GTC DI INDUSTRI");
-                // $("#li_4").html("PERFORMANCE SNAPSHOT");
-                $("#li_4").html("KEMITRAAN STRATEGIS GTC");
-                $("#li_5").html("DESKRIPSI PERAN");
-                $("#li_6").html("Grup Institusi Sunrise");
-                $("#li_7").html("UGAS SAYA");
-
-            }
-            else if (LngID == "3")  //// Sinhala
-            {
-                $("#rolehead").html("විකුණුම් විධායකයෙකුගේ ජීවිතයේ දවසක්");
-
-                $("#liHelp").html("උපකාර");
-                $("#liLanguage").attr("title", "භාෂාව");
-                $("#liTutorial").attr("title", "ආරම්භ කරන්න");
-                $("#liExit").attr("title", "පිටවීම");
-
-                //$("#li_0").html("COMPANY BACKGROUND");
-                //$("#li_1").html("GROUP OVERVIEW");
-                //$("#li_2").html("BACKGROUND INFORMATION");
-                //$("#li_3").html("GTC PRODUCTS");
-                //$("#li_4").html("PERFORMANCE SNAPSHOT");
-                //$("#li_5").html("CHANNEL PARTNERSHIPS");
-                //$("#li_6").html("YOUR ROLE");
-                //$("#li_7").html("SUNRISE GROUP OF INSTITUTIONS");
-                //$("#li_8").html("MY TASKS");
-
-                $("#li_0").html("සමාගම් පසුබිම");
-                $("#li_1").html("සමාගම් දළ විශ්ලේෂණය");
-                $("#li_2").html("වෙලඳපොල පිළිබඳ දළ");
-                $("#li_3").html("අධ්‍යාපන ක්ෂේත්‍රයේ GTC");
-                // $("#li_4").html("PERFORMANCE SNAPSHOT");
-                $("#li_4").html("GTC ආයතන උපායමාර්ගික");
-                $("#li_5").html("ඔබේ කාර්යභාරය පිළිබඳ");
-                $("#li_6").html("සන්රයිස් ආයතන සමූහය");
-                $("#li_7").html("මගේ කාර්යයන්");
-
-            }
-
-            else if (LngID == "1")  //// Tamil
-            {
-                //$("#rolehead").html("ஒரு முக்கிய கணக்கு மேலாளரின் வாழ்க்கையில் ஒரு நாள் ");
-
-                //$("#liHelp").html("உதவி");
-                //$("#liLanguage").attr("title", "மொழி ");
-                //$("#liTutorial").attr("title", "தொடங்குங்கள்");
-                //$("#liExit").attr("title", "வெளியேறு");
-
-                //$("#li_0").html("COMPANY BACKGROUND");
-                //$("#li_1").html("GROUP OVERVIEW");
-                //$("#li_2").html("BACKGROUND INFORMATION");
-                //$("#li_3").html("GTC PRODUCTS");
-                //$("#li_4").html("PERFORMANCE SNAPSHOT");
-                //$("#li_5").html("CHANNEL PARTNERSHIPS");
-                //$("#li_6").html("YOUR ROLE");
-                //$("#li_7").html("SUNRISE GROUP OF INSTITUTIONS");
-                //$("#li_8").html("MY TASKS");
-
-                $("#rolehead").html("விற்பனை நிர்வாகியின் வாழ்க்கையில் ஒரு நாள்");
-
-                $("#liHelp").html("உதவி");
-                $("#liLanguage").attr("title", "மொழி ");
-                $("#liTutorial").attr("title", "தொடங்குங்கள்");
-                $("#liExit").attr("title", "வெளியேறு");
-
-                $("#li_0").html("பின்னணி தகவல்");
-                $("#li_1").html("நிறுவனத்தின்");
-                $("#li_2").html("சந்தை மேற்பார்வை");
-                $("#li_3").html("கல்வித் தொழிலில்");
-                // $("#li_4").html("PERFORMANCE SNAPSHOT");
-                $("#li_4").html("ஜிடிசி ஸ்ட்ராடஜிக்");
-                $("#li_5").html("உங்கள் பங்கைப் பற்றி");
-                $("#li_6").html("நிறுவனங்களின்");
-                $("#li_7").html("எனது பணி");
-            }
-
-            else {
-                /*     $("#rolehead").html("A day in the life of a Sales Executive");*/
-                $("#rolehead").html("");
-
-                $("#liHelp").html("Tech Support");
-                $("#liLanguage").attr("title", "Language");
-                $("#liTutorial").attr("title", "Tutorial");
-                $("#liExit").attr("title", "Exit");
-
-                $("#li_0").html("COMPANY BACKGROUND");
-                $("#li_1").html("ABOUT THE COMPANY");
-                $("#li_2").html("VISION, MISSION, GROWTH PLANS");
-                $("#li_3").html("FINANCIAL HIGHLiGHTS");
-                $("#li_4").html("EMPLOYEE DETAILS & WORK CUL...");
-                $("#li_5").html("TECHNOLOGICAL DISRUPTIONS..");
-                //$("#li_5").html("BRIEF ON YOUR ROLE");
-                //$("#li_6").html("SUNRISE GROUP OF INSTITUTIONS");
-                $("#li_6").html("GOVERNMENT INITIATIVES");
-                $("#li_7").html("YOUR ROLE & TASKS");
-            }
-        }
+        
 
     </script>
     <!-- WARNING: Respond.js doesn't work if you view the page via file: -->
@@ -420,8 +211,7 @@
                         <ul class="user_nav text-right">
                             <li><a href="##" rel="tooltip" data-placement="bottom" onclick="window.open('../../Common/SiteNavigation/SiteNavigation.pdf');" title="Site Navigation" id="liSiteNavigation">Site Navigation</a></li>
                             <li><a href="##" rel="tooltip" data-placement="bottom" onclick="fnHelp();" title="Tech Support" id="liHelp">Tech Support</a></li>
-                            <li style='display: none'><a href="##" class="fa fa-globe" rel="tooltip" data-placement="bottom" onclick="fnLanguage();" id="liLanguage" title="Language"></a></li>
-                            <li style='display: none'><a href="##" class="fa fa-book" rel="tooltip" data-placement="bottom" onclick="fnTutorial();" id="liTutorial" title="Tutorial"></a></li>
+                    
                             <li><a href="##" class="fa fa-sign-out" rel="tooltip" data-placement="bottom" onclick="fnExit();" id="liExit" title="Exit"></a></li>
                         </ul>
 
@@ -438,17 +228,18 @@
             <div class="container main-box clearfix">
                 <div class="main-sidebar">
                     <ul id="ulMenu" class="sidebar-menu">
-                        <li class="header-menu" id="li_0">COMPANY BACKGROUND INFORMATION</li>
-                        <li class="has-menu active" id="li_1" onclick="fnMenu(1,this);">About the Company</li>
-                        <li class="has-menu" id="li_2" onclick="fnMenu(2,this);">Vision, Mission & Growth Plans</li>
-                        <li class="has-menu" id="li_3" onclick="fnMenu(3,this);">Financial Highlights</li>
-                        <%-- <li class="has-menu" id="li_4" onclick="fnMenu(4,this);">PERFORMANCE SNAPSHOT</li>--%>
-                        <li class="has-menu" id="li_4" onclick="fnMenu(4,this);">Employee Details & Work Culture</li>
-                        <li class="has-menu" id="li_5" onclick="fnMenu(5,this);">Technological Disruptions in Sector</li>
-                        <li class="has-menu" id="li_6" onclick="fnMenu(6,this);">Government Initiatives</li>
+                        <li class="header-menu" id="li_0">COMPANY BACKGROUND</li>
+                        <li class="header-menu" id="li_1" onclick="fnMenu(1,this);">Introduction and Overview</li>
+                        <li class="has-menu active" id="li_2" onclick="fnMenu(2,this);">Industry Background</li>
+                        <li class="has-menu" id="li_3" onclick="fnMenu(3,this);">Company Overview</li>
+                        <li class="has-menu" id="li_4" onclick="fnMenu(4,this);">Competitive Landscape</li>
+                         <li class="has-menu" id="li_5" onclick="fnMenu(5,this);">Strategic Landscape and Future Growth</li>
+                        <li class="has-menu" id="li_6" onclick="fnMenu(6,this);">Conclusion</li>
+                        <li class="has-menu" id="li_7" onclick="fnMenu(7,this);">Annexures</li>
+                        <%--<li class="has-menu" id="li_7" onclick="fnMenu(6,this);">Government Initiatives</li>--%>
                         <%--      <li class="has-menu" id="li_5" onclick="fnMenu(5,this);" style="display: none;">BRIEF ON YOUR ROLE</li>
                         <li class="has-menu" id="li_6" onclick="fnMenu(6,this);" style="display: none;">SUNRISE GROUP OF INSTITUTIONS</li>--%>
-                        <li class="has-menu" id="li_7" onclick="fnMenu(7,this);" style="display: block;">Your Role & Task</li>
+                        <li class="has-menu" id="li_8" onclick="fnMenu(8,this);" style="display: block;">Your task</li>
                     </ul>
                     <a href="../Exercise/ExerciseMain.aspx?MenuID=8" class="btn btn-primary" id="btnBackToMain" style="display: none">Back To My Tasks </a>
                 </div>
@@ -509,7 +300,7 @@
                 <div class="single-contact">
                     <span><i class="fa fa-envelope"></i></span>
                     <div class="info-cont">
-                        <p><span>Email:</span> Click on the link for email support <a href="mailto:Vinayak.chakravarty@in.ey.com"><i class="conditions">Vinayak.chakravarty@in.ey.com</i></a></p>
+                        <p><span>Email:</span> Click on the link for email support <a href="mailto:techsupportcc@in.ey.com"><i class="conditions">techsupportcc@in.ey.com</i></a></p>
                     </div>
                 </div>
                 <div class="single-contact" style="display: none">

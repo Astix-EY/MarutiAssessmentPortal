@@ -1,0 +1,155 @@
+{
+  "studentName": "Band2Test29Oct Band2Test29Oct",
+  "studentCode": "2949",
+  "studentEmail": "Band2Test29Oct@in.ey.com",
+  "isInstantResultProcess": true,
+  "clientName": "maruti",
+  "cycleName": "Band Test Cycle:29-Oct-2024",
+  "assessmentDetails": [
+    {
+      "assessmentId": "130",
+      "assessmentName": "Role Play",
+      "scheduleID": "80",
+      "assessmentType": "roleplay",
+      "competency": [],
+      "Questions": []
+    },
+    {
+      "assessmentId": "41",
+      "assessmentName": "Case Study",
+      "scheduleID": "0",
+      "assessmentType": "Case Study",
+      "competency": [
+        {
+          "competencyName": "Innovation & New Ways of Working ",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "New/Digital Ways of Working",
+              "description": "New/Digital Ways of Working",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Innovation & Problem Solving",
+              "description": "Innovation & Problem Solving",
+              "proficiencyLevel": []
+            }
+          ]
+        },
+        {
+          "competencyName": "Financial Acumen",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "Financial Literacy",
+              "description": "Financial Literacy",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Cost & Budget Management",
+              "description": "Cost & Budget Management",
+              "proficiencyLevel": []
+            }
+          ]
+        },
+        {
+          "competencyName": "Data Driven Decision Making",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "Data Comprehension / Analytical Ability",
+              "description": "Data Comprehension / Analytical Ability",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Insight Application",
+              "description": "Insight Application",
+              "proficiencyLevel": []
+            }
+          ]
+        },
+        {
+          "competencyName": "Result Orientation",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "Driving Stretch",
+              "description": "Driving Stretch",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Outcomes & Process Orientation",
+              "description": "Outcomes & Process Orientation",
+              "proficiencyLevel": []
+            }
+          ]
+        },
+        {
+          "competencyName": "Customer Centricity",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "Customer Understanding\n",
+              "description": "Customer Understanding\n",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Customer Delight",
+              "description": "Customer Delight",
+              "proficiencyLevel": []
+            }
+          ]
+        },
+        {
+          "competencyName": "Strategic Thinking",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "Visionary Thinking and Business Acumen\n",
+              "description": "Visionary Thinking and Business Acumen\n",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Shapes market through first-mover advantage",
+              "description": "Shapes market through first-mover advantage",
+              "proficiencyLevel": []
+            }
+          ]
+        }
+      ],
+      "Questions": [
+        {
+          "QstName": "What are the main factors leading to the erosion of AutoNext's EBITDA margin ? Based on the insigths, suggest new ways of working that would ensure both cost-efficiency and organisation's growtha with respective plan of action for the suggested new ways of working ?\r\n",
+          "Options": [],
+          "Response": "ddddd"
+        },
+        {
+          "QstName": "Vega Motors, with 60% of the EV market, has a significant lead over AutoNext. How might this impact AutoNext’s product development and market strategy, considering its current position?\r\n",
+          "Options": [],
+          "Response": "dddddd"
+        },
+        {
+          "QstName": "The attrition rate with the Sales team is about 22%. What does it mean to the organisation? What additional information would you need to evaluate the situation? (What decisions would you take to resolve the issue?)\r\n",
+          "Options": [],
+          "Response": "dddddd"
+        },
+        {
+          "QstName": "Current data shows:<br/><br/>\n•\t60% of customers research online but buy from dealerships<br/>\n•\tDealerships oppose direct online sales<br/>\n•\tDigital engagement is 40% higher but sales conversion is 20% lower<br/>\n•\tCompetitor has launched partial digital sales<br/><br/>\n\nChallenge: Integrate digital sales while:<br/><br/>\n•\tMaintaining dealership network<br/>\n•\tImproving customer experience<br/>\n•\tIncreasing sales conversion<br/>\n•\tStaying ahead of competition<br/><br/>\n\nConsidering the situation, what avenues would you suggest to improve  digital sales to give a competitive edge?",
+          "Options": [],
+          "Response": "dddddd"
+        },
+        {
+          "QstName": "How would you address Autonext's liquidity and capacity constraints in the supply chain during peak periods?\r\n",
+          "Options": [],
+          "Response": "ddddd"
+        }
+      ]
+    }
+  ]
+}

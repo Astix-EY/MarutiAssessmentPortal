@@ -38,7 +38,7 @@ public partial class Admin_frmDashboard : System.Web.UI.Page
 
                  sb.Append("<table class='table table-bordered table-sm bg-white'>");
                 sb.Append("<tr>");
-                sb.Append("<td rowspan='2' class='fstth-title'>View Status</td>");
+                sb.Append("<td rowspan='4' class='fstth-title'>View Status</td>");
                 
                 sb.Append("</tr>");
                 sb.Append("<tr >");
@@ -48,6 +48,21 @@ public partial class Admin_frmDashboard : System.Web.UI.Page
                 sb.Append("<li>Download the assessment report of participants</li></ul>");
                 sb.Append("</td>");
                 sb.Append("</tr>");
+
+                sb.Append("<tr >");
+                sb.Append("<td><a href='../Setting/frmUserSnapshots.aspx' class='btns btn-submit col-12'>Proctoring Report</a></td>");
+                sb.Append("<td>");
+                sb.Append("<ul class='mb-0 pl-3'><li>View the Proctoring Report</li>");
+                sb.Append("</td>");
+                sb.Append("</tr>");
+sb.Append("<tr>");
+                sb.Append("<td><a href='../MasterForms/frmGetExperiencePageResponse.aspx' class='btns btn-submit col-12'>Download Participant Experience Responses</a></td>");
+                sb.Append("<td>");
+                sb.Append("<ul class='mb-0 pl-3'><li>Download Participant Experience Responses</li></ul>");                
+                sb.Append("</td>");
+                sb.Append("</tr>");
+
+
                 sb.Append("<tr>");
                 sb.Append("<td colspan='3' class='border-0'><div class='bg-primary' style='height:4px;'>&nbsp;</div></td>");
                 sb.Append("</tr>");
@@ -64,7 +79,7 @@ public partial class Admin_frmDashboard : System.Web.UI.Page
                 sb.Append("<td>");
                 sb.Append("<ul class='mb-0 pl-3'><li>Create New Cycle</li>");
                 sb.Append("<li>Edit or delete existing cycle for which the date has not surpassed yet</li>");
-                sb.Append("<li>View the number of participants and assessor mapped</li></ul>");
+                sb.Append("</ul>");
                 sb.Append("</td>");
                 sb.Append("</tr>");
                 sb.Append("<tr>");
@@ -72,13 +87,13 @@ public partial class Admin_frmDashboard : System.Web.UI.Page
                 sb.Append("<td><ul class='mb-0 pl-3'><li>Map participants with a particular cycle</li></ul></td>");
                 sb.Append("</tr>");
                 sb.Append("<tr>");
-                sb.Append("<td><a href='../MasterForms/frmParticipantMappingWithEklavya.aspx' class='btns btn-submit col-12'>Participant Configuration With Eklavya </a></td>");
-                sb.Append("<td><ul class='mb-0 pl-3'><li>Participant Configuration With Eklavya</li></ul></td>");
+                sb.Append("<td><a href='../MasterForms/frmParticipantMappingWithEklavya.aspx' class='btns btn-submit col-12'>Participant Configuration With AI Assessment </a></td>");
+                sb.Append("<td><ul class='mb-0 pl-3'><li>Participant Configuration With AI Assessment</li></ul></td>");
                 sb.Append("</tr>");
 
                 sb.Append("<tr>");
-                sb.Append("<td><a href='../MasterForms/frmParticipantMappingWithTechnicalTest.aspx' class='btns btn-submit col-12'>Participant Mapping With External Test </a></td>");
-                sb.Append("<td><ul class='mb-0 pl-3'><li>Participant Mapping With External Test</li></ul></td>");
+                sb.Append("<td><a href='../MasterForms/frmParticipantMappingWithTechnicalTest.aspx' class='btns btn-submit col-12'>Participant Mapping With AI Tools </a></td>");
+                sb.Append("<td><ul class='mb-0 pl-3'><li>Participant Mapping With AI Tools</li></ul></td>");
                 sb.Append("</tr>");
 
                 //sb.Append("<tr>");
@@ -98,13 +113,22 @@ public partial class Admin_frmDashboard : System.Web.UI.Page
                 //            sb.Append("<ul class='mb-0 pl-3'><li>Map selected participants for a given cycle with Assessors</li>");
                 //            sb.Append("<li>View the list of assessors mapped to the cycle and respective number of participants mapped</li></ul>");
                 //            sb.Append("</td>");
-                //            sb.Append("</tr>");  				
+                //            sb.Append("</tr>");  
+
+   sb.Append("<tr>");
+                sb.Append("<td><a href='../Setting/frmExerciseElapsedTimeUpdation.aspx' class='btns btn-submit col-12'>Exercise Elapsed Time Update</a></td>");
+                sb.Append("<td>");
+                sb.Append("<ul class='mb-0 pl-3'><li>Exercise Elapsed Time Update</li></ul>");                
+                sb.Append("</td>");
+                sb.Append("</tr>");				
                 sb.Append("<tr>");
                 sb.Append("<td><a href='../MasterForms/frmParticipantEmailInvite.aspx' class='btns btn-submit col-12'>Participant Invitation Mail</a></td>");
                 sb.Append("<td>");
                 sb.Append("<ul class='mb-0 pl-3'><li>Send Invitation Mail to Mapped participant</li></ul>");                
                 sb.Append("</td>");
                 sb.Append("</tr>");
+
+
 				
 				//sb.Append("<tr>");
     //            sb.Append("<td><a href='../MasterForms/frmAssessorEmailInvite.aspx' class='btns btn-submit col-12'>Assessor Invitation Mail</a></td>");

@@ -27,73 +27,13 @@
 
     </script>
 
-    <script type="text/javascript">
-        function fnChangeDataBasedOnLanguage(X) {
-            var LngID = $("#hdnLngID").val();
-
-            if (X == 2) {
-                var LngID = $("#ddlLanguage").val();
-                $("#hdnLngID").val(LngID);
-            }
-
-            fnChangeDataOnPanelPage()
-
-            if (LngID == "2") {
-
-                $("#dvIndonesia").show();
-                $("#dvEnglish").hide();
-                $("#dvSinhala").hide();
-                $("#dvTamil").hide();
-            }
-            else if (LngID == "3") {
-
-                $("#dvSinhala").show();
-                $("#dvIndonesia").hide();
-                $("#dvEnglish").hide();
-                $("#dvTamil").hide();
-            }
-            else if (LngID == "1") {
-                $("#dvTamil").show();
-                $("#dvSinhala").hide();
-                $("#dvIndonesia").hide();
-                $("#dvEnglish").hide();
-            }
-
-            else {
-                $("#dvEnglish").show();
-                $("#dvIndonesia").hide();
-                $("#dvSinhala").hide();
-                $("#dvTamil").hide();
-            }
-
-            if (X == 2) {
-                $('#dvLanguage').dialog('close');
-            }
-
-            PageMethods.fnSetSession(LngID, fnUpdateSessionSuccess, fnUpdateSessionFailed);
-
-        }
-        function fnUpdateSessionSuccess(result) {
-
-        }
-        function fnUpdateSessionFailed(result) {
-            //    alert(result._message);
-        }
-
-    </script>
+  
 
     <script type="text/javascript">
         var SecondCounter = 0; var MinuteCounter = 0; var hours = 0; var IsUpdateTimer = 1; var flgChances = 1; var counter = 0; var counterAutoSaveTxt = 0;
         $(document).ready(function () {
 
-            //if ($("#hdnFlagPageToOpen").val() == "3") {
-            //    f1();
-            //}
-            //else {
-            //    $("#theTime").hide();
-            //}
-
-            fnChangeDataBasedOnLanguage(1)
+  
         });
         function f1() {
 
@@ -194,74 +134,18 @@
 
     <div id="dvEnglish">
         <div class="section-title">
-            <h3 class="text-center">Vision, Mission & Growth Plans</h3>
+            <h3 class="text-center">Industry Background</h3>
             <div class="title-line-center"></div>
         </div>
-     <img src="../../Images/OrganizationalPriorities.png" class="img-thumb pull-right" />
-                    <p><strong>Vision : </strong>To be the global leader in developing world-class infrastructure solutions, driving sustainable development, and shaping the future of societies</p>
-                    <p><strong>Mission: </strong></p>
-                    <p><strong>Excellence Through Innovation</strong> :Through relentless pursuit of innovation, we strive to deliver unparalleled value to our customers, empower communities, and shape a better future for all</p>
-                    <p><strong>Transformational Leadership</strong>: By empowering individuals, cultivating collaboration, and championing innovation, we shape the future of our organization and inspire lasting impact in our industry and beyond</p>
-                    <p><strong>Make in India commitment</strong>: We are dedicated to harnessing local talent, resources, and capabilities to manufacture world-class products and deliver exceptional services</p>
-                    <p><strong>Global Expansion &amp; Integration</strong>: By forging strategic partnerships, leveraging diverse talent pools, and embracing cultural diversity, we propel our organization towards new horizons of growth, innovation, and collaboration</p>
-                    <p><strong>Laksh 2027</strong></p>
-                    <p>Laksh 2027 plans to achieve value-accretive growth in the existing businesses through a multi-pronged approach of targeting opportunities arising out of global trends, with a focus on ESG and Sustainability. The underlying emphasis of Laksh 2027 is to ride the momentum in existing and emerging technology trends for IT services, reorganise the business offerings to serve the customers better and drive profitability through operational excellence, value engineering and digitalisation initiatives</p>
-                    <p>Running since 2023, Nexus has already invested in data centres and segmented its Energy business to create the new Green EPC business.</p>
-                    <p><strong>Strategic Enablers for the company</strong> &ndash;</p>
-                    <ul>
-                        <li>Operational Excellence for leadership in cost-competitiveness and world-class execution</li>
-                        <li>Financial resources to enable growth of the businesses and strong financial health to facilitate access to capital markets, as and when required</li>
-                        <li>Talent and leadership pipeline to drive growth and ensure business continuity</li>
-                        <li>Capability development through R&amp;D, absorption of new technologies and partnerships</li>
-                    </ul>
-                    <p><strong>Investment and Capital Expenditure</strong>:&nbsp; Allocation of INR 15,000 Crores towards expansion projects, technology upgrades, and research &amp; development initiatives</p>
-  
+   The Indian automotive sector has expanded rapidly, benefiting from rising disposable incomes, government initiatives promoting electric mobility, and shifting consumer preferences toward SUVs and technologically advanced vehicles. SUVs in particular, have doubled their market share in the last 5 years, capturing ~52% of the Indian passenger cars segment. The market, valued at INR 2.4 lakh crore in FY2022-23, has been growing at a CAGR of 6.5%.
+New trends like Connected Vehicles (integrating IoT and AI for enhanced safety and user experience), Autonomous Vehicle Technology and Mobility-as-a-Service (MaaS) (combining public transit, ride-hailing, and car-sharing into a single service) are reshaping the landscape. These trends offer opportunities but also substantial challenges for traditional players like AutoNext, which has historically thrived in the internal combustion engine (ICE) market.
+Regulatory changes aimed at reducing carbon emissions are pushing automakers to accelerate their shift toward sustainable transportation solutions. Competitors like Vega Motors and Zenith Automobiles have made significant strides in the EV space, gaining market share by tapping into the increasing demand for electric and premium SUVs.
+
         <div class="text-center mt-3 mb-3"><a href="#" onclick="fnMenu(3, this)" class="btns btn-submit">Next</a></div>
     </div>
     <!------------ End English------------------>
 
-    <!------------  Indonesia------------------>
-    <div id="dvIndonesia" style="display: none">
-        <div class="section-title">
-            <h3 class="text-center">GAMBARAN UMUM PASAR</h3>
-            <div class="title-line-center"></div>
-        </div>
-        <p>Dengan dukungan pemerintah terkait agenda transformasi digital, pemain di industri telekomunikasi saat ini tengah mengambil langkah untuk lebih memperhatikan pasar UKM.</p>
-        <p>Para pemain di bidang Teknologi Informasi dan Komunikasi/TIK (Information and Communications Technology/ICT) saat ini sedang bertransformasi secara digital terhadap status quo pada lingkungan bisnis di Malaysia. Di Malaysia, transformasi ini menjadi nyata dengan adanya implementasi jaringan 5G. Dengan tingkat kecepatan mencapai 1 GB per detik, kapasitas jaringan yang lebih tinggi yang membuat perangkat terhubung lebih dari 100 kali per kilometer persegi, dan latensi sebesar 1ms, 5G menciptakan babak baru dalam konektivitas untuk individu, bisnis, dan entitas pemerintah. </p>
-        <p>Pandemi COVID belakangan ini semakin menambah momentum terkait hal ini. Salah satu industri utama yang terdampak oleh pandemi COVID adalah pendidikan, dimana sebagian besar diantaranya berada dalam segmen UKM, sebagaimana yang dikategorikan secara internal oleh GTC.</p>
-        <p>Dengan dilarangnya institusi pendidikan untuk dapat berfungsi secara normal melalui program kelas reguler di Malaysia dan di berbagai belahan dunia lainnya sebagai dampak dari pandemi coronavirus, banyak negara saat ini berupaya untuk mempromosikan dan mendukung pembelajaran online untuk pelajar dari rumah. Namun demikian, terdapat tantangan utama terkait dengan akses ke pendidikan online yang cepat dan mudah. Banyak institusi sekarang bekerja sama dengan operator seluler, penyedia jasa telekomunikasi, penyedia layanan internet (ISP), dan organisasi lainnya untuk meningkatkan akses terhadap sumber daya digital walaupun mereka terpaksa tetap menutup institusinya. Meskipun perubahan ini terlihat sebagai akibat dari pandemi, perubahan-perubahan ini bersifat menetap dan menyebabkan transformasi terhadap bagaimana pendidikan disampaikan di Malaysia maupun seluruh dunia.</p>
-        <div class="text-center mt-3"><a href="#" onclick="fnMenu(3, this)" class="btns btn-submit">Selanjutnya</a></div>
-    </div>
-    <!------------ End Indonesia------------------>
-
-    <!------------ Sinhala------------------>
-    <div id="dvSinhala" style="display: none">
-        <div class="section-title">
-            <h3 class="text-center">උප ටැබ්- වෙලඳපොල පිළිබඳ දළ විශ්ලේෂණය</h3>
-            <div class="title-line-center"></div>
-        </div>
-        <p>ඩිජිටල් පරිවර්තන න්‍යාය පත්‍රයට රජයේ සහාය ඇතිව, ටෙලිකොම් කර්මාන්තයේ නියැලෙන්නන් දැන් සුළු හා මධ්‍ය පරිමාණ ව්‍යාපාර වෙළඳපොළ දෙස සමීප බැල්මක් හෙළමින් සිටිති.</p>
-        <p>තොරතුරු හා සන්නිවේදන තාක්ෂණ [ICT -information and communications technology] කර්මාන්තයේ නියැලෙන්නන් මැලේසියාව පුරා ව්‍යාපාරික පරිසරවල තත්වය ඩිජිටල් තත්වයට [digitally transforming] පරිවර්තනය කරමින් සිටී. මැලේසියාවේ, 5G ජාලයන් හි ආගමනයත් සමඟ මෙම පරිවර්තනය ජීවයට පැමිණේ. 1 Gbps දක්වා වේගවත් වේගයකින් [faster speeds], ඉහළ ජාල ධාරිතාවයකින් සහ 1 MS ප්‍රමාදයකින් වර්ග කිලෝමීටරයකට 100 ගුණයකින් වැඩි සම්බන්ධිත උපාංගයන් සම්බන්ධ කර ගැනිමේ හැකියාව, 5G මගින් පුද්ගලයින්, ව්‍යාපාර සහ රජයේ ආයතන සඳහා සම්බන්ධතාවයන් හි නව පරිච්ඡේදයක් නිර්මාණය කරයි.</p>
-        <p>මෑත කාලීන COVID වසංගතය මේ සියල්ල වටා ගම්‍යතාවයට එක් කර ඇත. COVID වසංගතය හේතුවෙන් බලපෑමට ලක් වූ ප්‍රධාන කර්මාන්තයක් වන්නේ අධ්‍යාපනයයි. ඒවායින් බොහොමයක් දැනට GTC ආයතනය විසින් අභ්‍යන්තරව වර්ගීකරණය කර ඇති පරිදි සුළු හා මධ්‍ය පරිමාණ ව්‍යාපාරයට අයත් වේ. </p>
-        <p>Covid19 වසංගතයේ ප්‍රතිඵලයක් ලෙස මැලේසියාවේ සහ ලොව පුරා අධ්‍යාපන ආයතන වලට පන්ති කාමර ප්‍රමුඛ වැඩසටහන් සාමාන්‍ය පරිදි ක්‍රියාත්මක කිරිමට ඉඩ නොදීම නිසා, බොහෝ රටවල් නිවසේ සිටින සිසුන් සඳහා Online ඉගෙනීම ප්‍රවර්ධනය කිරීම සදහා සහාය දීමට උත්සාහ කරති. කෙසේ වෙතත්, online අධ්‍යාපනයට පහසුවෙන් හා ඉක්මනින් ප්‍රවේශ වීම සම්බන්ධයෙන් නිරන්තර අභියෝගයක් පවතී. බොහෝ ආයතන ජංගම දුරකථන ක්‍රියාකරුවන්, ටෙලිකොම් සපයන්නන්, අයිඑස්පී (ISP) සහ වෙනත් සමාගම් සමඟ ඩිජිටල් සම්පත් සඳහා ප්‍රවේශය වැඩි කිරීමට කටයුතු කරන අතර ඒවා වසා දමා සිටීමට බල කෙරෙයි.  මෙම වෙනස්කම් වසංගතයෙන් ආගමන වු බවක් පෙනෙන්නට තිබුණද, මෙම වෙනස්කම් ලොවෙහි රැඳී ඇති අතර එම නිසා අධ්‍යාපනය ලබා දෙන ආකාරය මැලේසියාව පුරා පමණක් නොව මුළු ලෝකය පුරාම පරිවර්තනය වේ.</p>
-
-        <div class="text-center mt-3 mb-3"><a href="#" onclick="fnMenu(3, this)" class="btns btn-submit">ඊළඟ</a></div>
-    </div>
-    <!------------ End Sinhala------------------>
-
-    <!------------ Tamil------------------>
-    <div id="dvTamil">
-        <div class="section-title">
-            <h3 class="text-center">சந்தை மேற்பார்வை</h3>
-            <div class="title-line-center"></div>
-        </div>
-        <p>அரசாங்கத்தின் ஆதரவுடன் டிஜிட்டல் (Digital) உருமாற்ற நிகழ்ச்சி நிரலில் (Digital transformation agenda), தொலைத் தொடர்புத் துறை வீரர்கள் (players) இப்போது SME சந்தையை உன்னிப்பாக கவனித்து வருகின்றனர்.</p>
-        <p>ஐ.சி.டி (தகவல் மற்றும் தகவல் தொடர்பு தொழில்நுட்பம்) (information and communications technology)  வீரர்கள் (players)  மலேசியா முழுவதும் வணிகச் சூழல்களின் நிலையை டிஜிட்டல் (Digital) முறையில் மாற்றியமைக்கின்றனர். மலேசியாவில், இந்த மாற்றம் 5 ஜி நெட்வொர்க்குகளின் (5G networks) வெளியீட்டைக் கொண்டு வருகிறது. 1 ஜி.பி.பி.எஸ் (1 Gbps) வரை வேகம், சதுர கிலோமீட்டருக்கு 100 மடங்கு அதிக நெட்வொர்க் திறன் சதுர கிலோமீட்டருக்கு 100 சாதனங்களை இயக்கும்.மற்றும் 1 எம்.எஸ் தாமதத்துடன் (1 ms latency), 5 ஜி (5G) தனிநபர்கள், வணிகங்கள் மற்றும் அரசாங்க நிறுவனங்களுக்கான இணைப்பில் ஒரு புதிய அத்தியாயத்தை உருவாக்குகிறது.</p>
-        <p>சமீபத்திய COVID தொற்றுநோய் இவை அனைத்தையும் சுற்றி இயங்குவதற்கான தூண்டுதலைக் கொண்டுள்ளது. COVID தொற்றுநோயால் பாதிக்கப்பட்டுள்ள ஒரு முக்கிய துறை கல்வி, அவற்றில் பெரும்பாலானவை தற்போது SME பிரிவின் கீழ் வருகின்றன, அவை ஜி.டி.சில்  சேர்க்கப்பட்டுள்ளது.</p>
-        <p>கொரோனா வைரஸ் தொற்றுநோயின் விளைவாக மலேசியாவிலும் உலகெங்கிலும் உள்ள வழக்கமான வகுப்பறை திட்டங்கள் மூலமான கல்வி நிறுவனங்கள் சாதாரணமாக செயல்பட அனுமதிக்கப்படாத நிலையில், பல நாடுகள் வீட்டில் மாணவர்களுக்கு ஆன்லைன் கற்றலை ஊக்குவிக்கவும் ஆதரிக்கவும் முயல்கின்றன. இருப்பினும், ஆன்லைன் கல்வியை விரைவாகவும் எளிதாகவும் அணுகுவது தொடர்பான நிலையான சவால் உள்ளது. பல நிறுவனங்கள் மொபைல் ஆபரேட்டர்கள், தொலைத் தொடர்பு வழங்குநர்கள், ஐ.எஸ்.பி மற்றும் பிற நிறுவனங்களுடன் இணைந்து டிஜிட்டல் வளங்களுக்கான அணுகலை அதிகரிக்கின்றன,. இந்த மாற்றங்கள் தொற்றுநோயால் தூண்டப்பட்டதாகத் தோன்றினாலும், இந்த மாற்றங்கள் இங்கு தொடர்ந்து இருக்கின்றன, எனவே மலேசியா முழுவதும் மட்டுமல்ல, உலகம் முழுவதும் கல்வி எவ்வாறு வழங்கப்படுகிறது என்பதை மாற்றியமைக்கிறது.</p>
-        <div class="text-center mt-3 mb-3"><a href="#" onclick="fnMenu(3, this)" class="btns btn-submit">அடுத்து</a></div>
-    </div>
-    <!------------ End Tamil------------------>
+  
     <asp:HiddenField ID="hdnCounter" runat="server" Value="0" />
     <asp:HiddenField ID="hdnToolID" runat="server" Value="0" />
       <asp:HiddenField ID="hdnRspId" runat="server" Value="0" />

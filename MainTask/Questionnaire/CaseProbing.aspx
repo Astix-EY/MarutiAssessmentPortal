@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
 
-        <link href="../../CSS/jquery-ui.css" rel="stylesheet" />
+    <link href="../../CSS/jquery-ui.css" rel="stylesheet" />
     <script src="../../Scripts/jquery-ui.js"></script>
 
     <script type="text/javascript">
@@ -296,13 +296,11 @@
     <!------------ English------------------>
     <div id="dvEnglish">
         <div class="section-title">
-            <h3 class="text-center">Your Role & Task</h3>
+            <h3 class="text-center">Your task</h3>
             <div class="title-line-center"></div>
         </div>
-        <img src="../../Images/YourRole.jpg" class="img-thumb pull-right" />
-        <p><strong>Your Role</strong></p>
-        <p>You are the CHRO of Nexus and have been with the organization for 10+ years. Your strategic leadership and innovative initiatives have positioned you as a trusted advisor to the Board and a respected advocate for employees. Through your visionary leadership, you have transformed the HR function into a strategic partner that drives organizational success, fosters a culture of excellence, and enhances the employee experience. Your ability to gain the trust of both the Board and employees is a testament to your dedication to advancing the organization's mission, values, and long-term sustainability.</p>
 
+        <p>You are now tasked with answering five questions designed to evaluate your ability to analyze and interpret the provided information. You will have 60 minutes to complete this exercise. You may refer back to any part of the case study while formulating your responses. Ensure your answers are comprehensive, clearly articulated, and supported by the data presented.</p>
 
         <div class="text-center mb-3" style="padding-top: 40px;">
             <asp:Button runat="server" ID="btnStartENG" Enabled="true" Text="Start Questions" CssClass="btns btn-submit" />

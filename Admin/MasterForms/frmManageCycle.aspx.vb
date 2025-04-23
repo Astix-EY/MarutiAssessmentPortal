@@ -26,9 +26,9 @@ Partial Class Admin_MasterForms_frmManageCycle
         Dim dt As DataTable = New DataTable()
         Sdap.Fill(dt)
         Dim itm As ListItem = New ListItem()
-        itm.Text = "- Assessment Type -"
-        itm.Value = "0"
-        ddlAssessmentType.Items.Add(itm)
+        'itm.Text = "- Assessment Type -"
+        'itm.Value = "0"
+        'ddlAssessmentType.Items.Add(itm)
 
         For Each dr As DataRow In dt.Rows
             itm = New ListItem()
@@ -37,6 +37,8 @@ Partial Class Admin_MasterForms_frmManageCycle
             ddlAssessmentType.Items.Add(itm)
         Next
     End Sub
+
+
     <System.Web.Services.WebMethod()>
     Public Shared Function fnGetCycleDetails(ByVal CycleID As Integer, ByVal SearchTxt As String, ByVal Flag As Integer) As String
         Dim Objcon2 As New SqlConnection(System.Configuration.ConfigurationManager.AppSettings("strConn"))
@@ -60,10 +62,11 @@ Partial Class Admin_MasterForms_frmManageCycle
 
                 strTable.Append("<thead><tr>")
                 strTable.Append("<th>Cycle Name</th>")
-                strTable.Append("<th>Cycle Date</th>")
+                strTable.Append("<th>Cycle Start Date</th>")
+                strTable.Append("<th>Cycle End Date</th>")
                 strTable.Append("<th>Assessment Type</th>")
                 strTable.Append("<th>Mapped Participant</th>")
-                strTable.Append("<th>Mapped Assessor</th>")
+                'strTable.Append("<th>Mapped Assessor</th>")
                 strTable.Append("<th style='width:8%'>Action</th>")
                 strTable.Append("</tr></thead><tbody>")
                 While dr.Read
@@ -72,10 +75,11 @@ Partial Class Admin_MasterForms_frmManageCycle
                     strTable.Append("<tr>")
                     strTable.Append("<td class='text-left'>" & dr("CycleName") & "</td>")
                     strTable.Append("<td>" & dr("CycleStartDate") & "</td>")
+                    strTable.Append("<td>" & dr("CycleEndDate") & "</td>")
                     strTable.Append("<td style='background-color:#e9e9e9'><i>" & dr("AssementType") & "</i></td>")
                     strTable.Append("<td style='background-color:#e9e9e9'><i>" & dr("ParticipantCount") & "</i></td>")
-                    strTable.Append("<td style='background-color:#e9e9e9'><i>" & dr("AssessorCount") & "</i></td>")
-                    strTable.Append("<td><span style='cursor:pointer' class='text-primary fa fa-pencil' onclick=fnEditCycleDetails('" & dr.Item("cycleid") & "','" & Replace(dr.Item("CycleName"), " ", "_") & "','" & dr("CycleStartDate") & "','" & dr("BandID") & "','" & dr("AssessmentTypeId") & "')></span><span style='cursor:pointer' class='text-danger ml-3 fa fa-trash' onclick=fndelete_row('" & dr.Item("cycleid") & "')></span></td>")
+                    'strTable.Append("<td style='background-color:#e9e9e9'><i>" & dr("AssessorCount") & "</i></td>")
+                    strTable.Append("<td><span style='cursor:pointer' class='text-primary fa fa-pencil' onclick=fnEditCycleDetails('" & dr.Item("cycleid") & "','" & Replace(dr.Item("CycleName"), " ", "_") & "','" & dr("CycleStartDate") & "','" & dr("CycleEndDate") & "','" & dr("BandID") & "','" & dr("AssessmentTypeId") & "','" & dr("flgCycleType") & "')></span><span style='cursor:pointer' class='text-danger ml-3 fa fa-trash' onclick=fndelete_row('" & dr.Item("cycleid") & "')></span></td>")
                     strTable.Append("</tr>")
                 End While
                 strTable.Append("</tbody>")
@@ -105,7 +109,7 @@ Partial Class Admin_MasterForms_frmManageCycle
     End Function
 
     <System.Web.Services.WebMethod()>
-    Public Shared Function fnManageCycleName(ByVal CycleID As Integer, CycleName As String, CycleDate As String, ByVal BandID As Integer, ByVal AssessmentType As Integer) As String
+    Public Shared Function fnManageCycleName(ByVal CycleID As Integer, CycleName As String, CycleDate As String, CycleEndDate As String, ByVal BandID As Integer, ByVal AssessmentType As Integer, ByVal flgCycleType As Integer) As String
         Dim strReturn As String = 1
         ' Sub spRspBusinessCaseUPDAnswers(ByVal RspExerciseID As Integer, ByVal LoginId As Integer, ByVal selValues As String, ByVal statusValue As Integer)
         Dim LoginId As Integer
@@ -115,8 +119,11 @@ Partial Class Admin_MasterForms_frmManageCycle
         objCom2.Parameters.Add("@CycleID", SqlDbType.Int).Value = CycleID
         objCom2.Parameters.Add("@CycleName", SqlDbType.NVarChar).Value = CycleName
         objCom2.Parameters.Add("@CycleStartDate", SqlDbType.DateTime).Value = CycleDate
+        objCom2.Parameters.Add("@CycleEndDate", SqlDbType.DateTime).Value = CycleEndDate
         objCom2.Parameters.Add("@BandID", SqlDbType.Int).Value = BandID
         objCom2.Parameters.Add("@AssmntTypeId", SqlDbType.Int).Value = AssessmentType
+        objCom2.Parameters.Add("@flgCycleType", SqlDbType.Int).Value = flgCycleType
+
 
         objCom2.CommandType = CommandType.StoredProcedure
         objCom2.CommandTimeout = 0

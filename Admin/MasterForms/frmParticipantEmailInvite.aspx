@@ -18,7 +18,7 @@
         var MappingStatus = 0;
         function fnDSEList() {
             var CycleId = $("#ConatntMatter_ddlCycle").val().split("^")[0];
-            var MailCreationStatus = $("#ConatntMatter_ddlCycle").val().split("^")[1];
+            var MailCreationStatus = 3;// $("#ConatntMatter_ddlCycle").val().split("^")[1];
             var LoginId = $("#ConatntMatter_hdnLoginId").val();
             var CycleDate = $("#ConatntMatter_ddlCycle option:selected").attr("CycleDate");
             //alert("CycleId=" + CycleId)
@@ -125,6 +125,8 @@
             var cntOneTonOne = 0; var OldParticipantCycleMappingId = 0; var startTime = ""; var timeselected = 0;
             $("#ConatntMatter_divdrmmain").find("#tbldbrlist input[flg=1]:checked").each(function () {
                 var Name = $(this).closest("tr").attr("FullName");
+                var username = $(this).closest("tr").attr("username");
+                var pwd = $(this).closest("tr").attr("pwd");
                 var EmailId = $(this).closest("tr").attr("EmailID");
                 var Subject =  $(this).closest("tr").attr("subjectline");
                 var StartTime =  $(this).closest("tr").attr("StartTime");
@@ -135,7 +137,7 @@
                 //alert(StartTime)
               //  alert(EndTime)
                 //  ArrDataSaving.push({ EmpNodeID:EmpNodeID, Name: Name, EmailId: EmailId, Subject: Subject, StartTime: StartTime, EndTime: EndTime,Fname:Fname,FlagValue: hdnFlagValue, MailStatus: '' });
-               ArrDataSaving.push({ EmpNodeID: EmpNodeID, Name: Name, EmailId: EmailId, Subject: Subject, StartTime: StartTime, EndTime: EndTime, Fname: Fname, MailStatus: '', SchedulerFlagValue: SchedulerFlagValue });
+                ArrDataSaving.push({ EmpNodeID: EmpNodeID, Name: Name, EmailId: EmailId, Subject: Subject, StartTime: StartTime, EndTime: EndTime, Fname: Fname, MailStatus: '', SchedulerFlagValue: SchedulerFlagValue, username: username,pwd:pwd });
             });
 
          

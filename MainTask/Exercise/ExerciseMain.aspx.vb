@@ -30,6 +30,7 @@ Partial Class Set1_Main_frmExerciseMain_New
             Return
         End If
         If Not IsPostBack Then
+            hdnTestURL.Value = ConfigurationManager.AppSettings("TestURL")
             hdnEmailId.Value = IIf(IsNothing(Session("EmpEmailId")), "", Session("EmpEmailId"))
             fnCallspRspmain(hdnLoginID.Value)
 
@@ -38,6 +39,7 @@ Partial Class Set1_Main_frmExerciseMain_New
     End Sub
 
     Sub fnCallspRspmain(ByVal LoginID As Integer)
+
 
         Dim strTable As New StringBuilder
         Dim strReturnVal As String = 1
@@ -59,6 +61,7 @@ Partial Class Set1_Main_frmExerciseMain_New
         Dim className As String = ""
         Dim bgImage As String = ""
         Dim ExerciseStatus As Integer = 0
+        Dim IsToolEnable As Integer = 0
         Dim btnText As String = ""
         Dim SpanClass As String = ""
         Dim MainFinalSubmit As Integer = 2
@@ -76,6 +79,7 @@ Partial Class Set1_Main_frmExerciseMain_New
                 Dim ToolId = row.Item("ToolId")
                 'TotalTime = row.Item("TotalTestTime")
                 ExerciseType = 1 'row.Item("ExerciseType")
+                IsToolEnable = row.Item("IsToolEnabled")
 
                 If ExerciseStatus = 0 Or ExerciseStatus = 1 Then
                     MainFinalSubmit = 0
@@ -121,15 +125,22 @@ Partial Class Set1_Main_frmExerciseMain_New
                 strTable.Append("<div class='panel-box-title'><img src ='" & bgImage & "' />")
                 strTable.Append("<div class='panel-box-title-text'>")
                 strTable.Append("<small>" & row.Item("MainToolDescr") & "</small>")
-                strTable.Append("</div>")
-                strTable.Append("</div>")
-
+                strTable.Append("</div>")         
+                strTable.Append("</div>") 
+                strTable.Append("<div>Total Time : " & row.Item("TotalTime") & " Min</div>")            
+               ' strTable.Append("<div>Total Time : 90 Min</div>")            
                 strTable.Append("<div class='panel-footer'> ")
-
+                ' IsToolEnable = 1
                 If ExerciseStatus = 2 Then
                     strTable.Append(" <Input type='button' class='btn w-100' value='" & btnText & "' id='btnTask_" & ExerciseID.ToString() & "'>")
                 Else
-                    strTable.Append("<input type='button' class='btn w-100' value='" & btnText & "' url='" & row.Item("url").ToString() & "' id='btnTask_" & ExerciseID.ToString() & "' onclick='fnOpenTest(this," & ExerciseID & "," & row.Item("IsExternal") & ", " & hdnLoginID.Value & ", " & ToolId & "," & row.Item("empnodeid") & ")'>")
+                    If IsToolEnable = 1 Then
+                        strTable.Append("<input type='button' class='btn w-100' value='" & btnText & "' disabled url='" & row.Item("url").ToString() & "' id='btnTask_" & ExerciseID.ToString() & "' title = 'Your assessment has been expired.' >")
+
+                    Else
+                        strTable.Append("<input type='button' class='btn w-100' value='" & btnText & "' url='" & row.Item("url").ToString() & "' id='btnTask_" & ExerciseID.ToString() & "' onclick='fnOpenTest(this," & ExerciseID & "," & row.Item("IsExternal") & ", " & hdnLoginID.Value & ", " & ToolId & "," & row.Item("empnodeid") & ")'>")
+                    End If
+                    'strTable.Append("<input type='button' class='btn w-100' value='" & btnText & "' url='" & row.Item("url").ToString() & "' id='btnTask_" & ExerciseID.ToString() & "' onclick='fnOpenTest(this," & ExerciseID & "," & row.Item("IsExternal") & ", " & hdnLoginID.Value & ", " & ToolId & "," & row.Item("empnodeid") & ")'>")
                 End If
 
                 strTable.Append("</div></div></div>")
@@ -230,7 +241,7 @@ Partial Class Set1_Main_frmExerciseMain_New
             Dim FinalStatus As Integer = ds.Tables(0).Rows(0).Item(0)
             If FinalStatus = 2 Then
                 Dim str = clsHttpRequest.sendConsolidatedReportDataToEK(HttpContext.Current.Session("RspId"))
-                strReturn = str
+                strReturn = "1|"
             Else
                 strReturn = "3|"
                 'strReturn = "1^"

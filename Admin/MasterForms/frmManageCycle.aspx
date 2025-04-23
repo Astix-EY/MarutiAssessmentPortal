@@ -18,7 +18,7 @@
 
             $("#ConatntMatter_btnSearch").click(function () {
                 $("#ConatntMatter_dvMain")[0].innerHTML = "";
-              
+
                 var UserFilter = $("#ConatntMatter_txtSearch").val();
                 $("#loader").show()
                 //  debugger;
@@ -29,7 +29,7 @@
                 $("#ConatntMatter_txtSearch").val('');
                 PageMethods.fnGetCycleDetails(0, '', 1, fnGetAllSuccessData, fnFailedCycle, 0);
             });
-            
+
             fnSetDateTimePicker();
         });
         function fnSetDateTimePicker() {
@@ -38,13 +38,20 @@
                 changeMonth: true,
                 changeYear: true,
                 minDate: new Date(),
-                showOn: "button",
-                buttonImage: "../../Images/Icons/calendar-icon.jpg",
-                buttonImageOnly: true,
-                buttonText: "Select date",
-                onSelect: function (d, el) {
+                onSelect: function (selected) {
+                    $("#ConatntMatter_txtEndDate").datepicker("option", "minDate", selected)
+                    $("#ConatntMatter_txtEndDate").val($("#ConatntMatter_txtDate").val());
+                    fnddlBatchTypeChange();
                 }
             });
+            $("#ConatntMatter_txtEndDate").datepicker({
+                dateFormat: "dd-M-yy",
+                changeMonth: true,
+                changeYear: true,
+                minDate: $("#ConatntMatter_txtDate").val(),
+
+            });
+
 
             $('img.ui-datepicker-trigger').css({ 'cursor': 'pointer', 'height': '25px', 'width': '25px', 'position': 'absolute', 'bottom': '7px', 'right': '10px' });
         }
@@ -81,32 +88,29 @@
     </script>
 
     <script type="text/javascript">
-        function fnSaveCycle()
-        {
+        function fnSaveCycle() {
             var CycleName = document.getElementById("ConatntMatter_txtCycleName").value.trim();
             var CycleDate = document.getElementById("ConatntMatter_txtDate").value.trim();
+            var CycleEndDate = $("#ConatntMatter_txtEndDate").val().trim();
             var SetID = 0// $('#ConatntMatter_ddlSetName').val();
             var AssessmentType = $('#ConatntMatter_ddlAssessmentType').val();
-            if (CycleName == "") 
-            {
+            var BatchTypeValue = $('#ConatntMatter_ddlBatchType').val();
+            if (CycleName == "") {
                 alert("Please enter batch name")
                 return false;
             }
-            if (CycleDate == "")
-            {
+            if (CycleDate == "") {
                 alert("Please enter batch date")
                 return false;
             }
-           
+
             CycleName = CycleName.replace("_", " ");
             var hdnCycleID = document.getElementById("ConatntMatter_hdnCycleID").value;
-            PageMethods.fnManageCycleName(hdnCycleID, CycleName, CycleDate, SetID, AssessmentType,fnSuccessCycle, fnFailedCycle);
+            PageMethods.fnManageCycleName(hdnCycleID, CycleName, CycleDate, CycleEndDate, SetID, AssessmentType, BatchTypeValue, fnSuccessCycle, fnFailedCycle);
 
         }
-        function fnSuccessCycle(result)
-        {
-            if (result.split("@")[0] == "1")
-            {
+        function fnSuccessCycle(result) {
+            if (result.split("@")[0] == "1") {
 
                 var CycleID = result.split("^")[1]
                 document.getElementById("ConatntMatter_hdnCycleID").value = CycleID;
@@ -114,16 +118,14 @@
                 var CycleName = document.getElementById("ConatntMatter_txtCycleName").value.trim();
                 var CycleDate = document.getElementById("ConatntMatter_txtDate").value.trim();
 
-
                 var Returnresult = result.split("@")[0]
                 if (Returnresult == 1) {
-                    PageMethods.fnGetCycleDetails(0,'',1, fnGetAllSuccessData, fnFailedCycle, 1);
+                    PageMethods.fnGetCycleDetails(0, '', 1, fnGetAllSuccessData, fnFailedCycle, 1);
                 }
 
 
             }
-            else
-            {
+            else {
                 alert("Error....")
             }
         }
@@ -139,22 +141,21 @@
                         alert("Saved Successfully")
                     }
                 }
-               
-                    $("#ConatntMatter_dvMain")[0].innerHTML = result.split("@")[1];
 
-                    var allsecheight = $(".navbar").outerHeight() + $('.section-title').outerHeight() + $('.d-flex').outerHeight();
-                    $("#ConatntMatter_dvMain").tblheaderfix({
-                        height: $(window).height() - (allsecheight + 170)
-                    });
-                
-               
+                $("#ConatntMatter_dvMain")[0].innerHTML = result.split("@")[1];
+
+                var allsecheight = $(".navbar").outerHeight() + $('.section-title').outerHeight() + $('.d-flex').outerHeight();
+                $("#ConatntMatter_dvMain").tblheaderfix({
+                    height: $(window).height() - (allsecheight + 170)
+                });
+
+
             }
         }
-            
-        function fnFailedCycle(result)
-            {
-                alert("Error - " + result.split("^")[1])
-            }
+
+        function fnFailedCycle(result) {
+            alert("Error - " + result.split("^")[1])
+        }
     </script>
     <script type="text/javascript">
         function fnAddNewCycle() {
@@ -167,9 +168,11 @@
             });
             document.getElementById("ConatntMatter_txtCycleName").value = "";
             document.getElementById("ConatntMatter_txtDate").value = "";
+            document.getElementById("ConatntMatter_txtEndDate").value = "";
             document.getElementById("ConatntMatter_hdnCycleID").value = 0;
             document.getElementById("ConatntMatter_hdnFlag").value = 0;
-           // $("#ConatntMatter_ddlSetName").val(0);
+            $("#ConatntMatter_txtDate, #ConatntMatter_ddlBatchType,#ConatntMatter_ddlAssessmentType").prop("disabled", false);
+            // $("#ConatntMatter_ddlSetName").val(0);
         }
 
         function fndelete_row(CycleID) {
@@ -186,8 +189,7 @@
                     alert("You can not delete this cycle because Users are already Mapped with the batch. In any case if you want to remove this , kindly removed the mapping first from ''Assessee and Assessor Mapping''")
                     return false;
                 }
-                else
-                {
+                else {
                     PageMethods.fnDeleteCycle(CycleID, fnDeleteSuccess, fnFailedCycle);
                 }
             }
@@ -201,8 +203,8 @@
                 var UserFilter = $("#ConatntMatter_txtSearch").val();
                 $("#loader").show()
                 //  debugger;
-                PageMethods.fnGetCycleDetails(0, UserFilter, 2, fnGetAllSuccessData, fnFailedCycle, 0);
-              //  PageMethods.fnGetCycleDetails(0, fnGetAllSuccessData, fnFailedCycle, 0);
+                PageMethods.fnGetCycleDetails(0, '', 1, fnGetAllSuccessData, fnFailedCycle, 0);
+                //  PageMethods.fnGetCycleDetails(0, fnGetAllSuccessData, fnFailedCycle, 0);
             }
         }
     </script>
@@ -210,14 +212,19 @@
     <script type="text/javascript">
 
 
-        function fnEditCycleDetails(CycleID, CycleName, CycleStartdate, BandID, AssessmentTypeId) {
+        function fnEditCycleDetails(CycleID, CycleName, CycleStartdate, CycleEnddate, BandID, AssessmentTypeId, flgCycleType) {
+            // alert(flgCycleType);
             CycleName = replaceAll(CycleName, "_", " ") //CycleName.replace("_", " ");
             document.getElementById("ConatntMatter_hdnCycleID").value = CycleID;
             document.getElementById("ConatntMatter_txtCycleName").value = CycleName;
             document.getElementById("ConatntMatter_txtDate").value = CycleStartdate;
+            document.getElementById("ConatntMatter_txtEndDate").value = CycleEnddate;
+            $("#ConatntMatter_txtEndDate").datepicker("option", "minDate", CycleStartdate)
+            $("#ConatntMatter_txtDate, #ConatntMatter_ddlBatchType,#ConatntMatter_ddlAssessmentType").prop("disabled", true);
             $("#ConatntMatter_ddlAssessmentType").val(AssessmentTypeId);
+            $("#ConatntMatter_ddlBatchType").val(flgCycleType);
             document.getElementById("ConatntMatter_hdnFlag").value = 1;
-         //   $("#ConatntMatter_ddlSetName").val(BandID);
+            //   $("#ConatntMatter_ddlSetName").val(BandID);
             $("#dvDialog").dialog({
                 title: "Modify Cycle Details",
                 resizable: false,
@@ -235,6 +242,11 @@
             }
             return str;
         }
+        function fnddlBatchTypeChange() {
+            var ddlBatchTypeValue = $("#ConatntMatter_ddlBatchType option:selected").text();
+            document.getElementById("ConatntMatter_txtCycleName").value = "Cycle:" + document.getElementById("ConatntMatter_txtDate").value;//+ "_" + ddlBatchTypeValue;
+
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentTimer" runat="Server">
@@ -245,14 +257,16 @@
         <div class="title-line-center"></div>
     </div>
     <div class="form-inline mb-3 d-flex">
-        <div>  <input type="button" id="btnShowAll" runat="server" value="Show All" class="btn btn-primary"  /></div>
-    <div class="input-group ml-auto">
+        <div>
+            <input type="button" id="btnShowAll" runat="server" value="Show All" class="btn btn-primary" />
+        </div>
+        <div class="input-group ml-auto">
             <asp:TextBox ID="txtSearch" runat="server" placeholder="Search" CssClass="form-control"></asp:TextBox>
             <div class="input-group-append">
                 <input type="button" id="btnSearch" runat="server" value="Show" class="btn btn-primary" />
             </div>
         </div>
-        </div>
+    </div>
     <div id="dvMain" runat="server"></div>
     <div class="text-center">
         <input type="button" id="AddNewCycle" value="Add New Cycle" onclick="fnAddNewCycle()" class="btns btn-cancel" />
@@ -265,13 +279,25 @@
                 <label for="CycleName">Assessment Type</label>
                 <asp:DropDownList ID="ddlAssessmentType" runat="server" CssClass="form-control"></asp:DropDownList>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 d-none">
+                <label for="BatchName">Bacth Type</label>
+                <asp:DropDownList ID="ddlBatchType" runat="server" onchange="fnddlBatchTypeChange()" CssClass="form-control">
+                    <asp:ListItem Value="0">With Functional</asp:ListItem>
+                    <asp:ListItem Value="1" Selected>Without Functional</asp:ListItem>
+                </asp:DropDownList>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="CycleDate">Cycle Start Date</label>
+                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control" MaxLength="50" ReadOnly="true"></asp:TextBox>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="CycleDate">Cycle End Date</label>
+                <asp:TextBox ID="txtEndDate" runat="server" CssClass="form-control" MaxLength="50" ReadOnly="true"></asp:TextBox>
+            </div>
+            <div class="form-group col-md-12">
                 <label for="CycleName">Cycle Name</label>
                 <asp:TextBox ID="txtCycleName" runat="server" CssClass="form-control"></asp:TextBox>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="CycleDate">Cycle Date</label>
-                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control" MaxLength="50" ReadOnly="true"></asp:TextBox>
             </div>
         </div>
 

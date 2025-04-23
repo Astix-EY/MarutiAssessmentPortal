@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" EnableEventValidation="false" MasterPageFile="~/Admin/AdminMaster/Site.master" AutoEventWireup="true" CodeFile="frmParticipantMappingWithTechnicalTest.aspx.cs" Inherits="frmParticipantMappingWithTechnicalTest" validateRequest="false" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" MasterPageFile="~/Admin/AdminMaster/Site.master" AutoEventWireup="true" CodeFile="frmParticipantMappingWithTechnicalTest.aspx.cs" Inherits="frmParticipantMappingWithTechnicalTest" ValidateRequest="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
     <link href="../../CSS/Multiselect/jquery.multiselect.css" rel="stylesheet" type="text/css" />
@@ -7,18 +7,22 @@
     <link href="../../styles/Multiselect/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script src="../../scripts/MultiSelect/jquery.multiselect.js" type="text/javascript"></script>
     <script src="../../scripts/MultiSelect/jquery.multiselect.filter.js" type="text/javascript"></script>
+    <link href="../../JDatatable/jquery.dataTables.css" rel="stylesheet" />
+    <script src="../../JDatatable/dataTables.js"></script>
     <style>
-        .ui-icon-triangle-1-s{
-        background-color:#ffffff !important;
-    border: none !important;
-    margin-top: 2px;
+        .ui-icon-triangle-1-s {
+            background-color: #ffffff !important;
+            border: none !important;
+            margin-top: 2px;
         }
-        .ui-multiselect-menu{
-            width:300px !important;
+
+        .ui-multiselect-menu {
+            width: 300px !important;
         }
+
         label {
-     margin-bottom: 0 !important
-}
+            margin-bottom: 0 !important
+        }
     </style>
     <script>
         var MonthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -37,6 +41,9 @@
         }
         function fnGetEntries_pass(res, flgCallFrom) {
             $("#ConatntMatter_dvMain").html(res.split("|")[0]);
+
+          
+
             //$("#tblMapping").find("select[iden='emp']").each(function () {
             //    if (parseInt($(this).attr("defval")) > 0) {
             //        $(this).append("<option value='" + $(this).attr("defval") + "'  emailid='" + $(this).attr("emailid") + "' selected >" + $(this).attr("EmpName") + "</option>");
@@ -45,27 +52,31 @@
             //});
             $("#ConatntMatter_ddlTest").html(res.split("|")[3]);
 
-                var tblTestMappingData = $.parseJSON(res.split("|")[2]);
-           
+            var tblTestMappingData = $.parseJSON(res.split("|")[2]);
+            //alert("1");
+            //$("#dvloader").hide();
             for (var i = 0; i < tblTestMappingData.length; i++) {
                 $("#tblMapping").find("tr[empnodeid='" + tblTestMappingData[i]["EmpNodeId"] + "']").find("select").eq(0).find("option[value='" + tblTestMappingData[i]["exerciseId"] + "']").attr("flg", "1");
-                    $("#tblMapping").find("tr[empnodeid='" + tblTestMappingData[i]["EmpNodeId"] + "']").find("select").eq(0).find("option[value='" + tblTestMappingData[i]["exerciseId"] + "']").prop("selected", true);
-                }
+                $("#tblMapping").find("tr[empnodeid='" + tblTestMappingData[i]["EmpNodeId"] + "']").find("select").eq(0).find("option[value='" + tblTestMappingData[i]["exerciseId"] + "']").prop("selected", true);
+            }
 
-                $("select.clsmultiple").multiselect({
-                    position: { my: "left bottom", at: "left top", collision: "flip" },
-                    selectedList: $(this).find("option").length,
-                    noneSelectedText: "--select--",
-                    height: 200,
-                    maxWidth: 150,
-                    showCheckbox: false
-                }).multiselectfilter();
-            
+
+
+
+            $("select.clsmultiple").multiselect({
+                /*   position: { my: "left bottom", at: "left top", collision: "flip" },*/
+                selectedList: $(this).find("option").length,
+                noneSelectedText: "--select--",
+                height: 200,
+                maxWidth: 150,
+                showCheckbox: false
+            }).multiselectfilter();
+
 
 
 
             $("#ConatntMatter_ddlTest").multiselect({
-                position: { my: "left bottom", at: "left top", collision: "flip" },
+                /* position: { my: "left bottom", at: "left top", collision: "flip" },*/
                 selectedList: $(this).find("option").length,
                 noneSelectedText: "--select--",
                 height: 200,
@@ -75,7 +86,7 @@
             $("#ConatntMatter_ddlTest").multiselect('refresh');
 
             $("input[name='multiselect_ConatntMatter_ddlTest']").on("change", function () {
-               // alert($(this).is(":checked"))
+                // alert($(this).is(":checked"))
                 if ($(this).is(":checked")) {
                     $("select.clsmultiple").find("option[value='" + $(this).val() + "']").prop("selected", true);
                 } else {
@@ -83,25 +94,38 @@
                 }
                 $("select.clsmultiple").multiselect('refresh');
             })
-            
+
 
             if (res.split("|")[1] == "1") {
-               // $("#tblMapping").find("select").prop("disabled", true);
-                if ($("#ConatntMatter_ddlUser").val() == "1") {
-                    $("#tblMapping").find("th:last").remove();
-                    $("#tblMapping").find("tbody").eq(0).find("tr").each(function () {
-                        $(this).find("td:last").remove()
-                    });
-                }
-//$("#ConatntMatter_ddlTest").multiselect('disable');
-//$("select.clsmultiple").multiselect('disable');
+                // $("#tblMapping").find("select").prop("disabled", true);
+                //if ($("#ConatntMatter_ddlUser").val() == "1") {
+                //    $("#tblMapping").find("th:last").remove();
+                //    $("#tblMapping").find("tbody").eq(0).find("tr").each(function () {
+                //        $(this).find("td:last").remove()
+                //    });
+                //}
+                //$("#ConatntMatter_ddlTest").multiselect('disable');
+                //$("select.clsmultiple").multiselect('disable');
                 //$("#btnSubmit").hide();
+
+
+
             }
             else {
-$("#ConatntMatter_ddlTest").multiselect('enable');
+                $("#ConatntMatter_ddlTest").multiselect('enable');
                 $("#btnSubmit").show();
             }
             $("select.clsmultiple").multiselect('refresh');
+
+              $("#tblMapping").DataTable({
+                layout: {
+                    bottomEnd: {
+                        paging: {
+                            firstLast: false
+                        }
+                    }
+                }
+            });
             $("#dvloader").hide();
         }
         function fnRemoveMapping(ctrl) {
@@ -307,7 +331,7 @@ $("#ConatntMatter_ddlTest").multiselect('enable');
                 }
             });
 
-            
+
 
             if (tbl1.length > 0) {
                 $("#dvloader").show();
@@ -321,7 +345,7 @@ $("#ConatntMatter_ddlTest").multiselect('enable');
             $("#dvloader").hide();
             if (res.split("|")[0] == "1") {
                 alert(res.split("|")[1]);
-				//fnGetMapping();
+                //fnGetMapping();
             }
             else {
                 $("#dvloader").hide();
@@ -336,7 +360,7 @@ $("#ConatntMatter_ddlTest").multiselect('enable');
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ConatntMatter" runat="Server">
     <div class="section-title clearfix">
-        <h3 class="text-center">User Mapping With Technical Test</h3>
+        <h3 class="text-center">User Mapping With AI Tools</h3>
         <div class="title-line-center"></div>
     </div>
 
@@ -348,14 +372,13 @@ $("#ConatntMatter_ddlTest").multiselect('enable');
         </div>
         <label for="ac" class="col-form-label mr-3" style="padding-left: 50px;">Select Test</label>
         <div class="input-group">
-            <asp:DropDownList ID="ddlTest" AutoPostBack="false" runat="server" CssClass="form-control" style="width:200px;" multiple="true" >
-              
+            <asp:DropDownList ID="ddlTest" AutoPostBack="false" runat="server" CssClass="form-control" Style="width: 200px;" multiple="true">
             </asp:DropDownList>
         </div>
     </div>
 
-    <div id="dvMain" runat="server" style="width:60%; margin:0 auto;"></div>
-    <div class="text-center" style="margin:6px auto;">
+    <div id="dvMain" runat="server" style="width: 60%; margin: 0 auto;"></div>
+    <div class="text-center" style="margin: 6px auto;">
         <input type="button" id="btnSubmit" value="Save Mapping" onclick="fnSaveMapping()" class="btns btn-cancel" />
     </div>
     <div id="dvAlert" style="display: none;"></div>

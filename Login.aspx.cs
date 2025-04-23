@@ -116,6 +116,7 @@ public partial class AssessorLogin : System.Web.UI.Page
                         Session["ActiveStatus"] = drdr["ActiveStatus"].ToString();
                         Session["RspID"] = drdr["RspID"].ToString();
                         Session["BandID"] = drdr["BandID"].ToString();
+                        Session["UserID"] = drdr["UserID"].ToString();
                         PageNmbr = Convert.ToInt32(drdr["PgNmbr"].ToString());
 
 

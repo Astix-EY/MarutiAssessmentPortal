@@ -5,6 +5,19 @@
         .pointer {
             cursor: pointer;
         }
+        .table tbody td,.table thead th {
+            text-align:left !important;
+        }
+          div.clsloader {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            height: 100%;
+            z-index: 20000;
+            background-color: white;
+            opacity: 0.3;
+        }
     </style>
     <script type="text/javascript">
         $.fn.tblheaderfix = function (options) {
@@ -51,7 +64,7 @@
 
             var SetID = $('#ConatntMatter_ddlSetName').val();
             if (UserType == 0) {
-                alert("Please select the user type")
+                alert("Please select the band type")
                 return false;
             }
 
@@ -106,24 +119,23 @@
             }
 
 
-            if (UserType == "1") {
-
                 if (SetID == 0) {
-                    alert("Please select the Level name")
+                    alert("Please select the Set No")
                     return false;
                 }
-
-            }
+            
 
             Fname = Fname.replace("_", " ");
             Lname = Lname.replace("_", " ");
 
             var hdnEmpID = document.getElementById("ConatntMatter_hdnEmpID").value;
             //   alert(hdnEmpID)
+            $("#loader").show();
             PageMethods.fnManageEmployeeDetails(hdnEmpID, Fname, Lname, Empcode, EmailID, UserType, SetID, fnSaveSuccessEmpDetails, fnFailed);
 
         }
         function fnSaveSuccessEmpDetails(result) {
+            $("#loader").hide();
             if (result.split("@")[0] == "1") {
 
                 //  var ReturnEmpId = result.split("^")[1]
@@ -192,8 +204,8 @@
 
             $("#ConatntMatter_ddlUserType").prop("disabled", false);
 
-            //$("#ConatntMatter_ddlSetName option[value=0]").attr('selected', 'true')
-           // $("#ConatntMatter_ddlSetName").val(0);
+            $("#ConatntMatter_ddlSetName option[value=0]").attr('selected', 'true')
+             $("#ConatntMatter_ddlSetName").val(0);
             $("#ConatntMatter_ddlSetName").prop("disabled", false);
             document.getElementById("ConatntMatter_hdnEmpID").value = 0;
             document.getElementById("ConatntMatter_hdnFlag").value = 0;
@@ -236,7 +248,7 @@
     <script type="text/javascript">
 
 
-        function fnEditEmployeeDetails(EmpNodeId, FName, LName, EmailID, EmpCode, UserType, BandID) {
+        function fnEditEmployeeDetails(EmpNodeId, FName, LName, EmailID, EmpCode, BandID, SetNo) {
             FName = replaceAll(FName, "-", " ");
 
             document.getElementById("ConatntMatter_hdnEmpID").value = EmpNodeId;
@@ -246,11 +258,11 @@
             document.getElementById("ConatntMatter_txtEmailID").value = EmailID;
 
             document.getElementById("ConatntMatter_txtEmpCode").value = EmpCode;
-            $("#ConatntMatter_ddlUserType").val(UserType);
+            $("#ConatntMatter_ddlUserType").val(BandID);
             //   $("#ConatntMatter_ddlUserType").find('option[value="' + UserType + '"]').attr('selected', 'true')
             $("#ConatntMatter_ddlUserType").prop("disabled", true);
-           // $("#ConatntMatter_ddlSetName").val(BandID);
-            // $("#ConatntMatter_ddlSetName").find('option[value="' + BandID + '"]').attr('selected', 'true')
+            $("#ConatntMatter_ddlSetName").val(SetNo);
+            $("#ConatntMatter_ddlSetName").find('option[value="' + SetNo + '"]').attr('selected', 'true')
             //$("#ConatntMatter_ddlSetName").prop("disabled", true);
 
             document.getElementById("ConatntMatter_hdnEmpID").value = EmpNodeId;
@@ -308,22 +320,14 @@
                 PageMethods.fnGetEmployeeDetails(0, UserFilter, 2, fnGetAllSuccessData, fnFailed, 0);
             });
 
-            $("#ConatntMatter_ddlUserType").on("change", function () {
-
-                var UserType = $("#ConatntMatter_ddlUserType").val();
-                if (UserType == "1") {
-                    $("#ConatntMatter_ddlSetName").prop("disabled", false);
-                    //  $("#ConatntMatter_txtEmpCode").prop("disabled", false); 
-                  //  $("#dvSearch").show();
-                }
-                else {
-                    //  $("#ConatntMatter_txtEmpCode").prop("disabled", true)
-                    $("#ConatntMatter_ddlSetName").prop("disabled", true);
-                 //   $("#dvSearch").hide();
-                }   
-            });
+           
 
         });
+
+        function fnBulkUploadUserData() {
+            window.location.href = "../UserDetailsUpload_Excel/frmManageUserDetailsUpload_Excel.aspx";
+        }
+        
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentTimer" runat="Server">
@@ -341,8 +345,7 @@
                 <asp:ListItem Value="0">.......</asp:ListItem>
                 <asp:ListItem Value="1" Selected="true">Participant Not Mapped with any batch</asp:ListItem>
                 <asp:ListItem Value="2">Show Participant</asp:ListItem>
-                <asp:ListItem Value="3">Show Assessor</asp:ListItem>
-                <asp:ListItem Value="4">Show Manager</asp:ListItem>
+               
             </asp:DropDownList>
         </div>
         <div class="input-group ml-auto" id="dvSearch">
@@ -356,60 +359,66 @@
     <div id="dvMain" runat="server"></div>
     <div class="text-center mt-2">
         <input type="button" id="AddNewEmployee" value="Add New User" onclick="fnAddNewEmployee()" class="btns btn-cancel" />
+        
+            <input type="button" id="bulkupload" value="Bulk Upload" onclick="fnBulkUploadUserData(this);" class="btns btn-cancel" />
     </div>
 
     <div id="dvDialog" style="display: none">
-
+         <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="EmpCode">Select User Type</label>
-            <asp:DropDownList ID="ddlUserType" runat="server" CssClass="form-control">
+            <label for="EmpCode">Band</label>
+            <asp:DropDownList ID="ddlUserType" runat="server" CssClass="form-control"  >
                 <asp:ListItem Value="0" Selected="True">- Select -</asp:ListItem>
-                <asp:ListItem Value="1">Participant</asp:ListItem>
-                <asp:ListItem Value="2">Assessor</asp:ListItem>
-                <asp:ListItem Value="3">Manager</asp:ListItem>
+                <asp:ListItem Value="1">MGR AGM</asp:ListItem>
+                <asp:ListItem Value="2">DPO-FMGR</asp:ListItem>
+                <asp:ListItem Value="3">SFMGR-DDVM</asp:ListItem>
+               
             </asp:DropDownList>
         </div>
 
+              <div class="form-group col-md-6">
+            <label for="EmpCode">Select Set No</label>
+            <asp:DropDownList ID="ddlSetName" runat="server" CssClass="form-control" >
+                <asp:ListItem Value="0" Selected="True">- Select -</asp:ListItem>
+                <asp:ListItem Value="1">Set 1</asp:ListItem>
+               <asp:ListItem Value="2">Set 2</asp:ListItem>
+                <asp:ListItem Value="3">Set 3</asp:ListItem>
+            </asp:DropDownList>
+        </div>
+             </div>
+
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="FName">FName</label>
+                <label for="FName">First Name</label>
                 <asp:TextBox ID="txtFName" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
             <div class="form-group col-md-6">
-                <label for="FName">LName</label>
+                <label for="FName">Last Name</label>
                 <asp:TextBox ID="txtLName" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
             <div class="form-group col-md-6">
-                <label for="EmpCode">EmpCode</label>
+                <label for="EmpCode">Employee Code</label>
                 <asp:TextBox ID="txtEmpCode" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
             <div class="form-group col-md-6">
-                <label for="EmailID">EmailID</label>
+                <label for="EmailID">Email ID</label>
                 <asp:TextBox ID="txtEmailID" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
 
 
 
-            <div class="form-group col-md-6 d-none">
-                <label for="EmpCode">Which Level to be mapped to participant</label>
-                <asp:DropDownList ID="ddlSetName" runat="server" CssClass="form-control">
-                    <asp:ListItem Value="0">- Select -</asp:ListItem>
-                    <asp:ListItem Value="1" Selected="True">Level4</asp:ListItem>
-                    <asp:ListItem Value="2">Level3</asp:ListItem>
-                      <asp:ListItem Value="3">Level3-Direct Sales</asp:ListItem>
-                      <asp:ListItem Value="4">Level4-Direct Sales</asp:ListItem>
-                      <asp:ListItem Value="5">Level3-IndirectSales</asp:ListItem>
-                      <asp:ListItem Value="6">Level4-IndirectSales</asp:ListItem>
-			 <asp:ListItem Value="7">Level3-Solution </asp:ListItem>
-			 <asp:ListItem Value="8">Level4-Solution </asp:ListItem>
-
-
-                </asp:DropDownList>
-            </div>
+          
         </div>
         <div class="text-center mb-2">
             <input type="button" value="Save" onclick="fnSaveEmployeeDetails()" class="btns btn-cancel" />
+
         </div>
+
+
+    </div>
+
+     <div id="loader" class="clsloader" style="display: none">
+        <div class="loader"></div>
     </div>
 
     <asp:HiddenField ID="hdnEmpID" runat="server" Value=" 0" />

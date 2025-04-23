@@ -178,7 +178,7 @@ public partial class CommonData_Questionnaire_frmQusetionnaire : System.Web.UI.P
             RspDetID = RspDetID == "" ? "0" : RspDetID;
             QstnTypeID = ds.Tables[0].Rows[0]["TypeId"].ToString();
             RspExcerciseQstnID = ds.Tables[0].Rows[0]["RspExcerciseQstnID"].ToString();
-            strHTML.Append("<p iden='qstnHeader'>" + Convert.ToString(ds.Tables[0].Rows[0]["QstnHdr"]) + "</p>");
+            //strHTML.Append("<p iden='qstnHeader' style='font-weight: bold;font-size:13pt;color:black'>" + Convert.ToString(ds.Tables[0].Rows[0]["QstnHdr"]) + "</p>");
             strHTML.Append("<p style='font-size:12pt; font-weight:bold;' iden='qstn' flgAllOptionCompulsory='" + flgAllOptionCompulsory + "' RspDetID='" + RspDetID + "'  QstnTypeID='" + QstnTypeID + "' RspExcerciseQstnID='" + RspExcerciseQstnID + "'><b style='font-size:12.5pt'>Q" + ds.Tables[0].Rows[0]["Qstno"].ToString() + ": </b>" + ds.Tables[0].Rows[0]["Qstn"].ToString() + "</p>");
             IsSequencing = Convert.ToInt32(ds.Tables[0].Rows[0]["IsOrdrSequence"]);
         }
@@ -193,8 +193,40 @@ public partial class CommonData_Questionnaire_frmQusetionnaire : System.Web.UI.P
         {
             strHTML.Append("<div class='col-md-11 col-md-offset-1'>");
             strHTML.Append("<div class='qusgroup_option'>");
-            strHTML.Append(fnGetSubStatement(ds, Convert.ToInt32(ds.Tables[0].Rows[0]["RspExcerciseQstnID"]), Convert.ToString(ds.Tables[0].Rows[0]["Answrval"]), Convert.ToInt32(RspDetID), Convert.ToInt32(QstnTypeID), Convert.ToInt32(ds.Tables[0].Rows[0]["MaxQstnSelected"])));
+            strHTML.Append(fnGetSubStatement(ds, Convert.ToInt32(ds.Tables[0].Rows[0]["RspExcerciseQstnID"]), Convert.ToString(ds.Tables[0].Rows[0]["Answrval"]).Split('~')[0], Convert.ToInt32(RspDetID), Convert.ToInt32(QstnTypeID), Convert.ToInt32(ds.Tables[0].Rows[0]["MaxQstnSelected"])));
             strHTML.Append("</div>");
+
+ if (ds.Tables[0].Rows[0]["flgShowAdditionalTextBox"].ToString() == "1")
+            {
+                strHTML.Append("<table style='width:100%'>");
+                strHTML.Append("<tr>");
+                strHTML.Append("<td style='width:20px;padding-right:10px;vertical-align:top;font-size:12pt;font-weight:bold'>");
+                strHTML.Append("Please share your reasons for your chosen option.");
+                strHTML.Append("</td>");
+                strHTML.Append("</tr>");
+                strHTML.Append("<tr>");
+                strHTML.Append("<td>");
+                if (Convert.ToString(ds.Tables[0].Rows[0]["Answrval"]) != "")
+                {
+                    if (Convert.ToString(ds.Tables[0].Rows[0]["Answrval"]) == "-1^")
+                    {
+                        strHTML.Append("<textarea qstId='" + ds.Tables[0].Rows[0]["RspExcerciseQstnID"].ToString() + "'  id='txtAdditional_" + ds.Tables[0].Rows[0]["RspExcerciseQstnID"].ToString() + "'   cols='200'  rows='8'   class='form-control' style='width:100%; height:180px'></textarea>");
+                    }
+                    else
+                    {
+                        //strHTML.Append("<textarea  id='txtAdditional_" + ds.Tables[0].Rows[0]["RspExcerciseQstnID"].ToString() + "'   cols='200'  rows='8'   class='form-control' style='width:100%; height:180px'></textarea>");
+                        strHTML.Append("<textarea qstId='" + ds.Tables[0].Rows[0]["RspExcerciseQstnID"].ToString() + "' id='txtAdditional_" + ds.Tables[0].Rows[0]["RspExcerciseQstnID"].ToString() + "' cols='200'  rows='8'   class='form-control' style='width:100%; height:180px'>" + (Convert.ToString(ds.Tables[0].Rows[0]["Answrval"]).Split('~').Length>1? Convert.ToString(ds.Tables[0].Rows[0]["Answrval"]).Split('~')[1]:"") + "</textarea>");
+                    }
+                }
+
+                else
+                {
+                    strHTML.Append("<textarea  qstId='" + ds.Tables[0].Rows[0]["RspExcerciseQstnID"].ToString() + "' id='txtAdditional_" + ds.Tables[0].Rows[0]["RspExcerciseQstnID"].ToString() + "'   cols='200'  rows='8'   class='form-control' style='width:100%; height:180px'></textarea>");
+                }
+                strHTML.Append("</td>");
+                strHTML.Append("</tr>");
+                strHTML.Append("</table>");
+            }
             strHTML.Append("</div>");
         }
         else
@@ -708,7 +740,7 @@ public partial class CommonData_Questionnaire_frmQusetionnaire : System.Web.UI.P
                     if (arrStrAnswrVal.Contains(QstnValue))
                     {
                         strInnerTable.Append("<td class='checkbox' style='width:20px;vertical-align:top;text-align:center' >");
-                        strInnerTable.Append("<input style='cursor:default' type='checkbox' maxQstnSelected=" + MaxQstnSelected + " RspDetID = " + RspDetId + " value = '" + QstnValue + "' checked=true id='chkAns" + RspDetId + "^" + (k + 1) + "' name = '" + RspDetId + "'>");
+                        strInnerTable.Append("<input qstId='" + QstID + "' style='cursor:default' type='checkbox' maxQstnSelected=" + MaxQstnSelected + " RspDetID = " + RspDetId + " value = '" + QstnValue + "' checked=true id='chkAns" + RspDetId + "^" + (k + 1) + "' name = '" + RspDetId + "'>");
                         strInnerTable.Append("</td>");
                         strInnerTable.Append("<td style='padding-left:7px'>");
                         strInnerTable.Append("<label for='chkAns" + RspDetId + "^" + (k + 1) + "' >" + ds.Tables[1].Rows[k]["OptionDescr"] + "</label>");
@@ -717,7 +749,7 @@ public partial class CommonData_Questionnaire_frmQusetionnaire : System.Web.UI.P
                     else
                     {
                         strInnerTable.Append("<td class='radio' style='width:20px;vertical-align:top;text-align:center' >");
-                        strInnerTable.Append("<input style='cursor:default' type='checkbox' maxQstnSelected=" + MaxQstnSelected + " RspDetID = " + RspDetId + " value = '" + QstnValue + "' id='chkAns" + RspDetId + "^" + (k + 1) + "' name = '" + RspDetId + "'>");
+                        strInnerTable.Append("<input qstId='" + QstID + "' style='cursor:default' type='checkbox' maxQstnSelected=" + MaxQstnSelected + " RspDetID = " + RspDetId + " value = '" + QstnValue + "' id='chkAns" + RspDetId + "^" + (k + 1) + "' name = '" + RspDetId + "'>");
                         strInnerTable.Append("</td>");
                         strInnerTable.Append("<td style='padding-left:7px'>");
                         strInnerTable.Append("<label for='chkAns" + RspDetId + "^" + (k + 1) + "' >" + ds.Tables[1].Rows[k]["OptionDescr"] + "</label>");
@@ -744,7 +776,7 @@ public partial class CommonData_Questionnaire_frmQusetionnaire : System.Web.UI.P
                     if (!string.IsNullOrEmpty(RsltVal) & (QstnValue ?? "") == (RsltVal ?? ""))
                     {
                         strInnerTable.Append("<td class='radio' style='width:20px;vertical-align:top;padding-bottom:10px;text-align:center' >");
-                        strInnerTable.Append("<input style='cursor:default' type='radio' RspDetID = " + RspDetId + " value = " + QstnValue + " checked=true id='rdoAns" + k + "^" + (k + 1) + "'  name = '" + RspDetId + "'>");
+                        strInnerTable.Append("<input qstId='" + QstID + "' style='cursor:default' type='radio' RspDetID = " + RspDetId + " value = " + QstnValue + " checked=true id='rdoAns" + k + "^" + (k + 1) + "'  name = '" + RspDetId + "'>");
                         strInnerTable.Append("</td>");
                         strInnerTable.Append("<td style='padding-left:7px;vertical-align:top;padding-bottom:10px;'>");
                         strInnerTable.Append("<label for='rdoAns" + k + "^" + (k + 1) + "' >" + ds.Tables[1].Rows[k]["OptionDescr"] + "</label>");
@@ -753,7 +785,7 @@ public partial class CommonData_Questionnaire_frmQusetionnaire : System.Web.UI.P
                     else
                     {
                         strInnerTable.Append("<td class='radio' style='width:20px;vertical-align:top;padding-bottom:10px;text-align:center'>");
-                        strInnerTable.Append("<input style='cursor:default' type='radio' RspDetID = " + RspDetId + " value = " + QstnValue + " id='rdoAns" + k + "^" + (k + 1) + "'  name = '" + RspDetId + "'>");
+                        strInnerTable.Append("<input qstId='" + QstID + "' style='cursor:default' type='radio' RspDetID = " + RspDetId + " value = " + QstnValue + " id='rdoAns" + k + "^" + (k + 1) + "'  name = '" + RspDetId + "'>");
                         strInnerTable.Append("</td>");
                         strInnerTable.Append("<td style='padding-left:7px;vertical-align:top;padding-bottom:10px;'>");
                         strInnerTable.Append("<label for='rdoAns" + k + "^" + (k + 1) + "' >" + ds.Tables[1].Rows[k]["OptionDescr"] + "</label>");
@@ -801,7 +833,7 @@ public partial class CommonData_Questionnaire_frmQusetionnaire : System.Web.UI.P
                         strInnerTable.Append("<td>");
                         //strInnerTable.Append("<input type='textbox'  id='rdoAns" + k + "^" + (k + 1) + "' class='form-control' style='width:250px'>");
                         //strInnerTable.Append("<textarea cols='200' multiline='true'  rows='8'   class='form-control' style='width:100%; height:180px'>'" + RsltVal.Split('^')[1] + "'</textarea>");
-                        strInnerTable.Append("<textarea  cols='200' multiline='false'  rows='8'   class='form-control' style='width:100%; height:180px'>" + RsltVal.Split('^')[1] + "</textarea>");
+                        strInnerTable.Append("<textarea qstId='" + QstID + "' cols='200' multiline='false'  rows='8'   class='form-control' style='width:100%; height:180px'>" + RsltVal.Split('^')[1] + "</textarea>");
                         strInnerTable.Append("</td>");
                         strInnerTable.Append("</tr>");
                     }
@@ -813,7 +845,7 @@ public partial class CommonData_Questionnaire_frmQusetionnaire : System.Web.UI.P
                         //strInnerTable.Append("</td>");
                         strInnerTable.Append("<td>");
                         //strInnerTable.Append("<input type='textbox'   id='rdoAns" + k + "^" + (k + 1) + "' class='form-control' style='width:250px'>");
-                        strInnerTable.Append("<textarea cols='200' multiline='false'  rows='8'   class='form-control' style='width:100%;height:180px'></textarea>");
+                        strInnerTable.Append("<textarea cols='200' qstId='" + QstID + "' multiline='false'  rows='8'   class='form-control' style='width:100%;height:180px'></textarea>");
                         strInnerTable.Append("</td>");
                         strInnerTable.Append("</tr>");
                     }
@@ -832,4 +864,36 @@ public partial class CommonData_Questionnaire_frmQusetionnaire : System.Web.UI.P
         ObjclassUsedForExerciseSave.SpUpdateElaspedTime(RspExerciseID);
         return "0";
     }
+
+    [System.Web.Services.WebMethod]
+    public static string fnStartMeetingTimer(int RSPExerciseID, int MeetingDefaultTIME)
+    {
+        string strReturn = "1";
+
+        //int LoginId = (int)HttpContext.Current.Session["LoginId"];
+        using (SqlConnection Objcon2 = new SqlConnection(System.Configuration.ConfigurationManager.AppSettings["strConn"]))
+        {
+            using (SqlCommand objCom2 = new SqlCommand("[spAssesmentCheckDiscussionStarted]", Objcon2))
+            {
+                objCom2.Parameters.Add("@RspExerciseID", SqlDbType.Int).Value = RSPExerciseID;
+                objCom2.Parameters.Add("@MeetingDefaultTIME", SqlDbType.Int).Value = MeetingDefaultTIME;
+                objCom2.CommandType = CommandType.StoredProcedure;
+                objCom2.CommandTimeout = 0;
+
+                SqlDataAdapter da = new SqlDataAdapter(objCom2);
+                DataTable dt = new DataTable();
+                try
+                {
+                    da.Fill(dt);
+                    strReturn = "0|" + dt.Rows[0]["flgReturnVal"] + "|" + dt.Rows[0]["RemainingTimeMeeting"] + "|" + dt.Rows[0]["PrepRemainingTime"];
+                }
+                catch (Exception ex)
+                {
+                    strReturn = "1|" + ex.Message;
+                }
+            }
+        }
+        return strReturn;
+    }
+
 }

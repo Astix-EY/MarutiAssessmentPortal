@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
     <%--<script src="https://code.jquery.com/jquery-3.4.1.js"></script>--%>
+    <link href="../../JDatatable/jquery.dataTables.css" rel="stylesheet" />
+    <script src="../../JDatatable/dataTables.js"></script>
     <style>
         tr.clstrgdmapped > td{
             background-color:#f5f5f5;
@@ -47,32 +49,41 @@
                     $("#ConatntMatter_divdrmmain")[0].innerHTML = result.split("|")[0];
                     
                     //---- this code add by satish --- //
-                    $("#ConatntMatter_divdrmmain").prepend("<div id='tblheader'></div>");
-                    if ($("#tbldbrlist").length > 0) {
-                        var wid = $("#tbldbrlist").width(), thead = $("#tbldbrlist").find("thead").eq(0).html();
-                        $("#tblheader").html("<table id='tblEmp_header' class='table table-bordered table-sm mb-0' style='width:" + (wid - 1) + "px;'><thead>" + thead + "</thead></table>");
-                        $("#tbldbrlist").css({ "width": wid, "min-width": wid });
+                    //$("#ConatntMatter_divdrmmain").prepend("<div id='tblheader'></div>");
+                    //if ($("#tbldbrlist").length > 0) {
+                    //    var wid = $("#tbldbrlist").width(), thead = $("#tbldbrlist").find("thead").eq(0).html();
+                    //    $("#tblheader").html("<table id='tblEmp_header' class='table table-bordered table-sm mb-0' style='width:" + (wid - 1) + "px;'><thead>" + thead + "</thead></table>");
+                    //    $("#tbldbrlist").css({ "width": wid, "min-width": wid });
 
-                        for (i = 0; i < $("#tbldbrlist").find("th").length; i++) {
-                            var th_wid = $("#tbldbrlist").find("th")[i].clientWidth;
-                            $("#tblEmp_header, #tbldbrlist").find("th").eq(i).css({ "min-width": th_wid, "width": th_wid });
-                        }
-                        $("#tbldbrlist").css("margin-top", "-" + ($("#tblEmp_header")[0].offsetHeight) + "px");
+                    //    for (i = 0; i < $("#tbldbrlist").find("th").length; i++) {
+                    //        var th_wid = $("#tbldbrlist").find("th")[i].clientWidth;
+                    //        $("#tblEmp_header, #tbldbrlist").find("th").eq(i).css({ "min-width": th_wid, "width": th_wid });
+                    //    }
+                    //    $("#tbldbrlist").css("margin-top", "-" + ($("#tblEmp_header")[0].offsetHeight) + "px");
 
-                        //var secheight = $('.section-title').outerHeight(), nvheight = $(".navbar").outerHeight(), fgheight = $('.form-group').outerHeight();
-                        $('#dvtblbody').css({
-                            'height': $(window).height() - 320,
-                            'overflow-y': 'auto',
-                            'overflow-x': 'hidden'
-                        });
+                    //    //var secheight = $('.section-title').outerHeight(), nvheight = $(".navbar").outerHeight(), fgheight = $('.form-group').outerHeight();
+                    //    $('#dvtblbody').css({
+                    //        'height': $(window).height() - 320,
+                    //        'overflow-y': 'auto',
+                    //        'overflow-x': 'hidden'
+                    //    });
                         $("#divBTNS").show();
 
 
-                        $(".mergerow").closest('tr').find('td').css('border-top', '2px solid black');
-                        //$(".mergerow").closest('tr').find('td').css('border-top-width', 'thik');
+                    //    $(".mergerow").closest('tr').find('td').css('border-top', '2px solid black');
+                    //    //$(".mergerow").closest('tr').find('td').css('border-top-width', 'thik');
 
-                    }
-                   
+                    //}
+
+                    $("#tbldbrlist").DataTable({
+                        layout: {
+                            bottomEnd: {
+                                paging: {
+                                    firstLast: false
+                                }
+                            }
+                        }
+                    });
                     //---- end code --- //
 
                 }
@@ -459,7 +470,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ConatntMatter" runat="Server">
     <div class="section-title clearfix">
-        <h3 class="text-center">Participant Mapping With Eklavya</h3>
+        <h3 class="text-center">Participant Configuration with AI Assessment</h3>
         <div class="title-line-center"></div>
     </div>
     <div class="form-group row" >

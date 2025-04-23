@@ -1,4 +1,5 @@
-﻿using Ionic.Zip;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using Ionic.Zip;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,10 +8,12 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
 
 public partial class M3_Rating_RatingStatus : System.Web.UI.Page
 {
@@ -18,39 +21,94 @@ public partial class M3_Rating_RatingStatus : System.Web.UI.Page
     {
         if (Session["LoginId"] != null && Session["LoginId"].ToString() != "")
         {
+            fnfillCycleDropDown();
             hdnLogin.Value = Session["LoginId"].ToString();
-            frmGetStatus(Session["LoginId"].ToString(), Session["CycleId"].ToString());
+            divStatus.InnerHtml = frmGetStatus(Session["LoginId"].ToString(), Session["CycleId"].ToString());
         }
         else
         {
             Response.Redirect("../../Login.aspx");
         }
     }
-    private void frmGetStatus(string loginId, string CycleId)
+
+    private void fnfillCycleDropDown()
+    {
+
+        SqlConnection Scon = new SqlConnection(ConfigurationManager.ConnectionStrings["strConn"].ConnectionString);
+        SqlCommand Scmd = new SqlCommand();
+        Scmd.Connection = Scon;
+
+        Scmd.CommandText = "spGetAssessmentCycleDetail";
+        Scmd.Parameters.AddWithValue("@CycleID", 0);
+        Scmd.Parameters.AddWithValue("@Flag", 0);
+
+
+        Scmd.CommandType = CommandType.StoredProcedure;
+        Scmd.CommandTimeout = 0;
+        SqlDataAdapter Sdap = new SqlDataAdapter(Scmd);
+        DataTable dt = new DataTable();
+        Sdap.Fill(dt);
+
+        System.Web.UI.WebControls.ListItem itm;//= new ListItem();
+        //itm.Text = "All";
+        //itm.Value = "0";
+        //ddlCycle.Items.Add(itm);
+        if (dt.Rows.Count > 0)
+        {
+            foreach (DataRow dr in dt.Rows)
+            {
+                itm = new System.Web.UI.WebControls.ListItem();
+                itm.Text = dr["CycleName"].ToString() + " (" + Convert.ToDateTime(dr["CycleStartDate"]).ToString("dd MMM yy") + ")";
+                itm.Value = dr["CycleId"].ToString();
+                ddlCycleName.Items.Add(itm);
+            }
+
+        }
+        else
+        {
+            itm = new System.Web.UI.WebControls.ListItem();
+            itm.Text = "No cycle mapped";
+            itm.Value = "0";
+            ddlCycleName.Items.Add(itm);
+        }
+
+    }
+    [System.Web.Services.WebMethod()]
+    public static string frmGetStatus(string loginId, string CycleId)
     {
         DataSet ds = new DataSet();
         SqlConnection Scon = new SqlConnection(ConfigurationManager.AppSettings["strConn"]);
         SqlCommand Scmd = new SqlCommand();
         Scmd.Connection = Scon;
-        Scmd.CommandText = "[spAssessorAssignGetExcerciseList]";
+        Scmd.CommandText = "spRspGetMainToolWiseStatusForAll";
         Scmd.CommandType = CommandType.StoredProcedure;
         Scmd.CommandTimeout = 0;
         Scmd.Parameters.AddWithValue("@CycleId", CycleId);
-        Scmd.Parameters.AddWithValue("@LoginId", loginId);
+        //Scmd.Parameters.AddWithValue("@LoginId", loginId);
         SqlDataAdapter Sdap = new SqlDataAdapter(Scmd);
         Sdap.Fill(ds);
 
-        divStatus.InnerHtml = createStoretbl(ds, 1, true);
-        divLegend.InnerHtml = LegendMstr(ds.Tables[1]);
-        hdnAssessorMstr.Value = AssessorMstr(ds.Tables[2]);
+        return createStoretbl(ds, 1, true);
+        //divLegend.InnerHtml = LegendMstr(ds.Tables[1]);
+        //hdnAssessorMstr.Value = AssessorMstr(ds.Tables[2]);
     }
-    private string createStoretbl(DataSet ds, int headerlvl, bool IsHeader)
+    private static string createStoretbl(DataSet ds, int headerlvl, bool IsHeader)
     {
         StringBuilder sbColor = new StringBuilder();
         DataTable dt = ds.Tables[0];
-        dt.Columns.Add("User Response");
-        string[] SkipColumn = new string[1];
+        //dt.Columns.Add("User Response");
+        string[] SkipColumn = new string[9];
         SkipColumn[0] = "EmpNodeId";
+        SkipColumn[1] = "RspId";
+        SkipColumn[2] = "flgFinalStatus";
+        SkipColumn[3] = "DetailedFeedbackReport";
+        SkipColumn[4] = "MindsetReportURL";
+        SkipColumn[5] = "PenPictureReportURL";
+        SkipColumn[6] = "TalentSnapshotURL";
+        SkipColumn[7] = "flgReportGenerated";
+        SkipColumn[8] = "IsSubmitByEYAdminForReporting";
+
+
 
         if (ds.Tables[0].Rows.Count > 0)
         {
@@ -74,6 +132,18 @@ public partial class M3_Rating_RatingStatus : System.Web.UI.Page
                                 {
                                     sb.Append("<th rowspan='" + ColSpliter.Length + "' style=''>" + ColSpliter[k] + " <input type='checkbox' onclick='fnCheckUncheck(this);' /></th>");
                                 }
+                                else if (ColSpliter[k].Trim() == "Task <br>Situation Judgement<br>Exercise")
+                                {
+                                    sb.Append("<th rowspan='" + ColSpliter.Length + "' style=''>Task <br>SJT</th>");
+                                }
+ else if (ColSpliter[k].Trim() == "Task <br>Behavioural Event<br>Interview")
+                                {
+                                    sb.Append("<th rowspan='" + ColSpliter.Length + "' style=''>Task <br>BEI</th>");
+                                }
+else if (ColSpliter[k].Trim() == "Task <br>Analytical Ability<br>Exercise")
+                                {
+                                    sb.Append("<th rowspan='" + ColSpliter.Length + "' style=''>Task <br>Analytical Ability</th>");
+                                }
                                 else
                                 {
                                     sb.Append("<th rowspan='" + ColSpliter.Length + "' style=''>" + ColSpliter[k] + "</th>");
@@ -88,6 +158,13 @@ public partial class M3_Rating_RatingStatus : System.Web.UI.Page
                         }
                     }
                 }
+
+                sb.Append("<th>Action</th>");
+
+                if (k == 0)
+                {
+                    sb.Append("<th rowspan='1' style=''></th>");
+                }
                 sb.Append("</tr>");
             }
             sb.Append("</thead>");
@@ -95,34 +172,32 @@ public partial class M3_Rating_RatingStatus : System.Web.UI.Page
 
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
-                sb.Append("<tr EmpNodeId='" + ds.Tables[0].Rows[i]["EmpNodeId"].ToString() + "'>");
+                sb.Append("<tr  DetailedFeedbackReport='" + Convert.ToString(ds.Tables[0].Rows[i]["DetailedFeedbackReport"]) + "'   MindsetReportURL='" + Convert.ToString(ds.Tables[0].Rows[i]["MindsetReportURL"]) + "'   PenPictureReportURL='" + Convert.ToString(ds.Tables[0].Rows[i]["PenPictureReportURL"]) + "'  TalentSnapshotURL='" + Convert.ToString(ds.Tables[0].Rows[i]["TalentSnapshotURL"]) + "'  rspid='" + ds.Tables[0].Rows[i]["rspid"].ToString() + "' EmpNodeId='" + ds.Tables[0].Rows[i]["EmpNodeId"].ToString() + "'>");
                 for (int j = 0; j < ds.Tables[0].Columns.Count; j++)
                 {
                     if (!SkipColumn.Contains(ds.Tables[0].Columns[j].ColumnName.ToString().Split('|')[0].Trim()))
                     {
-                        if (ds.Tables[0].Rows[i][j].ToString().Split('^').Length > 2)
+                        if (j > 2)
                         {
                             sbColor.Clear();
                             switch (ds.Tables[0].Rows[i][j].ToString().Split('^')[0])
                             {
-                                case "1":
-                                    sbColor.Append("color: #ffffff; background-color: #ff0000;");
-                                    break;
-                                case "2":
+
+                                case "In Progress":
                                     sbColor.Append("color: #000000; background-color: #ff9b9b;");
                                     break;
-                                case "3":
+                                case "Completed":
                                     sbColor.Append("color: #000000; background-color: #80ff80;");
                                     break;
-                                case "4":
-                                    sbColor.Append("color: #000000; background-color: #8080ff;");
-                                    break;
-                                case "5":
-                                    sbColor.Append("color: #ffffff; background-color: #8000ff;");
-                                    break;
-                                case "6":
-                                    sbColor.Append("color: #ffffff; background-color: #0000a0;");
-                                    break;
+                                //case "4":
+                                //    sbColor.Append("color: #000000; background-color: #8080ff;");
+                                //    break;
+                                //case "5":
+                                //    sbColor.Append("color: #ffffff; background-color: #8000ff;");
+                                //    break;
+                                //case "6":
+                                //    sbColor.Append("color: #ffffff; background-color: #0000a0;");
+                                //    break;
                                 default:
                                     sbColor.Append("color: #000000; background-color: transparent;");
                                     break;
@@ -138,14 +213,28 @@ public partial class M3_Rating_RatingStatus : System.Web.UI.Page
                             }
                             else
                             {
-                                sb.Append("<td style='" + sbColor.ToString() + "' AssessorId='" + ds.Tables[0].Rows[i][j].ToString().Split('^')[5] + "' RSPExerciseId='" + ds.Tables[0].Rows[i][j].ToString().Split('^')[3] + "' id='td_" + i + "_" + j + "'>" + ds.Tables[0].Rows[i][j].ToString().Split('^')[1] + "</td>");
+                                if (ds.Tables[0].Rows[i][j].ToString().Split('^')[0] == "Completed")
+                                {
+                                    sb.Append("<td style='" + sbColor.ToString() + "'  id='td_" + i + "_" + j + "'>" + ds.Tables[0].Rows[i][j].ToString().Split('^')[0] +"<br>"+ds.Tables[0].Rows[i][j].ToString().Split('^')[1] + " <a href='###' onclick=\"fnResetTool('"+ ds.Tables[0].Rows[i]["rspid"].ToString() + "','"+ ds.Tables[0].Rows[i][j].ToString().Split('^')[2] + "')\">Reset</></td>");
+
+                                }
+else if (ds.Tables[0].Rows[i][j].ToString().Split('^')[0] == "In Progress")
+                                {
+                                    sb.Append("<td style='" + sbColor.ToString() + "'  id='td_" + i + "_" + j + "'>" + ds.Tables[0].Rows[i][j].ToString().Split('^')[0] + " <a href='###' onclick=\"fnResetTool('"+ ds.Tables[0].Rows[i]["rspid"].ToString() + "','"+ ds.Tables[0].Rows[i][j].ToString().Split('^')[2] + "')\">Reset</></td>");
+
+                                }
+                                else
+                                {
+                                    sb.Append("<td style='" + sbColor.ToString() + "'  id='td_" + i + "_" + j + "'>" + ds.Tables[0].Rows[i][j].ToString() + "</td>");
+
+                                }
                             }
                         }
                         else
                         {
-                            if (ds.Tables[0].Columns[j].ColumnName.ToString().Trim() == "User Response" && ds.Tables[0].Rows[i]["Report Download"].ToString() != "")
+                            if (ds.Tables[0].Columns[j].ColumnName.ToString().Trim() == "User Response")
                             {
-                                sb.Append("<td><a href='FileDownloadHandler.ashx?flg=1&EmpId="+ ds.Tables[0].Rows[i]["EmpNodeId"].ToString() + "&UserCode="+ ds.Tables[0].Rows[i]["User Code"].ToString() + "' target='_blank'>Download</a></td>");
+                                sb.Append("<td><a href='FileDownloadHandler.ashx?flg=1&EmpId=" + ds.Tables[0].Rows[i]["EmpNodeId"].ToString() + "&UserCode=" + ds.Tables[0].Rows[i]["User Code"].ToString() + "' target='_blank'>Download</a></td>");
                             }
                             else
                             {
@@ -160,6 +249,22 @@ public partial class M3_Rating_RatingStatus : System.Web.UI.Page
                             }
                         }
                     }
+                }
+                if (ds.Tables[0].Rows[i]["flgFinalStatus"].ToString() == "2" && ds.Tables[0].Rows[i]["IsSubmitByEYAdminForReporting"].ToString() == "0")
+                {
+                    sb.Append("<td><a href='###' onclick=\"fnshowReport(this,'" + ds.Tables[0].Rows[i]["rspid"].ToString() + "','" + ds.Tables[0].Rows[i]["flgReportGenerated"].ToString() + "')\">Show Report</a></td>");
+                }
+                else if (ds.Tables[0].Rows[i]["flgFinalStatus"].ToString() == "2" && ds.Tables[0].Rows[i]["IsSubmitByEYAdminForReporting"].ToString() == "1")
+                {
+                    sb.Append("<td><a href='###' onclick=\"fnshowReport(this,'" + ds.Tables[0].Rows[i]["rspid"].ToString() + "','" + ds.Tables[0].Rows[i]["flgReportGenerated"].ToString() + "')\">Show Report</a>  |  <a href='###'  onclick=\"fnSubmitAndshowReport('" + ds.Tables[0].Rows[i]["rspid"].ToString() + "','2')\" title='click to reverse status as old'>Resume</a></td>");
+                }
+                else if (ds.Tables[0].Rows[i]["flgFinalStatus"].ToString() == "1")
+                {
+                    sb.Append("<td><a href='###' onclick=\"fnSubmitAndshowReport(this,'" + ds.Tables[0].Rows[i]["rspid"].ToString() + "','1')\">Submit & Show Report</a></td>");
+                }
+                else
+                {
+                    sb.Append("<td></td>");
                 }
                 sb.Append("</tr>");
             }
@@ -220,7 +325,7 @@ public partial class M3_Rating_RatingStatus : System.Web.UI.Page
                     sb.Append("<td style='background-color: #80ff80; width:20px'></td><td class='clslegendlbl'>" + dt.Rows[i]["ExerciseStatus"].ToString() + "</td>");
                     break;
                 case "4":
-                    sb.Append("<td style='background-color: #8080ff; width:20px'></td><td class='clslegendlbl'>" + dt.Rows[i]["ExerciseStatus"].ToString() + "</td>");                    
+                    sb.Append("<td style='background-color: #8080ff; width:20px'></td><td class='clslegendlbl'>" + dt.Rows[i]["ExerciseStatus"].ToString() + "</td>");
                     break;
                 case "5":
                     sb.Append("<td style='background-color: #8000ff; width:20px'></td><td class='clslegendlbl'>" + dt.Rows[i]["ExerciseStatus"].ToString() + "</td>");
@@ -228,7 +333,7 @@ public partial class M3_Rating_RatingStatus : System.Web.UI.Page
                 case "6":
                     sb.Append("<td style='background-color: #0000a0; width:20px'></td><td class='clslegendlbl'>" + dt.Rows[i]["ExerciseStatus"].ToString() + "</td>");
                     break;
-            }            
+            }
         }
         sb.Append("</tr></table>");
         return sb.ToString();
@@ -257,6 +362,80 @@ public partial class M3_Rating_RatingStatus : System.Web.UI.Page
         {
             return "1";
         }
+    }
+
+    [System.Web.Services.WebMethod()]
+    public static string fnShowReport(string RspId)
+    {
+        string strRsp = "";
+        try
+        {
+            strRsp = clsHttpRequest.sendConsolidatedReportDataToEK(RspId);
+        }
+        catch (Exception ex)
+        {
+            strRsp = "2|" + ex.Message;
+        }
+        return strRsp;
+    }
+
+    [System.Web.Services.WebMethod()]
+    public static string fnSubmitAndShowReport(string RspId, string LoginId, int flgUndo)
+    {
+        string strRsp = "1|";
+        try
+        {
+            SqlConnection Scon = new SqlConnection(ConfigurationManager.AppSettings["strConn"]);
+            SqlCommand Scmd = new SqlCommand();
+            Scmd.Connection = Scon;
+            Scmd.CommandText = "[spUpdateStatusByEYAdminForReportingPurpose]";
+            Scmd.CommandType = CommandType.StoredProcedure;
+            Scmd.Parameters.AddWithValue("@RspId", RspId);
+            Scmd.Parameters.AddWithValue("@LoginId", LoginId);
+            Scmd.Parameters.AddWithValue("@flgUndo", flgUndo);
+            Scon.Open();
+            Scmd.ExecuteNonQuery();
+            Scon.Close();
+            if (flgUndo == 1)
+            {
+                strRsp = clsHttpRequest.sendConsolidatedReportDataToEK(RspId);
+            }
+            else
+            {
+                strRsp = "3|";
+            }
+        }
+        catch (Exception ex)
+        {
+            strRsp = "2|" + ex.Message;
+        }
+        return strRsp;
+    }
+
+
+    [System.Web.Services.WebMethod()]
+    public static string fnResetTools(string RspId, string ExerciseID)
+    {
+        string strRsp = "1|";
+        try
+        {
+            SqlConnection Scon = new SqlConnection(ConfigurationManager.AppSettings["strConn"]);
+            SqlCommand Scmd = new SqlCommand();
+            Scmd.Connection = Scon;
+            Scmd.CommandText = "[spResetTools]";
+            Scmd.CommandType = CommandType.StoredProcedure;
+            Scmd.Parameters.AddWithValue("@RspId", RspId);
+            Scmd.Parameters.AddWithValue("@ExerciseID", ExerciseID);
+            Scon.Open();
+            Scmd.ExecuteNonQuery();
+            Scon.Close();
+            strRsp = "1|";
+        }
+        catch (Exception ex)
+        {
+            strRsp = "2|" + ex.Message;
+        }
+        return strRsp;
     }
 
     [System.Web.Services.WebMethod()]
@@ -365,7 +544,8 @@ public partial class M3_Rating_RatingStatus : System.Web.UI.Page
         {
             if (i != 0)
                 sb.Append("<tr>");
-            else {
+            else
+            {
                 sb.Append("<td rowspan ='" + dt.Rows.Count + "' >" + colvalue + "</td>");
             }
 
@@ -431,11 +611,11 @@ public partial class M3_Rating_RatingStatus : System.Web.UI.Page
             if (file.Exists)
             {
                 file.Delete();
-            }            
+            }
 
             using (ZipFile zip = new ZipFile())
             {
-                for(int i =0; i < dtDataSaving.Rows.Count; i++)
+                for (int i = 0; i < dtDataSaving.Rows.Count; i++)
                 {
                     file = new FileInfo(path + dtDataSaving.Rows[i][1].ToString());
                     if (file.Exists)
@@ -460,7 +640,7 @@ public partial class M3_Rating_RatingStatus : System.Web.UI.Page
         dt_EmpId.Columns.Add("ID", typeof(string));
         dt_EmpId.Columns.Add("Val", typeof(string));
 
-        for(int i=0; i < hdnSelectedEmp.Value.Split('^').Length; i++)
+        for (int i = 0; i < hdnSelectedEmp.Value.Split('^').Length; i++)
         {
             dt_EmpId.Rows.Add(hdnSelectedEmp.Value.Split('^')[i], "");
         }
@@ -493,7 +673,7 @@ public partial class M3_Rating_RatingStatus : System.Web.UI.Page
         SkipColumn[0] = "Document";
 
         string strtbl = createtbl(Ds.Tables[0], SkipColumn);
-        
+
         Response.Clear();
         Response.Charset = "";
         Response.ContentEncoding = System.Text.UTF8Encoding.UTF8;
@@ -504,7 +684,7 @@ public partial class M3_Rating_RatingStatus : System.Web.UI.Page
         Response.Flush();
         Response.End();
     }
-    
+
     private string createtbl(DataTable dt, string[] SkipColumn)
     {
 
@@ -522,28 +702,28 @@ public partial class M3_Rating_RatingStatus : System.Web.UI.Page
                     string[] ColSpliter = (dt.Columns[j].ColumnName.ToString().Split('|')[0].Trim()).Split('^');
                     //if (ColSpliter[k] != "")
                     //{
-                        if (string.Join("", ColSpliter) == ColSpliter[k])
+                    if (string.Join("", ColSpliter) == ColSpliter[k])
+                    {
+                        if (ColSpliter[k].Trim() == "Report Download")
                         {
-                            if (ColSpliter[k].Trim() == "Report Download")
-                            {
-                                sb.Append("<th rowspan='" + ColSpliter.Length + "' style=''>" + ColSpliter[k] + " <input type='checkbox' onclick='fnCheckUncheck(this);' /></th>");
-                            }
-                            else
-                            {
-                                sb.Append("<th rowspan='" + ColSpliter.Length + "' style=''>" + ColSpliter[k] + "</th>");
-                            }
+                            sb.Append("<th rowspan='" + ColSpliter.Length + "' style=''>" + ColSpliter[k] + " <input type='checkbox' onclick='fnCheckUncheck(this);' /></th>");
                         }
                         else
                         {
-                            string strrowspan = multilvlPopuptbl(dt, j, k);
-                            sb.Append(strrowspan.Split('|')[0]);
-                            j = j + Convert.ToInt32(strrowspan.Split('|')[1]) - 1;
+                            sb.Append("<th rowspan='" + ColSpliter.Length + "' style=''>" + ColSpliter[k] + "</th>");
                         }
+                    }
+                    else
+                    {
+                        string strrowspan = multilvlPopuptbl(dt, j, k);
+                        sb.Append(strrowspan.Split('|')[0]);
+                        j = j + Convert.ToInt32(strrowspan.Split('|')[1]) - 1;
+                    }
                     //}
                 }
             }
             sb.Append("</tr>");
-        }        
+        }
         sb.Append("</thead>");
         sb.Append("<tbody>");
         for (int i = 0; i < dt.Rows.Count; i++)

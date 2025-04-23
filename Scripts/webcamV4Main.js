@@ -21,8 +21,16 @@ function startWebcam() {
 
             // successCallback
             function (localMediaStream) {
+                //const mediaSource = new MediaSource();
                 video = document.querySelector('video');
-                video.src = window.URL.createObjectURL(localMediaStream);
+                // Older browsers may not have srcObject
+                
+                try {
+                    video.srcObject = localMediaStream;
+                } catch (error) {
+                    video.src = window.URL.createObjectURL(localMediaStream);
+                }
+                video.play();
                 webcamStream = localMediaStream;
             },
 
@@ -52,7 +60,6 @@ function stopWebcam() {
 //---------------------
 var canvas, ctx;
 function snapshot() {
-    debugger;
     canvas = document.getElementById("myCanvas");
     ctx = canvas.getContext('2d');
     // Draws current image from the video element into the canvas
@@ -66,40 +73,41 @@ function snapshot() {
 
     data.append("FolderName", "Snapshot");
 
-    var rspId = $("#ConatntMatterRight_hdnRspID").val();
+    var rspId = $("#ConatntMatter_hdnRspID").val();
     rspId = (rspId == undefined ? 0 : rspId);
     data.append("RspID", rspId);
 
-    var rspExerciseId = $("#ConatntMatterRight_hdnRSPExerciseID").val();
+    var rspExerciseId = $("#ConatntMatter_hdnRSPExerciseID").val();
     rspExerciseId = (rspExerciseId == undefined ? 0 : rspExerciseId);
     data.append("RSPExerciseID", rspExerciseId);
 
-    var inLoginid = document.getElementById("ConatntMatterRight_hdnLoginID").value;
+    var inLoginid = document.getElementById("ConatntMatter_hdnLoginID").value;
     inLoginid = (inLoginid == undefined ? 0 : inLoginid);
     data.append("LoginId", inLoginid);
 
     data.append("PageLocation", window.location.pathname);
-
-    $.ajax({
-        url: "../../../FileUploadHandler.ashx?flgfilefolderid=7",
-        type: "POST",
-        data: data,
-        async: true,
-        contentType: false,
-        processData: false,
-        success: function (result) {
-            if (result.split("|")[0] == "1") {
+    if (rspExerciseId > 0) {
+        $.ajax({
+            url: "../../../FileUploadHandler.ashx?flgfilefolderid=7",
+            type: "POST",
+            data: data,
+            async: true,
+            contentType: false,
+            processData: false,
+            success: function (result) {
+                if (result.split("|")[0] == "1") {
+                }
+                else {
+                    //alert("Error : " + result.split("|")[1]);
+                    //return false;
+                }
+            },
+            error: function (err) {
+                alert("Error : " + err.statusText);
+                //alert(err.statusText)
             }
-            else {
-                //alert("Error : " + result.split("|")[1]);
-                //return false;
-            }
-        },
-        error: function (err) {
-        //    alert("Error : " + err.statusText);
-            //alert(err.statusText)
-        }
-    });
+        });
+    }
 }
 
 $(document).ready(function () {

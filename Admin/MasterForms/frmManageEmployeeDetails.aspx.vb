@@ -1,6 +1,8 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
 Imports System.Text
+Imports DocumentFormat.OpenXml.Spreadsheet
+
 Partial Class Admin_MasterForms_frmManageEmployeeDetails
     Inherits System.Web.UI.Page
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -30,14 +32,15 @@ Partial Class Admin_MasterForms_frmManageEmployeeDetails
             Dim strUserType As String = ""
 
             If dr.HasRows Then
-                strTable.Append("<table class='table table-bordered table-sm text-center'>")
+                strTable.Append("<table class='table table-bordered table-sm'>")
                 strTable.Append("<thead><tr>")
                 strTable.Append("<th>FName</th>")
                 strTable.Append("<th>LName</th>")
                 strTable.Append("<th>EMailID</th>")
                 strTable.Append("<th>Emp Code</th>")
-                'strTable.Append("<th>Level Name</th>")
-                strTable.Append("<th>User Type</th>")
+                strTable.Append("<th>Mapped To</th>")
+                strTable.Append("<th>Band</th>")
+                strTable.Append("<th>Set Name</th>")
                 strTable.Append("<th style='width:8%'>Action</th>")
                 strTable.Append("</tr></thead><tbody>")
                 While dr.Read
@@ -48,7 +51,7 @@ Partial Class Admin_MasterForms_frmManageEmployeeDetails
                     strTable.Append("<td class='text-center'>" & dr("EmailID") & "</td>")
 
                     strTable.Append("<td class='text-center'>" & dr("EmpCode") & "</td>")
-                    'strTable.Append("<td class='text-center'>" & dr("BandName") & "</td>")
+                    strTable.Append("<td class='text-center'>" & dr("CycleName") & "</td>")
                     If dr.Item("TypeID") = 1 Then
                         strUserType = "Participant"
                     ElseIf dr.Item("TypeID") = 2 Then
@@ -56,8 +59,9 @@ Partial Class Admin_MasterForms_frmManageEmployeeDetails
                     Else
                         strUserType = "Manager"
                     End If
-                    strTable.Append("<td style='background-color:#e9e9e9'><i>" & strUserType & "</i></td>")
-                    strTable.Append("<td><span class='text-primary fa fa-pencil pointer' onclick=fnEditEmployeeDetails('" & dr.Item("EmpNodeID") & "','" & Replace(dr("FName"), " ", "-") & "','" & Replace(dr("LName"), " ", "-") & "','" & Replace(dr("EmailID"), " ", "-") & "','" & Replace(dr("EmpCode"), " ", "-") & "'," & dr.Item("TypeID") & "," & dr.Item("BandID") & ")></span><span class='text-danger ml-3 fa fa-trash pointer' onclick=fndelete_row('" & dr.Item("EmpNodeID") & "')></span></td>")
+                    strTable.Append("<td style='background-color:#e9e9e9'><i>" & dr("BandName") & "</i></td>")
+                    strTable.Append("<td style='background-color:#e9e9e9'>Set " & dr("SJTSetNo") & "</i></td>")
+                    strTable.Append("<td><span class='text-primary fa fa-pencil pointer' onclick=fnEditEmployeeDetails('" & dr.Item("EmpNodeID") & "','" & Replace(dr("FName"), " ", "-") & "','" & Replace(dr("LName"), " ", "-") & "','" & Replace(dr("EmailID"), " ", "-") & "','" & Replace(dr("EmpCode"), " ", "-") & "'," & dr.Item("BandID") & "," & dr.Item("SJTSetNo") & ")></span><span class='text-danger ml-3 fa fa-trash pointer' onclick=fndelete_row('" & dr.Item("EmpNodeID") & "')></span></td>")
                     strTable.Append("</tr>")
                 End While
 
@@ -84,7 +88,7 @@ Partial Class Admin_MasterForms_frmManageEmployeeDetails
     End Function
 
     <System.Web.Services.WebMethod()>
-    Public Shared Function fnManageEmployeeDetails(ByVal EmpID As Integer, FName As String, LName As String, EmpCode As String, EmailID As String, ByVal UserType As Integer, ByVal SetID As Integer) As String
+    Public Shared Function fnManageEmployeeDetails(ByVal EmpID As Integer, FName As String, LName As String, EmpCode As String, EmailID As String, ByVal BandId As Integer, ByVal SetID As Integer) As String
         Dim strReturn As String = 1
 
         Dim LoginId As Integer
@@ -96,7 +100,8 @@ Partial Class Admin_MasterForms_frmManageEmployeeDetails
         objCom2.Parameters.Add("@LName", SqlDbType.NVarChar).Value = LName
         objCom2.Parameters.Add("@EmailID", SqlDbType.NVarChar).Value = EmailID
         objCom2.Parameters.Add("@Empcode", SqlDbType.NVarChar).Value = EmpCode
-        objCom2.Parameters.Add("@UserType", SqlDbType.Int).Value = UserType
+        objCom2.Parameters.Add("@UserType", SqlDbType.Int).Value = 1
+        objCom2.Parameters.Add("@BandId", SqlDbType.Int).Value = BandId
         objCom2.Parameters.Add("@SetNameID", SqlDbType.Int).Value = SetID
         objCom2.CommandType = CommandType.StoredProcedure
         objCom2.CommandTimeout = 0

@@ -1,0 +1,603 @@
+{
+  "studentName": "User1376",
+  "studentCode": "2946",
+  "studentEmail": "User1376@astix.in",
+  "isInstantResultProcess": true,
+  "clientName": "maruti",
+  "cycleName": "MSIL MGR Cycle:29-Oct-2024 1001 to 1500 Set 3",
+  "assessmentDetails": [
+    {
+      "assessmentId": "131",
+      "assessmentName": "BEI",
+      "scheduleID": "81",
+      "assessmentType": "Interview",
+      "competency": [],
+      "Questions": []
+    },
+    {
+      "assessmentId": "43",
+      "assessmentName": "Situation Judgement Exercise\r\n",
+      "scheduleID": "0",
+      "assessmentType": "SJT",
+      "competency": [
+        {
+          "competencyName": "Change Agility",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "Openness to Change",
+              "description": "",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Resilience",
+              "description": "",
+              "proficiencyLevel": []
+            }
+          ]
+        },
+        {
+          "competencyName": "Collaboration",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "Communicates with Purpose",
+              "description": "",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Internal Networking & Strategic External Collaboration ",
+              "description": "",
+              "proficiencyLevel": []
+            }
+          ]
+        },
+        {
+          "competencyName": "Learning Agility",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "Learning Eagerness",
+              "description": "",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Openness To Feedback",
+              "description": "",
+              "proficiencyLevel": []
+            }
+          ]
+        },
+        {
+          "competencyName": "Inspirational Leadership",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "Leading Effectively & People Management",
+              "description": "",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Coaching & Team Developm",
+              "description": "",
+              "proficiencyLevel": []
+            }
+          ]
+        },
+        {
+          "competencyName": "Innovation & New Ways of Working ",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "New/Digital Ways of Working",
+              "description": "",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Innovation & Problem Solving",
+              "description": "",
+              "proficiencyLevel": []
+            }
+          ]
+        },
+        {
+          "competencyName": "Financial Acumen",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "Financial Literacy",
+              "description": "",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Cost & Budget Management",
+              "description": "",
+              "proficiencyLevel": []
+            }
+          ]
+        },
+        {
+          "competencyName": "Data Driven Decision Making",
+          "description": "",
+          "marksCriteria": [],
+          "subCompetency": [
+            {
+              "subCompetencyName": "Data Comprehension / Analytical Ability",
+              "description": "",
+              "proficiencyLevel": []
+            },
+            {
+              "subCompetencyName": "Insight Application",
+              "description": "",
+              "proficiencyLevel": []
+            }
+          ]
+        }
+      ],
+      "Questions": [
+        {
+          "Competency": "Change Agility",
+          "SubCompetency": "Openness to Change",
+          "QstName": "You are leading a project to implement a new Enterprise Resource Planning (ERP) system intended to streamline operations and improve efficiency. Midway through the project, you discover that the new system may inadvertently reduce the need for certain roles within the company, potentially leading to job redundancies. The affected employees are long-standing and have contributed significantly to the company, but the ERP system promises substantial long-term benefits. The management team is divided on how to proceed without causing undue distress to employees or compromising the project's goals. How do you balance the implementation of the new ERP system with the potential impact on employees and the overall culture?",
+          "Options": [
+            {
+              "OptionDescr": "Continue with the ERP implementation as planned, while setting up a robust outplacement support program for those whose roles may be affected",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Slow down the ERP implementation to conduct a thorough analysis of potential job impacts and explore internal reallocation of affected employees.",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Proceed with the ERP implementation but enhance training programs to upskill affected employees for new roles that will emerge within the new system. ",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": "Propose a phased ERP implementation that allows for gradual role adjustments and provides more time for affected employees to adapt or seek other opportunities. ",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Initiate a voluntary retirement program with incentives for affected employees, coupled with the ERP implementation, to minimize involuntary job losses. ",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "llkkkkk"
+        },
+        {
+          "Competency": "Change Agility",
+          "SubCompetency": "Openness to Change",
+          "QstName": "You are the Customer Service Manager at a rapidly growing electric vehicle manufacturer. The company has recently decided to transition from its traditional phone and email-based customer support to a new omnichannel system that includes live chat, social media support, and a self-service knowledge base. This change aims to improve customer satisfaction and reduce response times. However, six weeks into the implementation, you're facing several challenges:<br>\n1.40% of your team is struggling to adapt to the new technology, particularly the live chat and social media platforms.<br>\n2.Customer satisfaction scores have dropped by 15% due to inconsistent responses across different channels.<br>\n3.The self-service knowledge base is underutilized, with only a 20% reduction in simple, repetitive inquiries.<br>\n4.Response times have increased by an average of 10 minutes as staff navigate between multiple platforms.<br>\n5.A group of experienced team members (about 30%) is pushing to revert to the old system, claiming it was more efficient.<br>\n6.The IT department reports that only 50% of the team is regularly using all features of the new system.<br>\nSenior management remains committed to the new omnichannel approach but has tasked you with improving its implementation and addressing the resistance within your team.<br>\nAs the Customer Service Manager responsible for this transition, which combination of actions would best help in overcoming challenges, adapting the system, and fostering openness to change? Select the BEST two options and explain your rationale.\r\n",
+          "Options": [
+            {
+              "OptionDescr": "Start daily \"Tech Huddles\" for team members to exchange quick tips and address challenges with the new system, fostering a collaborative learning environment",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": "Implement a \"Channel Champion\" program, where team members specialize in one channel each and become the go-to expert for that platform, gradually rotating roles to build expertise across the team.",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Create a \"Change Adaptation Scorecard\" that tracks individual progress in adopting new channels and rewards top performers with additional training opportunities or special projects.",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Establish a cross-functional \"Continuous Improvement Team\" with representatives from customer service, IT, and product teams to gather feedback, implement quick fixes, and communicate successes regularly.",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Launch a \"Customer First\" campaign showcasing success stories that highlight the benefits of the new system, reinforcing its value and motivating the team.",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "mmmmmmmmmm"
+        },
+        {
+          "Competency": "Change Agility",
+          "SubCompetency": "Resilience",
+          "QstName": "You are a manager, overseeing a critical project to improve production efficiency. Midway through the project, you encounter a significant setback: a key piece of equipment malfunctions, causing delays and potential cost overruns. Your team is feeling discouraged, and upper management is concerned about the project's viability. How would you approach this situation? Please rank the below actions based on priority (most important actions taken first followed by others)<br>\n1.Organize a team meeting to openly discuss the challenges & brainstorm solutions<br>\n2.Develop a detailed contingency plan to address the equipment issue and present it to upper management<br>\n3.Reach out to other departments or external experts for advice or alternative resources<br>\n4.Schedule one-on-one check-ins with team members to provide encouragement and address individual concerns<br>\n5.Conduct a thorough analysis of the situation to identify any lessons learned and prevent similar issues in the future<br>\r\n",
+          "Options": [
+            {
+              "OptionDescr": "1, 2, 3, 4, 5",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "1, 4, 3, 2, 5",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "1, 3, 2, 5, 4",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": "1, 4, 2, 3, 5",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "1, 5, 2, 3, 4",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "sdfdfd"
+        },
+        {
+          "Competency": "Collaboration",
+          "SubCompetency": "Communicates with Purpose",
+          "QstName": "As a manager, you're leading a diverse team of 10 employees. Recently, you've noticed a decrease in team morale and productivity due to communication breakdowns. Team members are misinterpreting each other's messages, leading to conflicts and missed deadlines. You need to address this issue to improve team dynamics and performance. How would you approach this situation? Please rank the below actions based on priority (most important actions taken first followed by others)<br>\r\n1.Organize a team communication workshop focusing on active listening and clear expression of ideas<br>\r\n2.Implement a new team communication tool with clear guidelines for its use (e.g., when to use email vs. instant messaging vs. in-person discussions)<br> \r\n3.Schedule one-on-one meetings with each team member to understand their individual communication challenges and preferences<br> \r\n4.Create and share a team charter that outlines communication expectations, including response times and meeting etiquette <br>\r\n5.Introduce a weekly \"open forum\" meeting where team members can freely discuss ongoing projects and any communication issues",
+          "Options": [
+            {
+              "OptionDescr": "3, 1, 4, 2, 5 ",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "3, 4, 2, 1, 5",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "3, 1, 4, 5, 2",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "3, 2, 4, 1, 5",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "3, 5, 1, 4, 2",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": true
+            }
+          ],
+          "Response": "dfdf"
+        },
+        {
+          "Competency": "Collaboration",
+          "SubCompetency": "Internal Networking & Strategic External Collaboration ",
+          "QstName": "As a middle manager in a technology company, you are leading a post-launch review of a new software platform. The launch did not meet expectations due to various issues, and there is a culture of blame developing among the internal teams and the external development agency. Each party is deflecting responsibility: the external agency blames unclear specifications, the strategy team blames the sales team for poor execution, and the sales team blames the platform's bugs for their performance. You are tasked with leading a meeting to address these issues and develop a plan to move forward. You must navigate through the situation and suggest a way forward.",
+          "Options": [
+            {
+              "OptionDescr": "Coordinate a joint problem-solving session with key representatives from each internal team and the external agency to openly discuss challenges and co-create a recovery plan. ",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Propose the creation of an interdepartmental task force that includes members from the external agency, charged with identifying root causes, making recommendations for improvement, and overseeing the implementation of solutions over time. ",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": "Conduct individual meetings with each team to understand their perspectives, followed by a combined meeting to share findings and encourage mutual understanding and collaboration. ",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Compile a comprehensive report based on input from all parties, highlighting common themes and potential areas for collaboration, and present it to senior management for support. ",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Initiate a feedback loop where all parties can anonymously submit their concerns and suggestions. Categorize the feedback and send recommendations to the senior leadership to address key issues, assign responsibilities, and develop a concrete action plan ",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "dfgfgd"
+        },
+        {
+          "Competency": "Collaboration",
+          "SubCompetency": "Internal Networking & Strategic External Collaboration ",
+          "QstName": "You are a middle manager in the marketing department of a global automobile company. Your department is tasked with launching a new ride-hailing service to complement the company's existing product line. The success of this service relies on effective collaboration with the technology team for app development, the customer service team for user experience, and the legal team for compliance issues. Additionally, there is an opportunity to partner with a city planning organization to optimize the service in urban areas.<br>\r\nScenario: The launch of the new ride-hailing service is facing challenges due to misalignment between the internal teams' objectives and timelines. The technology team is focused on developing advanced features, while the customer service team is concerned about user-friendliness. The legal team is cautious about regulatory compliance, which could delay the launch. The potential partnership with the city planning organization offers valuable data and insights for service optimization but requires buy-in and support from your internal teams. How do you work effectively with multiple teams? Choose the most effective action from the options below:\r\n",
+          "Options": [
+            {
+              "OptionDescr": "Arrange a cross-functional workshop with the technology, customer service, and legal teams to align on the service launch objectives. Use this opportunity to understand each team's perspective and drive consensus on a unified approach.",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Create a steering committee that includes representatives from each internal team and the city planning organization. This committee will oversee the integration of efforts and ensure that the partnership is leveraged for mutual benefit.",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Host a series of brainstorming sessions with all internal teams to address the challenges faced by each group. Introduce the collaboration with the city planning organization as a potential solution to some of these challenges and discuss how to integrate their insights.",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Facilitate individual strategy meetings with the leaders of each internal team to understand their priorities and reservations. Develop a collaborative project plan that incorporates the strengths of each team and present the benefits of partnering with the city planning organization.",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Organize an internal networking event where team members from technology, customer service, and legal can informally discuss the ride-hailing service. Simultaneously, hold a presentation on the strategic benefits of collaborating with the city planning organization and encourage feedback.\r\n",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": true
+            }
+          ],
+          "Response": "asdssdf"
+        },
+        {
+          "Competency": "Learning Agility",
+          "SubCompetency": "Learning Eagerness",
+          "QstName": "You are Vikram Malhotra, a Department Manager at your company’s Human Resources division. Your team is responsible for employee engagement and development programs. Recently, employee satisfaction surveys have shown a decline in engagement scores across departments.<br>\r\nDuring a team meeting, your colleague Neha suggests implementing a new cross-functional mentoring program she learned about at a recent HR conference. This program could potentially improve employee engagement and foster knowledge sharing across the organization. However, it would require significant time and resources to set up and might face resistance from some department heads who are focused on short-term productivity goals.<br>\r\nYou see the potential benefits of the program, but you're also aware of the challenges in implementing such a large-scale initiative. The decision on how to proceed rests with you.<br>\r\nHow do you respond to this situation?",
+          "Options": [
+            {
+              "OptionDescr": "Thank Neha for her input but decide to focus on more immediate, traditional solutions to boost employee engagement that won't disrupt current workflows",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Ask Neha to create a detailed proposal for the mentoring program, including potential challenges and solutions, to be presented to senior management in a month",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Propose a small-scale pilot of the mentoring program within your HR department first, to test its effectiveness before considering a company-wide rollout",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Organize a workshop inviting representatives from various departments to discuss the mentoring program idea and gather diverse perspectives on its potential implementation. ",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Enthusiastically endorse the idea and immediately begin planning for a company-wide implementation, confident that the long-term benefits will outweigh any short-term challenges",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": true
+            }
+          ],
+          "Response": "dfgffhgf"
+        },
+        {
+          "Competency": "Learning Agility",
+          "SubCompetency": "Learning Eagerness",
+          "QstName": "As a manager, you have implemented a new performance review system that includes 360-degree feedback. The goal is to provide comprehensive insights into each team member's strengths and areas for improvement. However, some team members are resistant to receiving feedback from their peers, fearing criticism or negative impact on their reputation.<br>\r\nAs a manager, how do you ensure that your team is open to feedback and uses it constructively to foster personal and professional growth?",
+          "Options": [
+            {
+              "OptionDescr": "Require team members to set specific goals based on the feedback received, monitoring their progress closely",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": "Facilitate a team discussion on the value of feedback, sharing your own experiences and encouraging a culture of transparency",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Offer training on how to give and receive feedback effectively, helping team members understand the process and its benefits",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Introduce anonymous feedback to alleviate concerns about personal bias or repercussions, ensuring that the focus remains on constructive criticism",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Create a mentorship program where team members can discuss feedback in a confidential setting, guided by a more experienced colleague",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "asdddddddddd"
+        },
+        {
+          "Competency": "Learning Agility",
+          "SubCompetency": "Openness To Feedback",
+          "QstName": "You are a middle manager who has recently taken charge of a team that is critical to the company's innovation efforts. You notice that the team members, who are mostly introverted, rarely engage in discussions during meetings, which hinders collaborative innovation. Recognizing the importance of open communication for both personal and professional growth, you want to encourage your team to proactively seek feedback and take initiative to incorporate it into their work.<br>\r\nWhat actions would you take to foster a culture where team members proactively seek feedback and take ownership of incorporating it into their work, considering their introverted nature?<br><br>\r\n\r\n1.\tSchedule regular one-on-one meetings with each team member to provide a comfortable setting for feedback and discussion.<br> \r\n2.\tDevelop a structured feedback process that allows team members to request and receive feedback on their work in a systematic way. <br>\r\n3.\tCreate a shared document where team members can voluntarily post their work for peer review and feedback at their own pace.<br> \r\n4.\tOpenly seek feedback on your own work from both superiors and team members during meetings. <br>\r\n5.\tOrganize a workshop on the importance of feedback for growth, featuring external experts who can share best practices and techniques.",
+          "Options": [
+            {
+              "OptionDescr": "3, 5, 4, 2, 1 ",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "2, 3, 1, 4, 5 ",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "1, 2, 4, 3, 5 ",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": "5, 3, 1, 4, 2 ",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "4, 1, 2, 5, 3 ",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "sdffdsdsds"
+        },
+        {
+          "Competency": "Inspirational Leadership",
+          "SubCompetency": "Leading Effectively & People Management",
+          "QstName": "You are a manager, and your team is tasked with improving the after-sales service process to enhance customer satisfaction. The team is diverse, with members having varying levels of experience and expertise. You have noticed that while some team members are proactive and eager to contribute, others seem hesitant and less involved.<br>\r\nHow would you lead your team effectively to improve the after-sales service process while fostering individual growth and team development?<br>\r\n1.Clearly define the roles and responsibilities for each team member, ensuring that tasks are aligned with their current skills and experience.<br>\r\n2.Organize a brainstorming session to encourage all team members to contribute ideas and feel invested in the process improvement initiative.<br>\r\n3.Pair less experienced team members with mentors who can provide guidance and support as they take on new challenges related to the project.<br>\r\n4.Set up a recognition program to celebrate milestones and individual contributions to the after-sales service improvement efforts.<br>\r\n5.Encourage team members to take ownership of specific parts of the project, giving them the freedom to make decisions within defined parameters.",
+          "Options": [
+            {
+              "OptionDescr": "2, 1, 3, 4, 5 ",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "2, 1, 5, 3, 4",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "2, 5, 4, 1, 3 ",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "2, 4, 1, 3, 5 ",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "2, 3, 1, 5, 4 ",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": true
+            }
+          ],
+          "Response": "asdddddddd"
+        },
+        {
+          "Competency": "Inspirational Leadership",
+          "SubCompetency": "Coaching & Team Developm",
+          "QstName": "As a manager, you are responsible for a team that has recently completed a successful project. The team, consisting of both experienced and newer members, has been working at a relentless pace. While the experienced members are showing signs of burnout, there is a noticeable drop in energy and engagement across the entire team. You recognize the need for rest and recovery, but there is also pressure from senior management to capitalize on the team's success and momentum by immediately starting another high-profile project.<br>\r\nHow would you balance the team's well-being with the demands of the new project while maintaining high performance?",
+          "Options": [
+            {
+              "OptionDescr": "Give the team a well-deserved break before taking on the new project, risking a delay in the project's initiation",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Start the new project immediately, using the team's recent success as a motivator to maintain energy and engagement",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Initiate the new project with a gradual ramp-up, allowing team members to ease into their roles while providing support for those who need more recovery time",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Implement a flexible work arrangement for the new project, encouraging experienced team members to mentor newer colleagues while taking intermittent breaks to prevent further burnout",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Consult with the team to collectively decide the best approach to take on the new project, considering their current state and the project's urgency",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": true
+            }
+          ],
+          "Response": "llllllllllllllllll"
+        },
+        {
+          "Competency": "Inspirational Leadership",
+          "SubCompetency": "Coaching & Team Developm",
+          "QstName": "You are a middle manager in the human resources department of an automotive company. Your department is responsible for the professional development of employees across various divisions. Recently, you've noticed that the performance of the customer service team has plateaued, and there is a need to enhance their skills to improve service quality and customer satisfaction.<br>\r\nScenario: The customer service team has been receiving mixed reviews from customers, and the team's overall engagement in professional development activities has been low. As the manager responsible for their development, you must coach the team to set clear goals for improvement, provide concise feedback, promote self-improvement, and lead by example to elevate their performance.<br>\r\nChoose the most effective action from the options below:",
+          "Options": [
+            {
+              "OptionDescr": "Facilitate a series of targeted performance review sessions with the customer service team to address specific areas for improvement, set achievable goals, and provide a curated list of professional development resources, followed by structured follow-up ",
+              "Score1": "5",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Coordinate an interactive training program tailored to customer service excellence, including role-play scenarios and real-time feedback, to encourage immediate application of new skills in customer interactions",
+              "Score1": "3",
+              "Score2": "",
+              "IsSelected": true
+            },
+            {
+              "OptionDescr": "Develop a comprehensive self-improvement framework that includes a personalized development plan, goal-setting workshops, and access to a digital learning platform with relevant courses and materials",
+              "Score1": "4",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Implement a mentorship and peer coaching system that pairs customer service representatives with HR team members or experienced colleagues to exchange feedback and best practices in a supportive environment",
+              "Score1": "2",
+              "Score2": "",
+              "IsSelected": false
+            },
+            {
+              "OptionDescr": "Launch an 'Excellence in Service' campaign that includes regular recognition of outstanding customer service efforts, sharing success stories, and highlighting the professional development journeys of high-performing team members",
+              "Score1": "1",
+              "Score2": "",
+              "IsSelected": false
+            }
+          ],
+          "Response": "sdfdfdfdfd"
+        }
+      ]
+    }
+  ]
+}
